@@ -1,4 +1,4 @@
 package model.workshops;
 
-public class SecondaryWorkshop extends Workshop{
+public class SecondaryWorkshop extends Workshop {
 }

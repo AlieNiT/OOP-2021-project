@@ -1,4 +1,4 @@
 package model.animals;
 
-public class HeyvanAhli {
+public class Predator {
 }

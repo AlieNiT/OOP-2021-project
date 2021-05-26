@@ -1,2 +1,4 @@
-package dfgdf;public class LoginMenu {
+package inter;
+
+public class LoginMenu {
 }
