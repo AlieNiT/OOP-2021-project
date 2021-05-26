@@ -1,2 +1,4 @@
-package model.workshops;public class Bakery {
+package model.workshops;
+
+public class Bakery {
 }
