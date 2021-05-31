@@ -1,7 +1,7 @@
 package model.game.animals.farmanimals;
 
-import model.game.products.Product;
 import model.game.products.rawproducts.Egg;
+import model.game.products.rawproducts.RawProduct;
 
 public class Chicken extends FarmAnimal{
 
@@ -11,7 +11,5 @@ public class Chicken extends FarmAnimal{
     }
 
     @Override
-    public Product produce() {
-        return new Egg();
-    }
+    public RawProduct produce() { return new Egg(); }
 }

@@ -11,7 +11,7 @@ public abstract class Animal {
             case 2 -> y+=v;
             case 3 -> y-=v;
         }
-
+        //TODO
     }
     public Animal(float x, float y, float v) {
         this.x = x;

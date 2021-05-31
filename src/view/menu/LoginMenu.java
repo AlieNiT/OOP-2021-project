@@ -1,7 +1,7 @@
 package view.menu;
 
 import controller.LoginController;
-import model.play.database.User;
+import model.database.User;
 
 public class LoginMenu extends Menu {
     LoginController controller;

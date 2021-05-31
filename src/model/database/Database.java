@@ -1,4 +1,4 @@
-package model.play.database;
+package model.database;
 
 import java.util.ArrayList;
 

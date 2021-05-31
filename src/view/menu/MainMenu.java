@@ -1,6 +1,6 @@
 package view.menu;
 
-import model.play.database.User;
+import model.database.User;
 
 public class MainMenu extends Menu{
     User user;

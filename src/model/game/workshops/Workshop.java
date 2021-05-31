@@ -1,7 +1,7 @@
 package model.game.workshops;
 
-import model.game.products.Producer;
+import model.game.Consumer;
+import model.game.Producer;
 
-public abstract class Workshop implements Producer {
-
+public abstract class Workshop implements Producer, Consumer {
 }

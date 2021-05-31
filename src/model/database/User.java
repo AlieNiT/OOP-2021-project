@@ -1,4 +1,4 @@
-package model.play.database;
+package model.database;
 
 public class User {
     String userName;

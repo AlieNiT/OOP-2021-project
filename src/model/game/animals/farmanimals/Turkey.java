@@ -1,7 +1,7 @@
 package model.game.animals.farmanimals;
 
-import model.game.products.Product;
 import model.game.products.rawproducts.Feather;
+import model.game.products.rawproducts.RawProduct;
 
 public class Turkey extends FarmAnimal{
 
@@ -10,7 +10,7 @@ public class Turkey extends FarmAnimal{
     }
 
     @Override
-    public Product produce() {
+    public RawProduct produce() {
         return new Feather();
     }
 }

@@ -1,7 +1,7 @@
 package view.menu;
 
 import controller.SignupController;
-import model.play.database.User;
+import model.database.User;
 
 public class SignupMenu extends Menu{
     SignupController controller;

@@ -1,7 +1,7 @@
 package model.game.animals.farmanimals;
 
-import model.game.products.Product;
 import model.game.products.rawproducts.Milk;
+import model.game.products.rawproducts.RawProduct;
 
 public class Buffalo extends FarmAnimal{
 
@@ -11,7 +11,7 @@ public class Buffalo extends FarmAnimal{
     }
 
     @Override
-    public Product produce() {
+    public RawProduct produce() {
         return new Milk();
     }
 }

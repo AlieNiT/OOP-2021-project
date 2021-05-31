@@ -1,5 +1,3 @@
-package main;
-
 import view.menu.LoginMenu;
 import view.menu.Menu;
 import view.menu.StartMenu;
