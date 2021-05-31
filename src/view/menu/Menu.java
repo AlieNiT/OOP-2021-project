@@ -9,4 +9,5 @@ public abstract class Menu {
     protected String getCommand(String input) {
         System.out.println(input);
         return INPUT.nextLine().trim();
-    }}
+    }
+}

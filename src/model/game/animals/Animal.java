@@ -4,7 +4,7 @@ import java.util.Random;
 
 public abstract class Animal {
     float x,y,v;
-    public void move(int mapBoundary){
+    public void move(int mapBoundary) {
         switch (new Random().nextInt()%4){
             case 0 -> x+=v;
             case 1 -> x-=v;

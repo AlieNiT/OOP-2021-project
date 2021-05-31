@@ -16,7 +16,7 @@ public class MilkPackagingWorkshop extends PrimaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.MILK.name(),1);
+        warehouse.hasSavable(Savable.MILK,1);
         warehouse.removeSavable(Savable.MILK,1);
         return true;
     }

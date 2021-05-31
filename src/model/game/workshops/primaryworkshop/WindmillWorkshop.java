@@ -16,7 +16,7 @@ public class WindmillWorkshop extends PrimaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.EGG.name(),1);
+        warehouse.hasSavable(Savable.EGG,1);
         warehouse.removeSavable(Savable.EGG,1);
         return true;
     }

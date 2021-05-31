@@ -18,7 +18,7 @@ public class WeavingWorkshop extends PrimaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.FEATHER.name(),1);
+        warehouse.hasSavable(Savable.FEATHER,1);
         warehouse.removeSavable(Savable.FEATHER,1);
         return true;
     }

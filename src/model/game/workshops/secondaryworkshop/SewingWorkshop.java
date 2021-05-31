@@ -17,7 +17,7 @@ public class SewingWorkshop extends SecondaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.CLOTH.name(),1);
+        warehouse.hasSavable(Savable.CLOTH,1);
         warehouse.removeSavable(Savable.CLOTH,1);
         return true;
     }

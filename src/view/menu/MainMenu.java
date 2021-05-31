@@ -1,12 +1,12 @@
 package view.menu;
 
+import controller.MainController;
 import model.database.User;
 
 public class MainMenu extends Menu{
-    User user;
-
+    MainController controller;
     public MainMenu(User user) {
-        this.user = user;
+        controller = new MainController(user);
     }
 
     @Override

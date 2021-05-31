@@ -6,7 +6,6 @@ import model.database.User;
 public class SignupMenu extends Menu{
     SignupController controller;
     Menu menu = null;
-    @Override
     SignupMenu(SignupController controller){
         this.controller = controller;
     }

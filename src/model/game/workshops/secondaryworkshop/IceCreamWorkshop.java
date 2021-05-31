@@ -17,7 +17,7 @@ public class IceCreamWorkshop extends SecondaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.POCKET_MILK.name(),1);
+        warehouse.hasSavable(Savable.POCKET_MILK,1);
         warehouse.removeSavable(Savable.POCKET_MILK,1);
         return true;
     }

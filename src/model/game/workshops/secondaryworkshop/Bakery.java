@@ -19,7 +19,7 @@ public class Bakery extends SecondaryWorkshop {
 
     @Override
     public boolean consume(Warehouse warehouse) throws Exception {
-        warehouse.hasSavable(Savable.FLAVOR.name(),1);
+        warehouse.hasSavable(Savable.FLAVOR,1);
         warehouse.removeSavable(Savable.FLAVOR,1);
         return true;
     }

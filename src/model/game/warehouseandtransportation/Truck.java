@@ -30,18 +30,15 @@ public class Truck {
         availabilityCheck();
         if (availableCapacity == capacity)
             throw new Exception("There is nothing on the truck!");
-
         isAble = false;
     }
 
     public static int comeBack(){
-
         int returnedValue = 0;
         for (Savable savable : Savable.values())
             returnedValue += things.get(savable.name)*savable.price;
         things.clear();
         isAble = true;
         return returnedValue;
-
     }
 }
