@@ -2,7 +2,6 @@ import view.menu.LoginMenu;
 import view.menu.Menu;
 import view.menu.StartMenu;
 
-import java.util.ArrayList;
 
 public class Main {
 
