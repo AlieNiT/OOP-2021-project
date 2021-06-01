@@ -7,7 +7,7 @@ public abstract class Menu {
     public abstract Menu run();
     Menu menu = null;
     protected String getCommand(String input) {
-        System.out.println(input);
+        System.out.print(input);
         return INPUT.nextLine().trim();
     }
 }

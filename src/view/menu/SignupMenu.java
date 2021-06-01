@@ -13,8 +13,8 @@ public class SignupMenu extends Menu{
 
     public Menu run() {
         try {
-            User user = controller.getUser(getCommand("USERNAME:"));
-            if (user.getPassWord().equals(getCommand("PASSWORD:")))
+            User user = controller.getUser(getCommand("USERNAME: "));
+            if (user.getPassWord().equals(getCommand("PASSWORD: ")))
                 menu = new MainMenu(user);
             else throw new Exception("WRONG PASSWORD");
         } catch (Exception e){System.out.println(e.getMessage());}

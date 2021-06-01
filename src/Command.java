@@ -13,8 +13,7 @@ public enum Command {
     TRUCK_LOAD("truck load (\\w+)"),
     TRUCK_UNLOAD("truck unload (\\w+)"),
     TRUCK_GO("truck go"),
-    INQUIRY("inquiry"),
-    INVALID("");
+    INQUIRY("inquiry");
 
     private final Pattern pattern;
     private final String regex;
@@ -33,6 +32,6 @@ public enum Command {
             if(Pattern.matches(command.regex, input.toLowerCase(Locale.ROOT)))
                 return command;
         }
-        return INVALID;
+        return null;
     }
 }

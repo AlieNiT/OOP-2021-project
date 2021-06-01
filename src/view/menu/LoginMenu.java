@@ -11,7 +11,7 @@ public class LoginMenu extends Menu {
     public Menu run() {
         Menu menu = null;
         try {
-            User user = controller.getUser(getCommand("USERNAME:"));
+            User user = controller.getUser(getCommand("USERNAME: "));
             if (user != null)
                 menu = new MainMenu(user);
             else throw new Exception("WRONG USERNAME");
