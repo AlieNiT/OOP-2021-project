@@ -1,3 +1,5 @@
+package changes;
+
 public enum FarmAnimal {
     CHICKEN("chicken", 100, "egg", 2),
     TURKEY("turkey", 200, "feather", 3),

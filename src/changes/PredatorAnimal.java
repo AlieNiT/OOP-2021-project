@@ -1,3 +1,5 @@
+package changes;
+
 public enum PredatorAnimal {
     LION("lion", 1, 3),
     BEAR("bear", 1, 4),

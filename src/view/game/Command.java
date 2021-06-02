@@ -31,7 +31,7 @@ public enum Command {
 
     public static Command findCommand(String input) {
         for (Command command : Command.values()) {
-            if(Pattern.matches(command.regex, input.toLowerCase(Locale.ROOT)))
+            if(Pattern.matches(command.regex, input))
                 return command;
         }
         return null;

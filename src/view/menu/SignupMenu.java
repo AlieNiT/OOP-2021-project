@@ -1,7 +1,8 @@
 package view.menu;
 
 import controller.SignupController;
-import model.database.User;
+import view.menu.exceptions.BackException;
+import view.menu.exceptions.ExitException;
 
 public class SignupMenu extends Menu{
     SignupController controller;
@@ -9,15 +10,18 @@ public class SignupMenu extends Menu{
     SignupMenu(SignupController controller){
         this.controller = controller;
     }
-
-
     public Menu run() {
+        Menu menu = this;
         try {
-            User user = controller.getUser(getCommand("USERNAME: "));
-            if (user.getPassWord().equals(getCommand("PASSWORD: ")))
-                menu = new MainMenu(user);
-            else throw new Exception("WRONG PASSWORD");
-        } catch (Exception e){System.out.println(e.getMessage());}
+            String userName = controller.checkPassUserFormat(getCommand("USERNAME:"),"username");
+            if (controller.getUser(userName)==null)
+                return new MainMenu(controller.makeUser(userName, controller.checkPassUserFormat(getExactCommand("PASSWORD:"),"password")));
+            else
+                throw new Exception("The username already exists.");
+        } catch (BackException e){ return new StartMenu();
+        } catch (ExitException e){ return null;
+        } catch (Exception e){ System.out.println(e.getMessage());
+        }
         return menu;
     }
 

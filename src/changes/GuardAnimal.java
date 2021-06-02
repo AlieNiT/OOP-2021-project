@@ -1,3 +1,5 @@
+package changes;
+
 public enum GuardAnimal {
     DOG("dog", 100),
     CAT("cat", 150);

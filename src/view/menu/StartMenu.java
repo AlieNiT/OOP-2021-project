@@ -10,12 +10,11 @@ public class StartMenu extends Menu{
         Menu menu = this;
         try {
             switch (getCommand("(start menu)LOGIN/SIGNUP:")) {
-                case "LOGIN" -> menu = new LoginMenu(new LoginController());
-                case "SIGNUP" -> menu = new SignupMenu(new SignupController());
+                case "login" -> menu = new LoginMenu(new LoginController());
+                case "signup" -> menu = new SignupMenu(new SignupController());
                 default -> System.out.println("Invalid command");
             }
-        }catch (ExitException e) {
-            menu = null;
+        }catch (ExitException e) { menu = null;
         }
         return menu;
     }
