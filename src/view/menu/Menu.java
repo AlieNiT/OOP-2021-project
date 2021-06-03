@@ -9,7 +9,7 @@ public abstract class Menu {
     protected static Scanner INPUT = new Scanner(System.in);
     public abstract Menu run();
     protected String getCommand(String string){
-        System.out.print(string+"\n-");
+        System.out.print(string + "\n-");
         String response = INPUT.nextLine().toLowerCase().replaceAll("( )+", " ").trim();
         switch (response){
             case "exit" -> throw new ExitException();
