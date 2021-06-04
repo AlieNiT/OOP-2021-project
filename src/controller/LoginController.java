@@ -1,5 +1,6 @@
 package controller;
 
+import changes.Colors;
 import model.database.Database;
 import model.database.User;
 
@@ -12,7 +13,7 @@ public class LoginController {
     public String checkPassUserFormat(String userData,String type) {
         //TODO
         if (!userData.equals(userData.replaceAll("( )+", "")))
-            throw new RuntimeException("Wrong format of "+type);
+            throw new RuntimeException(Colors.randomColor("Wrong format of "+type));
         return userData;
     }
 }

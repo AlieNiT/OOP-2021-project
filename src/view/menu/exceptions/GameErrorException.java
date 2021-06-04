@@ -1,4 +1,3 @@
 package view.menu.exceptions;
 
-public class GameErrorException extends RuntimeException{
-}
+public class GameErrorException extends RuntimeException { }

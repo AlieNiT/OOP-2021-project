@@ -1,4 +1,3 @@
 package view.menu.exceptions;
 
-public class BackException extends RuntimeException{
-}
+public class BackException extends RuntimeException { }

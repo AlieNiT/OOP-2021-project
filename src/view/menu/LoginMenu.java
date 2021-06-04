@@ -1,5 +1,6 @@
 package view.menu;
 
+import changes.Colors;
 import controller.LoginController;
 import model.database.User;
 import view.menu.exceptions.BackException;
@@ -17,12 +18,12 @@ public class LoginMenu extends Menu {
             while (user != null) {
                 if (user.getPassWord().equals(getExactCommand("PASSWORD:")))
                     return new MainMenu(user);
-                System.out.println("WRONG PASSWORD");
+                System.out.println(Colors.randomColor("WRONG PASSWORD"));
             }
             throw new Exception("WRONG USERNAME");
         } catch (BackException e){ return new StartMenu();
         } catch (ExitException e){ return null;
-        } catch (Exception e)    { System.out.println(e.getMessage());
+        } catch (Exception e)    { System.out.println(Colors.randomColor(e.getMessage()));
         }
         return menu;
     }
