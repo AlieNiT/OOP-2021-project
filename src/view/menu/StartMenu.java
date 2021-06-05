@@ -1,7 +1,7 @@
 package view.menu;
 
-import controller.LoginController;
-import controller.SignupController;
+import controller.menu.LoginController;
+import controller.menu.SignupController;
 import view.menu.exceptions.ExitException;
 import static changes.Colors.colorPrintln;
 

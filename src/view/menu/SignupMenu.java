@@ -1,6 +1,6 @@
 package view.menu;
 
-import controller.SignupController;
+import controller.menu.SignupController;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
 import static changes.Colors.colorPrintln;

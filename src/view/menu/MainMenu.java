@@ -1,6 +1,6 @@
 package view.menu;
 
-import controller.MainController;
+import controller.menu.MainController;
 import model.database.User;
 
 public class MainMenu extends Menu{

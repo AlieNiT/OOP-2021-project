@@ -1,4 +1,4 @@
-package view.game;
+package controller.mission.missions;
 
 import java.util.Locale;
 import java.util.regex.Matcher;

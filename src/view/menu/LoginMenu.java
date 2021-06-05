@@ -1,6 +1,6 @@
 package view.menu;
 
-import controller.LoginController;
+import controller.menu.LoginController;
 import model.database.User;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
