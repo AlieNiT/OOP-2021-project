@@ -1,9 +1,9 @@
 package view.menu;
 
-import changes.Colors;
 import controller.SignupController;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
+import static changes.Colors.colorPrintln;
 
 public class SignupMenu extends Menu {
     SignupController controller;
@@ -16,12 +16,13 @@ public class SignupMenu extends Menu {
         try {
             String userName = controller.checkPassUserFormat(getCommand("USERNAME:"),"username");
             if (controller.getUser(userName)==null)
-                return new MainMenu(controller.makeUser(userName, controller.checkPassUserFormat(getExactCommand("PASSWORD:"),"password")));
+                return new MainMenu(controller.makeUser(userName,
+                        controller.checkPassUserFormat(getExactCommand("PASSWORD:"),"password")));
             else
                 throw new Exception("This username already exists.");
         } catch (BackException e){ return new StartMenu();
         } catch (ExitException e){ return null;
-        } catch (Exception e){ System.out.println(Colors.randomColor(e.getMessage()));
+        } catch (Exception e){ colorPrintln(e.getMessage());
         }
         return menu;
     }

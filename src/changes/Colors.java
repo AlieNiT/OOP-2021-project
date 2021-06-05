@@ -25,8 +25,16 @@ public class Colors {
             case 14 -> code = Rainbow.PINK3.getCode();
         }
         String output = "\u001b[38;5;" + code + "m" + str;
-        // String output = "\u001b[48;5;" + String.valueOf(code) + "m" + str;
         counter++;
         return output;
+    }
+
+    public static void colorPrint(String str) { System.out.print(Colors.randomColor(str)); }
+    public static void colorPrintln(String str) {
+        if (str == null) {
+            System.out.println();
+            return;
+        }
+        System.out.println(Colors.randomColor(str));
     }
 }
