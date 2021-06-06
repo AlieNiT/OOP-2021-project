@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Colors {
     static Rainbow[] colors = Rainbow.values();
-    private static int counter = new Random().nextInt()%colors.length;
+    private static int counter = new Random().nextInt(colors.length);
     private static String nextColor(String str) {
         counter++;
         int code = colors[counter%colors.length].getCode();

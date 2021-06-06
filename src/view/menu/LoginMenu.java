@@ -22,14 +22,12 @@ public class LoginMenu extends Menu {
                 if (user.getPassWord().equals(getExactCommand("PASSWORD:")))
                     return new MainMenu(user);
                 tries--;
-                if (tries != 0) {
-                    colorPrintln("WRONG PASSWORD. TRY AGAIN:");
-                }
+                if (tries != 0) colorPrintln("WRONG PASSWORD. TRY AGAIN:");
                 if (tries == 0) {
                     colorPrintln("WRONG PASSWORD.");
                     tries = 3;
                     for (int i = 10; i > 0; i--) {
-                        colorPrint("Out of attempts. Try again in " + String.valueOf(i));
+                        colorPrint("Out of attempts. Try again in " + i);
                         for (int j = 0; j < 3; j++) {
                             colorPrint(".");
                             TimeUnit.MILLISECONDS.sleep(333);
