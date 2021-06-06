@@ -1,6 +1,6 @@
 package model.game.workshops.primaryworkshop;
 
-import model.game.products.processedproducts.Flavor;
+import model.game.products.processedproducts.Flour;
 import model.game.products.processedproducts.ProcessedProduct;
 import model.game.warehouseandtransportation.Savable;
 import model.game.warehouseandtransportation.Warehouse;
@@ -11,7 +11,7 @@ import model.game.warehouseandtransportation.Warehouse;
 public class WindmillWorkshop extends PrimaryWorkshop {
     @Override
     public ProcessedProduct produce() {
-        return new Flavor();
+        return new Flour();
     }
 
     @Override

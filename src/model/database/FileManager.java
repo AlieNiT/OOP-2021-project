@@ -3,9 +3,8 @@ package model.database;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static model.database.Database.USER_BASE_FILENAME;
-import static model.database.Database.users;
+import static controller.mission.missions.Mission.set;
+import static model.database.Database.*;
 
 public class FileManager {
 
@@ -25,5 +24,14 @@ public class FileManager {
             for (User user : users)
                 fileWriter.write(user.getUserName()+ " "+ user.getPassWord()+"\n");
         fileWriter.close();
+    }
+
+    public static void readMissions() throws FileNotFoundException {
+        File file = new File(Database.MISSIONS_FILENAME);
+        Scanner scanner = new Scanner(file);
+        if (file.canRead()) {
+            while (scanner.hasNext())
+                set(scanner.next(), Integer.parseInt(scanner.next()));
+        }
     }
 }

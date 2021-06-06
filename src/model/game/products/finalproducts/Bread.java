@@ -1,4 +1,4 @@
 package model.game.products.finalproducts;
 
-public class Bread extends FinalProduct{
+public class Bread extends FinalProduct {
 }
