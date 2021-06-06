@@ -1,7 +1,6 @@
 package model.database;
 
 import controller.mission.missions.Mission;
-
 import java.io.IOException;
 import java.util.ArrayList;
 

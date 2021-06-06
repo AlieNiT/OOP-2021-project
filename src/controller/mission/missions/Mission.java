@@ -24,59 +24,27 @@ public class Mission {
 
     public static void set(String name, int number) {
         switch (name) {
-            case "#":
+            case "#" -> {
                 missionNumber = number;
                 Mission mission = new Mission();
                 Database.addMission(mission);
-                break;
-            case "initialCoins":
-                initialCoins = number;
-                break;
-            case "chicken":
-                chicken = number;
-                break;
-            case "turkey":
-                turkey = number;
-                break;
-            case "buffalo":
-                buffalo = number;
-                break;
-            case "egg":
-                egg = number;
-                break;
-            case "feather":
-                feather = number;
-                break;
-            case "milk":
-                milk = number;
-                break;
-            case "cloth":
-                cloth = number;
-                break;
-            case "pocketMilk":
-                pocketMilk = number;
-                break;
-            case "flour":
-                flour = number;
-                break;
-            case "bread":
-                bread = number;
-                break;
-            case "iceCream":
-                iceCream = number;
-                break;
-            case "shirt":
-                shirt = number;
-                break;
-            case "lion":
-                lionAppearanceTimes.add(number);
-                break;
-            case "bear":
-                bearAppearanceTimes.add(number);
-                break;
-            case "tiger":
-                tigerAppearanceTimes.add(number);
-                break;
+            }
+            case "initialCoins" -> initialCoins = number;
+            case "chicken" -> chicken = number;
+            case "turkey" -> turkey = number;
+            case "buffalo" -> buffalo = number;
+            case "egg" -> egg = number;
+            case "feather" -> feather = number;
+            case "milk" -> milk = number;
+            case "cloth" -> cloth = number;
+            case "pocketMilk" -> pocketMilk = number;
+            case "flour" -> flour = number;
+            case "bread" -> bread = number;
+            case "iceCream" -> iceCream = number;
+            case "shirt" -> shirt = number;
+            case "lion" -> lionAppearanceTimes.add(number);
+            case "bear" -> bearAppearanceTimes.add(number);
+            case "tiger" -> tigerAppearanceTimes.add(number);
         }
     }
 
@@ -89,6 +57,5 @@ public class Mission {
         return null;
     }
 
-    public static int getInitialCoins() { return initialCoins; }
     public static int getMissionNumber() { return missionNumber; }
 }
