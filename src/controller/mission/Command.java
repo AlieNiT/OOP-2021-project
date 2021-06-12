@@ -1,4 +1,6 @@
-package controller.mission.missions;
+package controller.mission;
+
+import view.menu.exceptions.GameErrorException;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -34,6 +36,6 @@ public enum Command {
             if(Pattern.matches(command.regex, input))
                 return command;
         }
-        return null;
+        throw new GameErrorException("Invalid command");
     }
 }

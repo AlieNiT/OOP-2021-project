@@ -5,10 +5,10 @@ public enum FarmAnimal {
     TURKEY("turkey", 200, "feather", 3),
     BUFFALO("buffalo", 400, "milk", 5);
 
-    private final String animalName;
-    private final int price;
-    private final String product;
-    private final int productionTime;
+    public final String animalName;
+    public final int price;
+    public final String product;
+    public final int productionTime;
 
     FarmAnimal(String animalName, int price, String product, int productionTime) {
         this.animalName = animalName;

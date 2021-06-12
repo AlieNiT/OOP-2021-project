@@ -1,22 +1,38 @@
 package model.database;
 
+import controller.mission.Mission;
+
 public class User {
-    String userName;
-    String passWord;
-    public User(String userName, String passWord) {
-        this.userName = userName;
-        this.passWord = passWord;
+    private String username;
+    private String password;
+    private int currentMission = 0;
+    private int[] rewards = new int[Mission.numOfMissions];
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
-    protected void setUserName(String userName) {
-        this.userName = userName;
+    protected void setUsername(String username) {
+        this.username = username;
     }
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
-    protected void setPassWord(String passWord) {
-        this.passWord = passWord;
+    protected void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCurrentMission(int currentMission) {
+        this.currentMission = currentMission;
+    }
+
+    public void setRewards(int[] rewards) {
+        this.rewards = rewards;
+    }
+
+    public int getCurrentMission() {
+        return currentMission;
     }
 }

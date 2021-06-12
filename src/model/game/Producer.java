@@ -1,7 +1,6 @@
 package model.game;
 
-import model.game.products.Product;
+import model.Actioner;
 
-public interface Producer {
-    Product produce();
+public abstract class Producer implements Actioner {
 }

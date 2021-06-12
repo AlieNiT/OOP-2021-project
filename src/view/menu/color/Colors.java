@@ -1,4 +1,4 @@
-package changes;
+package view.menu.color;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package changes;
+package view.menu.color;
 
 public enum Rainbow {
     RED1(125),

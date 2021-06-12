@@ -3,7 +3,7 @@ package view.menu;
 import controller.menu.SignupController;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
-import static changes.Colors.colorPrintln;
+import static view.menu.color.Colors.colorPrintln;
 
 public class SignupMenu extends Menu {
     SignupController controller;

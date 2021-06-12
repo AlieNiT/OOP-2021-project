@@ -1,0 +1,2 @@
+current mission: 2
+mission rewards: 10 10

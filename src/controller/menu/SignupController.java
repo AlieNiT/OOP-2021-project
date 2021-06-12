@@ -1,6 +1,5 @@
 package controller.menu;
 
-import changes.Colors;
 import model.database.Database;
 import model.database.User;
 

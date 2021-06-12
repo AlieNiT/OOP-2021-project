@@ -1,35 +1,46 @@
-package model.game.warehouseandtransportation;
+package model.game.missionmodel;
+
+import controller.mission.time.TimeManager;
+import view.menu.exceptions.GameErrorException;
 
 import java.util.HashMap;
 
 public class Truck {
+    static final int COMEBACK_TIME = 10;
     static boolean isAble = true;
-    static int capacity;
+    static final int capacity = 20;
     static int availableCapacity;
     static HashMap<String,Integer> things = new HashMap<>();
 
-    private static void availabilityCheck() throws Exception {
-        if (!isAble) throw new Exception("The truck is not available.");
+    public static void makeTruck(){
+        things = new HashMap<>();
+        availableCapacity = capacity;
+        isAble = true;
     }
 
-    public static void load(Savable savable) throws Exception {
+    private static void availabilityCheck() {
+        if (!isAble) throw new GameErrorException("The truck is not available.");
+    }
+
+    public static void load(Savable savable) {
         availabilityCheck();
         if (availableCapacity<savable.volume)
-            throw new Exception("The truck is almost full");
+            throw new GameErrorException("The truck is almost full");
         things.put(savable.name,things.get(savable.name)+1);
         availableCapacity -= savable.volume;
     }
 
-    public static void unload(Savable savable) throws Exception {
+    public static void unload(Savable savable) {
         availabilityCheck();
         availableCapacity += things.get(savable.name)*savable.volume;
         things.put(savable.name,0);
     }
 
-    public static void go() throws Exception {
+    public static void go(TimeManager timeManager) {
         availabilityCheck();
         if (availableCapacity == capacity)
-            throw new Exception("There is nothing on the truck!");
+            throw new GameErrorException("There is nothing on the truck!");
+        timeManager.putAction(timeManager.getTime()+COMEBACK_TIME,null);
         isAble = false;
     }
 

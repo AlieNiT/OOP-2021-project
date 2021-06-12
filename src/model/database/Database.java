@@ -1,6 +1,6 @@
 package model.database;
 
-import controller.mission.missions.Mission;
+import controller.mission.Mission;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Database {
     final static String USER_BASE_FILENAME = "user base.txt";
     final static String MISSIONS_FILENAME = "missions.txt";
     protected static ArrayList<User> users;
-    private static ArrayList<Mission> missions = new ArrayList<>();
+    protected static ArrayList<Mission> missions;
 
     private Database() { }
 
@@ -25,11 +25,12 @@ public class Database {
 
     public static User getUser(String userName) {
         for (User user : Database.users)
-            if (user.getUserName().equals(userName.toLowerCase()))
+            if (user.getUsername().equals(userName.toLowerCase()))
                 return user;
         return null;
     }
 
-    public static void addMission(Mission mission) { missions.add(mission); }
     public static ArrayList<Mission> getMissions() { return missions; }
+
+
 }
