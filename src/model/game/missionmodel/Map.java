@@ -70,20 +70,15 @@ public class Map {
     private static void computeCollisions() {
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++) {
-                if (map[i][j].stream().anyMatch(x -> x instanceof Cat)) {
-                    for (Mapable mapable :
-                            map[i][j]) {
+                if (map[i][j].stream().anyMatch(x -> x instanceof Cat))
+                    for (Mapable mapable : map[i][j])
                         if (mapable instanceof Product) {
                             try {
-//                                Warehouse.addSavable(Product.savable);
-                            } catch (GameErrorException ignored) {
-                                continue;
-                            }
+                                Warehouse.addSavable(Savable.getSavable((Product) mapable),1);
+                            } catch (GameErrorException ignored) { continue; }
                             map[i][j].remove(mapable);
                         }
 
-                    }
-                }
                 while (map[i][j].stream().anyMatch(x -> x instanceof Dog) && map[i][j].stream().anyMatch(x -> x instanceof PredatorAnimal)) {
                     boolean dog = true;
                     boolean predator = true;

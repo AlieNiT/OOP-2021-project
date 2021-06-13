@@ -15,7 +15,6 @@ public class MainMenu extends Menu {
 
     @Override
     public Menu run() {
-//        controller.
         Menu menu = this;
         if (!shown)
             colorPrintln("                >>FARM FRENZY<<\nSTART        SETTINGS        LOGOUT        EXIT");

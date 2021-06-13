@@ -2,6 +2,7 @@ package controller.menu;
 
 import model.database.Database;
 import model.database.User;
+import view.menu.exceptions.GameErrorException;
 
 public class LoginController {
 
@@ -12,7 +13,7 @@ public class LoginController {
     public String checkPassUserFormat(String userData,String type) {
         //TODO
         if (!userData.equals(userData.replaceAll("( )+", "")))
-            throw new RuntimeException("Wrong format of "+type);
+            throw new GameErrorException("Wrong format of "+type);
         return userData;
     }
 }

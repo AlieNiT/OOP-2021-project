@@ -22,6 +22,7 @@ public class LoginMenu extends Menu {
             while (user != null) {
                 if (user.getPassword().equals(getExactCommand("PASSWORD:")))
                     return new MainMenu(user);
+
                 tries--;
                 if (tries != 0) {
                     colorPrintln("WRONG PASSWORD. TRY AGAIN:");
@@ -44,8 +45,7 @@ public class LoginMenu extends Menu {
             throw new Exception("WRONG USERNAME");
         } catch (BackException e){ return new StartMenu();
         } catch (ExitException e){ return null;
-        } catch (Exception e) {
-            colorPrintln(e.getMessage());
+        } catch (Exception e) { colorPrintln(e.getMessage());
         }
         return menu;
     }
