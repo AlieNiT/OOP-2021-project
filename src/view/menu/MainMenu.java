@@ -21,15 +21,16 @@ public class MainMenu extends Menu {
         shown = false;
         try {
             return switch (getCommand(null)) {
-                case "start" -> menu = controller.chooseMission(getCommand("Choose a level (1-" + controller.user.getCurrentMission() + ")"));//TODO
+                case "start" -> menu = controller.chooseMission(getCommand("Choose a level (1-" + controller.user.getCurrentMission() + ")"));
                 case "settings" -> menu = new SettingsMenu();
                 case "logout" -> menu = new StartMenu();
                 case "exit" -> menu = null;
                 default -> throw new Exception("Invalid command");
             };
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            shown = true;
+            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//            shown = true;
         }
         return menu;
     }

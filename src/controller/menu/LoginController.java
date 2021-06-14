@@ -11,7 +11,6 @@ public class LoginController {
     }
 
     public String checkPassUserFormat(String userData,String type) {
-        //TODO
         if (!userData.equals(userData.replaceAll("( )+", "")))
             throw new GameErrorException("Wrong format of "+type);
         return userData;

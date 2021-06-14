@@ -5,7 +5,7 @@ import model.game.Mapable;
 import java.util.Random;
 
 public abstract class Animal implements Mapable {
-    float x, y, v;
+    int x, y, v;
 
     public void move(int mapSize) {
         switch (new Random().nextInt() % 4) {
@@ -28,17 +28,17 @@ public abstract class Animal implements Mapable {
         }
     }
 
-    public Animal(float x, float y, float v) {
+    public Animal(int x, int y, int v) {
         this.x = x;
         this.y = y;
         this.v = v;
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 }

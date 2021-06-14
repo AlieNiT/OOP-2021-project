@@ -2,6 +2,7 @@ package model.game.missionmodel;
 
 import model.game.Mapable;
 import model.game.animals.Animal;
+import model.game.animals.farmanimals.FarmAnimal;
 import model.game.animals.guardanimals.Cat;
 import model.game.animals.guardanimals.Dog;
 import model.game.animals.predatoranimals.PredatorAnimal;
@@ -9,9 +10,10 @@ import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Map {
-    private static final int MAP_SIZE = 6;
+public class MissionMap {
+    public static final int MAP_SIZE = 6;
     static int[][] grassMap;
     static ArrayList<Mapable>[][] map;
     static ArrayList<Product> products;
@@ -41,9 +43,8 @@ public class Map {
         animals.add(animal);
     }
 
-    public static void removeProduct(int x, int y, Product product) {
-        //TODO
-        map[x][y].removeIf(mapable -> mapable == product);
+    public static void removeProduct(Product product) {
+        map[product.getX()][product.getY()].removeIf(mapable -> mapable == product);
         products.remove(product);
     }
 
@@ -74,8 +75,10 @@ public class Map {
                     for (Mapable mapable : map[i][j])
                         if (mapable instanceof Product) {
                             try {
-                                Warehouse.addSavable(Savable.getSavable((Product) mapable),1);
-                            } catch (GameErrorException ignored) { continue; }
+                                Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mapable)), 1);
+                            } catch (GameErrorException ignored) {
+                                continue;
+                            }
                             map[i][j].remove(mapable);
                         }
 
@@ -99,22 +102,58 @@ public class Map {
                     map[i][j].removeIf(x -> !(x instanceof PredatorAnimal));//remove all but predator animals
             }
     }
-//    public static void removeRottenProducts() {
-//        for (int i = 0; i < MAP_SIZE; i++) {
-//            for (int j = 0; j < MAP_SIZE; j++) {
-//                map[i][j].removeIf(mapable -> mapable instanceof Product && ((Product) mapable).isRotten());
-//                products.removeIf(mapable -> mapable != null && mapable.isRotten());
-//            }
-//        }
-//    }
 
     public static void moveAnimals() {
-        for (Animal animal :
-                animals) {
-            map[(int) animal.getX()][(int) animal.getY()].remove(animal);
-            animal.move(MAP_SIZE);
-            map[(int) animal.getX()][(int) animal.getY()].add(animal);
+        for (Animal animal : animals) {
+            map[animal.getX()][animal.getY()].remove(animal);
+            if (animal instanceof FarmAnimal)
+                ((FarmAnimal) animal).move(MAP_SIZE, nearestGrass(animal.getX(), animal.getY()));
+            else animal.move(MAP_SIZE);
+            map[animal.getX()][animal.getY()].add(animal);
+            if (animal instanceof FarmAnimal) {
+                if (grassMap[animal.getX()][animal.getY()] > 0&&((FarmAnimal) animal).isStarving()) {
+                    grassMap[animal.getX()][animal.getY()] -= 1;
+                    ((FarmAnimal) animal).graze();
+                }
+                else if (((FarmAnimal) animal).reduceHealth()) {
+                    animals.remove(animal);
+                    map[animal.getX()][animal.getY()].remove(animal);
+                }
+            }
         }
+        for (Animal animal : animals)
+            if (animal instanceof PredatorAnimal)
+                ((PredatorAnimal) animal).cageBreak();
         computeCollisions();
+    }
+
+    private static int[] nearestGrass(int x, int y) {
+        for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++) {
+            for (int i = 0; i < n; i++) {
+                if (i + x > 0 && n - i + y > 0 && grassMap[i + x][n - i + y] > 0)
+                    return new int[]{i, n - i};
+
+                else if (n - i + x > 0 && -i + y > 0 && grassMap[n - i + x][-i + y] > 0)
+                    return new int[]{n - i, -i};
+
+                else if (-i + x > 0 && i - n + y > 0 && grassMap[-i + x][i - n + y] > 0)
+                    return new int[]{-i, i - n};
+
+                else if (i - n + x > 0 && i + y > 0 && grassMap[i - n + x][i + y] > 0)
+                    return new int[]{i - n, i};
+            }
+        }
+        return null;
+    }
+
+    public static void cage(int x,int y) {
+        for (Mapable mapable :
+                map[x][y]) {
+            if (mapable instanceof PredatorAnimal){
+                ((PredatorAnimal) mapable).cageTry();
+                return;
+            }
+        }
+        throw new GameErrorException("No predator animals in here.");
     }
 }

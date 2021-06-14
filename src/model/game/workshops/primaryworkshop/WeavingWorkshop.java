@@ -1,12 +1,13 @@
 package model.game.workshops.primaryworkshop;
 
-import controller.mission.time.Action;
 import controller.mission.time.TimeManager;
-import model.game.products.processedproducts.Cloth;
-import model.game.products.processedproducts.ProcessedProduct;
+import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
 import model.game.missionmodel.Warehouse;
+import model.game.products.processedproducts.Cloth;
 import view.menu.exceptions.GameErrorException;
+
+import java.util.Random;
 
 //parcheh bafi
 //۲ .پارچه بافي : در اين كارگاه پرهاي گرفته شده از بوقلمون به پارچه تبديل مي شوند.
@@ -18,19 +19,24 @@ public class WeavingWorkshop extends PrimaryWorkshop {
     }
 
     @Override
-    public ProcessedProduct produce() {
+    public void produce() {
         isWorking = false;
-        return new Cloth(timeManager);
+        Random random = new Random();
+        int x = random.nextInt()*6;
+        int y = random.nextInt()*6;
+        MissionMap.putProduct(new Cloth(timeManager,x,y),x,y);
     }
 
 
     @Override
-    public void consume() throws Exception {
+    public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.hasSavable(Savable.FEATHER,1);
         Warehouse.removeSavable(Savable.FEATHER,1);
-        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,new Action(this));
+        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
+
+
 }

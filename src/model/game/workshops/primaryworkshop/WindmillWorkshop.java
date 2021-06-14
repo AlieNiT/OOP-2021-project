@@ -1,12 +1,13 @@
 package model.game.workshops.primaryworkshop;
 
-import controller.mission.time.Action;
 import controller.mission.time.TimeManager;
-import model.game.products.processedproducts.Flour;
-import model.game.products.processedproducts.ProcessedProduct;
+import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
 import model.game.missionmodel.Warehouse;
+import model.game.products.processedproducts.Flour;
 import view.menu.exceptions.GameErrorException;
+
+import java.util.Random;
 
 //۱ .آسياب : وظيفه آسياب توليد آرد است. كارگران آسياب با استفاده از تخم مرغ، آرد توليد مي كنند!
 //• هزينه ساخت آسياب: ۱۵۰ سكه
@@ -17,18 +18,22 @@ public class WindmillWorkshop extends PrimaryWorkshop {
     }
 
     @Override
-    public ProcessedProduct produce() {
+    public void produce() {
         isWorking = false;
-        return new Flour(timeManager);
+        Random random = new Random();
+        int x = random.nextInt()*6;
+        int y = random.nextInt()*6;
+        MissionMap.putProduct(new Flour(timeManager,x,y),x,y);
     }
 
     @Override
-    public void consume() throws Exception {
+    public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.hasSavable(Savable.EGG,1);
         Warehouse.removeSavable(Savable.EGG,1);
-        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,new Action(this));
+        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
+
 }

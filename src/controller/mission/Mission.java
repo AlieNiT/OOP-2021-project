@@ -14,7 +14,6 @@ public class Mission {
     private final ArrayList<Integer> lionAppearanceTimes = new ArrayList<>();
     private final ArrayList<Integer> bearAppearanceTimes = new ArrayList<>();
     private final ArrayList<Integer> tigerAppearanceTimes = new ArrayList<>();
-
     public void set(String name, int number) {
         switch (name) {
             case "missions" -> numOfMissions = number;
@@ -34,5 +33,25 @@ public class Mission {
         colorPrint(bearAppearanceTimes.toString());
         colorPrint(tigerAppearanceTimes.toString());
         colorPrintln("");
+    }
+
+    public HashMap<String, Integer> getObjectives() {
+        return objectives;
+    }
+
+    public int getInitialCoins() {
+        return initialCoins;
+    }
+
+    public ArrayList<Integer> getLionAppearanceTimes() {
+        return lionAppearanceTimes;
+    }
+
+    public ArrayList<Integer> getBearAppearanceTimes() {
+        return bearAppearanceTimes;
+    }
+
+    public ArrayList<Integer> getTigerAppearanceTimes() {
+        return tigerAppearanceTimes;
     }
 }

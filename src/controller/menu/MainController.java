@@ -1,6 +1,9 @@
 package controller.menu;
 
+import controller.mission.MissionController;
+import model.database.Database;
 import model.database.User;
+import view.game.MissionView;
 import view.menu.Menu;
 import view.menu.exceptions.GameErrorException;
 
@@ -23,6 +26,6 @@ public class MainController {
             throw new GameErrorException("You have not unlocked this level.");
         if (Integer.parseInt(command)<1)
             throw new GameErrorException("Invalid command");
-        return null;//TODO
+        return new MissionView(new MissionController(user, Database.getMissions().get(Integer.parseInt(command)-1)));
     }
 }

@@ -2,7 +2,7 @@ package model.game.animals.predatoranimals;
 import static changes.PredatorAnimal.BEAR;
 
 public class Bear extends PredatorAnimal{
-    public Bear(float x, float y) {
+    public Bear(int x, int y) {
         super(x, y, BEAR);
     }
 }

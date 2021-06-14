@@ -1,13 +1,22 @@
 package model.game.products;
 
-import controller.mission.time.Action;
 import controller.mission.time.TimeManager;
-import model.Actioner;
+import model.game.Actioner;
 import model.game.Mapable;
 
 public abstract class Product implements Mapable, Actioner {
-    final static int ROT_TIME = 4;
-    public Product(TimeManager timeManager){
-        timeManager.putAction(timeManager.getTime()+ROT_TIME,new Action(this));
+    final int x,y;
+    public Product(TimeManager timeManager,int rotTime, int x, int y){
+        this.x = x;
+        this.y = y;
+        timeManager.putAction(timeManager.getTime()+rotTime,this);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

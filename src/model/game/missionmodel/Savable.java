@@ -9,7 +9,7 @@ import model.game.products.finalproducts.IceCream;
 import model.game.products.finalproducts.Shirt;
 import model.game.products.processedproducts.Cloth;
 import model.game.products.processedproducts.Flour;
-import model.game.products.processedproducts.PocketMilk;
+import model.game.products.processedproducts.PacketMilk;
 import model.game.products.rawproducts.Egg;
 import model.game.products.rawproducts.Feather;
 import model.game.products.rawproducts.Milk;
@@ -20,7 +20,7 @@ public enum Savable {
     FEATHER("feather",1,20, Feather.class),
     CLOTH("cloth",2,50, Cloth.class),
     FLOUR("flour",2,40, Flour.class),
-    POCKET_MILK("pocket milk",2,60, PocketMilk.class),
+    PACKET_MILK("pocket milk",2,60, PacketMilk.class),
     BREAD("bread",4,80, Bread.class),
     ICE_CREAM("ice cream",4,120, IceCream.class),
     SHIRT("shirt",4,100, Shirt.class),

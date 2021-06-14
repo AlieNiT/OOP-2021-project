@@ -1,12 +1,13 @@
 package model.game.workshops.secondaryworkshop;
 
-import controller.mission.time.Action;
 import controller.mission.time.TimeManager;
+import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
 import model.game.missionmodel.Warehouse;
-import model.game.products.finalproducts.FinalProduct;
 import model.game.products.finalproducts.IceCream;
 import view.menu.exceptions.GameErrorException;
+
+import java.util.Random;
 
 //bastaniforooshi
 //۳ .بستني فروشي : در اين كارگاه از شيرپاكتي توليد شده بستني توليد مي شود.
@@ -18,18 +19,23 @@ public class IceCreamWorkshop extends SecondaryWorkshop {
     }
 
     @Override
-    public void consume() throws Exception {
+    public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.POCKET_MILK,1);
-        Warehouse.removeSavable(Savable.POCKET_MILK,1);
-        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,new Action(this));
+        Warehouse.hasSavable(Savable.PACKET_MILK,1);
+        Warehouse.removeSavable(Savable.PACKET_MILK,1);
+        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
 
     @Override
-    public FinalProduct produce() {
+    public void produce() {
         isWorking = false;
-        return new IceCream(timeManager);
+        Random random = new Random();
+        int x = random.nextInt()*6;
+        int y = random.nextInt()*6;
+        MissionMap.putProduct(new IceCream(timeManager,x,y),x,y);
     }
+
+
 }
