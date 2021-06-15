@@ -12,9 +12,8 @@ public abstract class FarmAnimal extends Animal implements Actioner, Producer {
     int x,y,health;
     TimeManager timeManager;
     public FarmAnimal(String name, int x, int y,TimeManager timeManager) {
-        super(name,x, y, 1);
+        super(timeManager,name,x, y, 1);
         health = 100;
-        this.timeManager = timeManager;
     }
 
     public void move(int mapSize, int[] grassDirection){

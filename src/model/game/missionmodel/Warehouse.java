@@ -20,6 +20,7 @@ public class Warehouse {
 
     public static void addSavable(Savable savable) {
         if (availableCapacity >=savable.volume) {
+            things.putIfAbsent(savable.name,0);
             things.put(savable.name,things.get(savable.name)+1);
             availableCapacity -= savable.volume;
         }

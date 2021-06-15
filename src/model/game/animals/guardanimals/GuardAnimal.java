@@ -4,6 +4,6 @@ import model.game.animals.Animal;
 
 public abstract class GuardAnimal extends Animal {
     public GuardAnimal(String name,int x, int y) {
-        super(name,x, y, 1);
+        super(null,name,x, y, 1);
     }
 }

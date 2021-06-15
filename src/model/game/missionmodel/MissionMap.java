@@ -149,7 +149,10 @@ public class MissionMap {
     public static void cage(int x,int y) {
         for (Mappable mappable : map[x][y]) {
             if (mappable instanceof PredatorAnimal) {
-                ((PredatorAnimal) mappable).cageTry();
+                if(((PredatorAnimal) mappable).cageTry()){
+                    map[x][y].remove(mappable);
+                    animals.remove(mappable);
+                }
                 return;
             }
         }

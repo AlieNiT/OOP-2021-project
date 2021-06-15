@@ -1,12 +1,14 @@
 package model.game.animals;
 
+import controller.mission.time.TimeManager;
 import model.game.Mappable;
 
 import java.util.Random;
 
 public abstract class Animal implements Mappable {
-    int x, y, v;
+    protected int x, y, v;
     String name;
+    protected TimeManager timeManager;
     public void move(int mapSize) {
         switch (new Random().nextInt(4)) {
             case 0 -> {
@@ -28,7 +30,8 @@ public abstract class Animal implements Mappable {
         }
     }
 
-    public Animal(String name,int x, int y, int v) {
+    public Animal(TimeManager timeManager,String name,int x, int y, int v) {
+        this.timeManager = timeManager;
         this.name = name;
         this.x = x;
         this.y = y;
