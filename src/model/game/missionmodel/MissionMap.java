@@ -8,9 +8,12 @@ import model.game.animals.guardanimals.Dog;
 import model.game.animals.predatoranimals.PredatorAnimal;
 import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
-
 import java.util.ArrayList;
 import java.util.Objects;
+import static changes.Utils.digitCount;
+import static changes.Utils.spaces;
+import static view.menu.color.Colors.colorPrint;
+import static view.menu.color.Colors.colorPrintln;
 
 public class MissionMap {
     public static final int MAP_SIZE = 6;
@@ -29,9 +32,31 @@ public class MissionMap {
                 map[i][j] = new ArrayList<>();
     }
 
-    public static void plant(int x, int y) {
-        grassMap[x][y] += 1;
+    // Shows Grass Map
+    private static void showGrassMap(int[][] map, int length) {
+        colorPrintln("GRASS MAP:");
+        int mostDigits = 1;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                if (digitCount(map[i][j]) > mostDigits)
+                    mostDigits = digitCount(map[i][j]);
+            }
+        }
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                colorPrint(spaces(map[i][j], mostDigits) + "[" +map[i][j] + "]");
+            }
+            System.out.println();
+        }
     }
+
+    // Shows Products
+    private static void showProductMap(int[][] map, int length) {
+        colorPrintln("PRODUCT IN MAP:");
+    }
+
+
+    public static void plant(int x, int y) { grassMap[x][y] += 1; }
 
     public static void putProduct(Product product, int x, int y) {
         map[x][y].add(product);
