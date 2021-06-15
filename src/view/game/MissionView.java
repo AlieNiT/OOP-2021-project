@@ -1,7 +1,13 @@
 package view.game;
 
 import controller.mission.MissionController;
+import view.menu.MainMenu;
 import view.menu.Menu;
+import view.menu.exceptions.BackException;
+import view.menu.exceptions.ExitException;
+import view.menu.exceptions.GameErrorException;
+
+import static view.menu.color.Colors.colorPrintln;
 
 public class MissionView extends Menu {
     MissionController controller;
@@ -12,8 +18,15 @@ public class MissionView extends Menu {
 
     @Override
     public Menu run() {
+        try {
+            controller.runCommand(getCommand("Enter your command:"));
 
-        return null;
+        } catch (BackException e){ return new MainMenu(controller.getUser());
+        } catch (ExitException e) { return null;
+        } catch (GameErrorException e) { colorPrintln(e.getMessage());
+        } catch (Exception e){ e.printStackTrace();
+        }
+        return this;
     }
 
 }

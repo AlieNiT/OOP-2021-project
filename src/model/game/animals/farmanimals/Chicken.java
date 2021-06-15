@@ -6,11 +6,13 @@ import model.game.products.rawproducts.Egg;
 
 import java.util.Random;
 
+import static changes.FarmAnimal.CHICKEN;
+
 public class Chicken extends FarmAnimal{
 
 
     public Chicken(int x, int y, TimeManager timeManager) {
-        super(x, y,timeManager);
+        super(CHICKEN.animalName,x, y,timeManager);
     }
 
     @Override
@@ -18,6 +20,6 @@ public class Chicken extends FarmAnimal{
         Random random = new Random();
         int x = random.nextInt(6);
         int y = random.nextInt(6);
-        MissionMap.putProduct(new Egg(timeManager,x,y),x,y);
+        MissionMap.putProduct(new Egg(timeManager,x,y));
     }
 }

@@ -11,14 +11,14 @@ public enum Command {
     PICK_UP_PRODUCT("pickup (\\d+) (\\d+)"),
     WELL("well"),
     PLANT("plant (\\d+) (\\d+)"),
-    WORK("work (\\w+)"),
+    WORK("work ([a-zA-Z0-9_ ]+)"),
     CAGE("cage (\\d+) (\\d+)"),
     TURN("turn (\\d+)"),
-    TRUCK_LOAD("truck load (\\w+)"),
-    TRUCK_UNLOAD("truck unload (\\w+)"),
+    TRUCK_LOAD("truck load ([a-zA-Z0-9_ ]+)"),
+    TRUCK_UNLOAD("truck unload ([a-zA-Z0-9_ ]+)"),
     TRUCK_GO("truck go"),
-    INQUIRY("inquiry");
-
+    INQUIRY("inquiry"),
+    BUILD("build ([a-zA-Z0-9_ ]+)");
     private final Pattern pattern;
     private final String regex;
 

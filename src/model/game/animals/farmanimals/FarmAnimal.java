@@ -11,8 +11,8 @@ public abstract class FarmAnimal extends Animal implements Actioner, Producer {
     public static final int CHICKEN_PRICE = 100;
     int x,y,health;
     TimeManager timeManager;
-    public FarmAnimal(int x, int y,TimeManager timeManager) {
-        super(x, y, 1);
+    public FarmAnimal(String name, int x, int y,TimeManager timeManager) {
+        super(name,x, y, 1);
         health = 100;
         this.timeManager = timeManager;
     }
@@ -39,5 +39,9 @@ public abstract class FarmAnimal extends Animal implements Actioner, Producer {
     }
     public boolean isStarving() {
         return health<50;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

@@ -6,10 +6,12 @@ import model.game.products.rawproducts.Milk;
 
 import java.util.Random;
 
+import static changes.FarmAnimal.BUFFALO;
+
 public class Buffalo extends FarmAnimal{
 
     public Buffalo(int x, int y, TimeManager timeManager) {
-        super(x, y,timeManager);
+        super(BUFFALO.animalName,x, y,timeManager);
     }
 
     @Override
@@ -17,7 +19,7 @@ public class Buffalo extends FarmAnimal{
         Random random = new Random();
         int x = random.nextInt()*6;
         int y = random.nextInt()*6;
-        MissionMap.putProduct(new Milk(timeManager,x,y),x,y);
+        MissionMap.putProduct(new Milk(timeManager,x,y));
     }
 
 }

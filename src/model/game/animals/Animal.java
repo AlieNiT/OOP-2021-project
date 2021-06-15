@@ -6,7 +6,7 @@ import java.util.Random;
 
 public abstract class Animal implements Mapable {
     int x, y, v;
-
+    String name;
     public void move(int mapSize) {
         switch (new Random().nextInt() % 4) {
             case 0 -> {
@@ -28,12 +28,13 @@ public abstract class Animal implements Mapable {
         }
     }
 
-    public Animal(int x, int y, int v) {
+    public Animal(String name,int x, int y, int v) {
+        this.name = name;
         this.x = x;
         this.y = y;
         this.v = v;
     }
-
+    public String getName(){return name;}
     public int getX() {
         return x;
     }

@@ -33,13 +33,13 @@ public class MissionMap {
         grassMap[x][y] += 1;
     }
 
-    public static void putProduct(Product product, int x, int y) {
-        map[x][y].add(product);
+    public static void putProduct(Product product) {
+        map[product.getX()][product.getY()].add(product);
         products.add(product);
     }
 
-    public static void putAnimal(Animal animal, int x, int y) {
-        map[x][y].add(animal);
+    public static void putAnimal(Animal animal) {
+        map[animal.getX()][animal.getY()].add(animal);
         animals.add(animal);
     }
 
@@ -75,7 +75,7 @@ public class MissionMap {
                     for (Mapable mapable : map[i][j])
                         if (mapable instanceof Product) {
                             try {
-                                Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mapable)), 1);
+                                Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mapable)));
                             } catch (GameErrorException ignored) {
                                 continue;
                             }
@@ -130,16 +130,16 @@ public class MissionMap {
     private static int[] nearestGrass(int x, int y) {
         for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++) {
             for (int i = 0; i < n; i++) {
-                if (i + x > 0 && n - i + y > 0 && grassMap[i + x][n - i + y] > 0)
+                if (i + x > 0 && n - i + y > 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && grassMap[i + x][n - i + y] > 0)
                     return new int[]{i, n - i};
 
-                else if (n - i + x > 0 && -i + y > 0 && grassMap[n - i + x][-i + y] > 0)
+                else if (n - i + x > 0 && -i + y > 0 && n - i + x < MAP_SIZE && -i + y < MAP_SIZE && grassMap[n - i + x][-i + y] > 0)
                     return new int[]{n - i, -i};
 
-                else if (-i + x > 0 && i - n + y > 0 && grassMap[-i + x][i - n + y] > 0)
+                else if (-i + x > 0 && i - n + y > 0 && -i + x < MAP_SIZE && i - n + y < MAP_SIZE && grassMap[-i + x][i - n + y] > 0)
                     return new int[]{-i, i - n};
 
-                else if (i - n + x > 0 && i + y > 0 && grassMap[i - n + x][i + y] > 0)
+                else if (i - n + x > 0 && i + y > 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && grassMap[i - n + x][i + y] > 0)
                     return new int[]{i - n, i};
             }
         }
@@ -155,5 +155,17 @@ public class MissionMap {
             }
         }
         throw new GameErrorException("No predator animals in here.");
+    }
+
+    public static int[][] getGrassMap() {
+        return grassMap;
+    }
+
+    public static ArrayList<Animal> getAnimals() {
+        return animals;
+    }
+
+    public static ArrayList<Product> getProducts() {
+        return products;
     }
 }

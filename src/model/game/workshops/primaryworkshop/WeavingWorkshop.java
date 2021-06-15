@@ -1,5 +1,6 @@
 package model.game.workshops.primaryworkshop;
 
+import changes.Purchasable;
 import controller.mission.time.TimeManager;
 import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
@@ -15,7 +16,7 @@ import java.util.Random;
 //• مدت زمان لازم براي توليد پارچه: ۵ واحد زماني
 public class WeavingWorkshop extends PrimaryWorkshop {
     public WeavingWorkshop(TimeManager timeManager) {
-        super(5,timeManager);
+        super(Purchasable.WEAVING.getName(), 5,timeManager);
     }
 
     @Override
@@ -24,7 +25,7 @@ public class WeavingWorkshop extends PrimaryWorkshop {
         Random random = new Random();
         int x = random.nextInt()*6;
         int y = random.nextInt()*6;
-        MissionMap.putProduct(new Cloth(timeManager,x,y),x,y);
+        MissionMap.putProduct(new Cloth(timeManager,x,y));
     }
 
 

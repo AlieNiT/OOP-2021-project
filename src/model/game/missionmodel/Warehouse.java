@@ -18,16 +18,24 @@ public class Warehouse {
             throw new GameErrorException("Not enough "+savable+" in the warehouse.");
     }
 
-    public static void addSavable(Savable savable,int count) {
-        if (availableCapacity >=savable.volume*count) {
-            things.put(savable.name,things.get(savable.name)+count);
-            availableCapacity -= savable.volume*count;
+    public static void addSavable(Savable savable) {
+        if (availableCapacity >=savable.volume) {
+            things.put(savable.name,things.get(savable.name)+1);
+            availableCapacity -= savable.volume;
         }
         else throw new GameErrorException("Not enough space in the warehouse.");
+    }
+
+    public static boolean canGet(Savable savable){
+        return availableCapacity>=savable.volume;
     }
 
     public static void removeSavable(Savable savable, int count) {
         things.put(savable.name, things.get(savable.name) - count);
         availableCapacity += savable.volume * count;
+    }
+
+    public static HashMap<String, Integer> getThings() {
+        return things;
     }
 }

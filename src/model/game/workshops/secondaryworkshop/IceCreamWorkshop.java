@@ -1,5 +1,6 @@
 package model.game.workshops.secondaryworkshop;
 
+import changes.Purchasable;
 import controller.mission.time.TimeManager;
 import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
@@ -15,7 +16,7 @@ import java.util.Random;
 //• مدت زمان فرايند: ۷ واحد زماني
 public class IceCreamWorkshop extends SecondaryWorkshop {
     public IceCreamWorkshop(TimeManager timeManager) {
-        super(7,timeManager);
+        super(Purchasable.ICE_CREAM.getName(), 7,timeManager);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class IceCreamWorkshop extends SecondaryWorkshop {
         Random random = new Random();
         int x = random.nextInt()*6;
         int y = random.nextInt()*6;
-        MissionMap.putProduct(new IceCream(timeManager,x,y),x,y);
+        MissionMap.putProduct(new IceCream(timeManager,x,y));
     }
 
 

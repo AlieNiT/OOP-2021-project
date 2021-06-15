@@ -1,5 +1,6 @@
 package model.game.workshops.secondaryworkshop;
 
+import changes.Purchasable;
 import controller.mission.time.TimeManager;
 import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class SewingWorkshop extends SecondaryWorkshop {
 
     public SewingWorkshop(TimeManager timeManager) {
-        super(6,timeManager);
+        super(Purchasable.SEWING.getName(), 6,timeManager);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class SewingWorkshop extends SecondaryWorkshop {
         Random random = new Random();
         int x = random.nextInt()*6;
         int y = random.nextInt()*6;
-        MissionMap.putProduct(new Shirt(timeManager,x,y),x,y);
+        MissionMap.putProduct(new Shirt(timeManager,x,y));
     }
 
 }

@@ -6,7 +6,7 @@ public abstract class PredatorAnimal extends Animal {
     int cagesLeft;
     final int cagesNeeded;
     public PredatorAnimal(int x, int y, changes.PredatorAnimal predatorAnimal) {
-        super(x, y, predatorAnimal.speed);
+        super(predatorAnimal.animalName, x, y, predatorAnimal.speed);
         cagesNeeded = predatorAnimal.cageCommands;
         this.cagesLeft = cagesNeeded;
     }

@@ -1,5 +1,6 @@
 package model.game.workshops.secondaryworkshop;
 
+import changes.Purchasable;
 import controller.mission.time.TimeManager;
 import model.game.missionmodel.MissionMap;
 import model.game.missionmodel.Savable;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class Bakery extends SecondaryWorkshop {
 
     public Bakery(TimeManager timeManager) {
-        super(5,timeManager);
+        super(Purchasable.BAKERY.getName(), 5,timeManager);
     }
 
 
@@ -37,7 +38,7 @@ public class Bakery extends SecondaryWorkshop {
         Random random = new Random();
         int x = random.nextInt()*6;
         int y = random.nextInt()*6;
-        MissionMap.putProduct(new Bread(timeManager,x,y),x,y);
+        MissionMap.putProduct(new Bread(timeManager,x,y));
     }
 
 
