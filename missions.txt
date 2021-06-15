@@ -1,3 +1,3 @@
 missions 2
-initialCoins 2000 chicken 3 egg 10 lion 10 time 50 finishEarlyReward 100 # #
+initialCoins 2000 chicken 3 egg 10 lion 2 time 50 finishEarlyReward 100 # #
 initialCoins 500 chicken 4 flour 4 bear 10 bear 15 time 100 finishEarlyReward 150 # #
