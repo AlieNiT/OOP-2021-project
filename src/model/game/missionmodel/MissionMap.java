@@ -32,30 +32,6 @@ public class MissionMap {
                 map[i][j] = new ArrayList<>();
     }
 
-    // Shows Grass Map
-    private static void showGrassMap(int[][] map, int length) {
-        colorPrintln("GRASS MAP:");
-        int mostDigits = 1;
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                if (digitCount(map[i][j]) > mostDigits)
-                    mostDigits = digitCount(map[i][j]);
-            }
-        }
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                colorPrint(spaces(map[i][j], mostDigits) + "[" +map[i][j] + "]");
-            }
-            System.out.println();
-        }
-    }
-
-    // Shows Products
-    private static void showProductMap(int[][] map, int length) {
-        colorPrintln("PRODUCT IN MAP:");
-    }
-
-
     public static void plant(int x, int y) { grassMap[x][y] += 1; }
 
     public static void putProduct(Product product, int x, int y) {
