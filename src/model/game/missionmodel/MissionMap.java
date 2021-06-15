@@ -1,6 +1,6 @@
 package model.game.missionmodel;
 
-import model.game.Mapable;
+import model.game.Mappable;
 import model.game.animals.Animal;
 import model.game.animals.farmanimals.FarmAnimal;
 import model.game.animals.guardanimals.Cat;
@@ -15,7 +15,7 @@ import java.util.Objects;
 public class MissionMap {
     public static final int MAP_SIZE = 6;
     static int[][] grassMap;
-    static ArrayList<Mapable>[][] map;
+    static ArrayList<Mappable>[][] map;
     static ArrayList<Product> products;
     static ArrayList<Animal> animals;
 
@@ -44,26 +44,26 @@ public class MissionMap {
     }
 
     public static void removeProduct(Product product) {
-        map[product.getX()][product.getY()].removeIf(mapable -> mapable == product);
+        map[product.getX()][product.getY()].removeIf(mappable -> mappable == product);
         products.remove(product);
     }
 
     public static ArrayList<Product> getProducts(int x, int y) {
         ArrayList<Product> list = new ArrayList<>();
-        for (Mapable mapable :
+        for (Mappable mappable :
                 map[x][y]) {
-            if (mapable instanceof Product)
-                list.add((Product) mapable);
+            if (mappable instanceof Product)
+                list.add((Product) mappable);
         }
         return list;
     }
 
     public static ArrayList<Animal> getAnimals(int x, int y) {
         ArrayList<Animal> list = new ArrayList<>();
-        for (Mapable mapable :
+        for (Mappable mappable :
                 map[x][y]) {
-            if (mapable instanceof Animal)
-                list.add((Animal) mapable);
+            if (mappable instanceof Animal)
+                list.add((Animal) mappable);
         }
         return list;
     }
@@ -72,26 +72,26 @@ public class MissionMap {
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++) {
                 if (map[i][j].stream().anyMatch(x -> x instanceof Cat))
-                    for (Mapable mapable : map[i][j])
-                        if (mapable instanceof Product) {
+                    for (Mappable mappable : map[i][j])
+                        if (mappable instanceof Product) {
                             try {
-                                Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mapable)));
+                                Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mappable)));
                             } catch (GameErrorException ignored) {
                                 continue;
                             }
-                            map[i][j].remove(mapable);
+                            map[i][j].remove(mappable);
                         }
 
                 while (map[i][j].stream().anyMatch(x -> x instanceof Dog) && map[i][j].stream().anyMatch(x -> x instanceof PredatorAnimal)) {
                     boolean dog = true;
                     boolean predator = true;
-                    for (Mapable mapable :
+                    for (Mappable mappable :
                             map[i][j]) {
-                        if (mapable instanceof Dog && dog) {
-                            map[i][j].remove(mapable);
+                        if (mappable instanceof Dog && dog) {
+                            map[i][j].remove(mappable);
                             dog = false;
-                        } else if (mapable instanceof PredatorAnimal && predator) {
-                            map[i][j].remove(mapable);
+                        } else if (mappable instanceof PredatorAnimal && predator) {
+                            map[i][j].remove(mappable);
                             predator = false;
                         }
                         if (!dog && !predator)
@@ -147,9 +147,9 @@ public class MissionMap {
     }
 
     public static void cage(int x,int y) {
-        for (Mapable mapable : map[x][y]) {
-            if (mapable instanceof PredatorAnimal) {
-                ((PredatorAnimal) mapable).cageTry();
+        for (Mappable mappable : map[x][y]) {
+            if (mappable instanceof PredatorAnimal) {
+                ((PredatorAnimal) mappable).cageTry();
                 return;
             }
         }

@@ -1,21 +1,18 @@
 import controller.mission.time.TimeManager;
-import model.game.Mapable;
+import model.game.Mappable;
 import model.game.products.Product;
 import model.game.products.rawproducts.Milk;
 import view.menu.color.Colors;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static changes.Utils.digitCount;
-import static changes.Utils.spaces;
 import static view.menu.color.Colors.colorPrint;
 import static view.menu.color.Colors.colorPrintln;
 
 public class test {
     static int MAP_SIZE = 6;
-    static ArrayList<Mapable>[][] map;
+    static ArrayList<Mappable>[][] map;
 
     public static void main(String[] args) {
         map = new ArrayList[MAP_SIZE][MAP_SIZE];
@@ -41,7 +38,7 @@ public class test {
     }
 
     // Shows Products
-    private static void showProductMap(ArrayList<Mapable>[][] map, int length) {
+    private static void showProductMap(ArrayList<Mappable>[][] map, int length) {
         colorPrintln("products in map:");
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {

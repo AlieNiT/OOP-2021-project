@@ -1,10 +1,10 @@
 package model.game.animals;
 
-import model.game.Mapable;
+import model.game.Mappable;
 
 import java.util.Random;
 
-public abstract class Animal implements Mapable {
+public abstract class Animal implements Mappable {
     int x, y, v;
     String name;
     public void move(int mapSize) {
