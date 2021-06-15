@@ -8,7 +8,7 @@ public abstract class Animal implements Mapable {
     int x, y, v;
     String name;
     public void move(int mapSize) {
-        switch (new Random().nextInt() % 4) {
+        switch (new Random().nextInt(4)) {
             case 0 -> {
                 x += v;
                 if (x >= mapSize) x -= 2 * (x - (mapSize - 1));

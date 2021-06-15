@@ -147,9 +147,8 @@ public class MissionMap {
     }
 
     public static void cage(int x,int y) {
-        for (Mapable mapable :
-                map[x][y]) {
-            if (mapable instanceof PredatorAnimal){
+        for (Mapable mapable : map[x][y]) {
+            if (mapable instanceof PredatorAnimal) {
                 ((PredatorAnimal) mapable).cageTry();
                 return;
             }
@@ -157,9 +156,7 @@ public class MissionMap {
         throw new GameErrorException("No predator animals in here.");
     }
 
-    public static int[][] getGrassMap() {
-        return grassMap;
-    }
+    public static int[][] getGrassMap() { return grassMap; }
 
     public static ArrayList<Animal> getAnimals() {
         return animals;

@@ -42,7 +42,7 @@ public class test {
 
     // Shows Products
     private static void showProductMap(ArrayList<Mapable>[][] map, int length) {
-        colorPrintln("PRODUCTS IN MAP:");
+        colorPrintln("products in map:");
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
                 colorPrint((Arrays.toString(map[i][j].toArray()) + " "));

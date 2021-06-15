@@ -31,8 +31,13 @@ import view.menu.exceptions.GameErrorException;
 import java.util.*;
 import java.util.regex.Matcher;
 
+import static changes.Utils.digitCount;
+import static changes.Utils.spaces;
 import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
+import static model.game.missionmodel.MissionMap.MAP_SIZE;
+import static view.menu.color.Colors.colorPrint;
+import static view.menu.color.Colors.colorPrintln;
 
 public class MissionController {
     User user;
@@ -53,19 +58,19 @@ public class MissionController {
         for (int n : mission.getBearAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Bear(random.nextInt(MissionMap.MAP_SIZE), random.nextInt(MissionMap.MAP_SIZE)));
+            tmp.add(new Bear(random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         for (int n : mission.getLionAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Lion(random.nextInt(MissionMap.MAP_SIZE), random.nextInt(MissionMap.MAP_SIZE)));
+            tmp.add(new Lion(random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         for (int n : mission.getTigerAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Tiger(random.nextInt(MissionMap.MAP_SIZE), random.nextInt(MissionMap.MAP_SIZE)));
+            tmp.add(new Tiger(random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         Warehouse.makeWarehouse();
@@ -137,34 +142,28 @@ public class MissionController {
 
     private void inquiry() {
         int[][] map = MissionMap.getGrassMap();
-        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        for (int i = 0; i <MissionMap.MAP_SIZE; i++) {
-            for (int j = 0; j < MissionMap.MAP_SIZE; j++) {
-                System.out.print(map[i][j]);
-            }
-            System.out.println();
-        }
-        for (Animal animal : MissionMap.getAnimals()) {
-            if (animal != null){
-                System.out.println(animal.getName()+"  "+animal.getX()+" "+animal.getY()+" "+((animal instanceof FarmAnimal)?((FarmAnimal) animal).getHealth():""));
-            }
-        }
-        System.out.println("coins: "+coins);
-        System.out.println("water left:"+waterLeft);
-        System.out.println("workshops built:");
-        for (Workshop ws :
-                workshops.values()) {
-            System.out.println(ws.getName()+ " " +((ws.isWorking())?"is working":"is not working"));
-        }
+        colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
+        colorPrint(""); // to change color
+        showGrassMap(map, MAP_SIZE);
+        for (Animal animal : MissionMap.getAnimals())
+            if (animal != null)
+                System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() +
+                        " " + ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : ""));
+        colorPrintln("coins: "+ coins);
+        colorPrintln("water left: "+ waterLeft);
+        colorPrintln("workshops built:");
+        for (Workshop ws : workshops.values())
+            System.out.println(ws.getName() + " " + ((ws.isWorking()) ? "is working" : "is not working"));
         HashMap<String,Integer> wareHouse = Warehouse.getThings();
-        for (Map.Entry<String, Integer> entry: wareHouse.entrySet()){
-            System.out.println(entry.getKey()+": "+entry.getValue());
-        }
-        System.out.println("time:"+timeManager.getTime());
+        for (Map.Entry<String, Integer> entry: wareHouse.entrySet())
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        colorPrintln("time: " + timeManager.getTime());
+        colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
-    private void showMap(int[][] map,int length){
+    private void showProductMap(int[][] map, int length){
 
     }
+
     private void plant(int x, int y) {
         if (waterLeft > 0) {
             waterLeft -= 1;
@@ -229,6 +228,24 @@ public class MissionController {
             if (animal == null)
                 waterLeft = 5;
             else MissionMap.putAnimal(animal);
+        }
+    }
+
+    // Shows Grass Map
+    private static void showGrassMap(int[][] map, int length) {
+        colorPrintln("grass map:");
+        int mostDigits = 1;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                if (digitCount(map[i][j]) > mostDigits)
+                    mostDigits = digitCount(map[i][j]);
+            }
+        }
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                colorPrint(spaces(map[i][j], mostDigits) + "[" +map[i][j] + "]");
+            }
+            System.out.println();
         }
     }
 
