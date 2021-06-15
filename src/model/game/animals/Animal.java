@@ -1,14 +1,14 @@
 package model.game.animals;
 
-import model.game.Mapable;
+import model.game.Mappable;
 
 import java.util.Random;
 
-public abstract class Animal implements Mapable {
+public abstract class Animal implements Mappable {
     int x, y, v;
     String name;
     public void move(int mapSize) {
-        switch (new Random().nextInt() % 4) {
+        switch (new Random().nextInt(4)) {
             case 0 -> {
                 x += v;
                 if (x >= mapSize) x -= 2 * (x - (mapSize - 1));
