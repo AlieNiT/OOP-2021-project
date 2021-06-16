@@ -27,17 +27,14 @@ import model.game.workshops.secondaryworkshop.Bakery;
 import model.game.workshops.secondaryworkshop.IceCreamWorkshop;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
-
 import java.util.*;
 import java.util.regex.Matcher;
-
 import static changes.Utils.digitCount;
 import static changes.Utils.spaces;
 import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
-import static view.menu.color.Colors.colorPrint;
-import static view.menu.color.Colors.colorPrintln;
+import static view.menu.color.Colors.*;
 
 public class MissionController {
     User user;
@@ -109,7 +106,6 @@ public class MissionController {
                 pickedUpProducts.add(product);
             }
         }
-
     }
 
     private void truckUnload(String itemName) {
@@ -145,6 +141,7 @@ public class MissionController {
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
         colorPrint(""); // to change color
         showGrassMap(map);
+        colorPrint("");
         for (Animal animal : MissionMap.getAnimals())
             if (animal != null) System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() + " " +
                     ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : "") +
@@ -164,20 +161,24 @@ public class MissionController {
     // Shows Grass Map
     private static void showGrassMap(int[][] map) {
         colorPrintln("grass map:");
+        endGrass();
         int mostDigits = 1;
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++)
                 if (digitCount(map[i][j]) > mostDigits)
                     mostDigits = digitCount(map[i][j]);
         for (int i = 0; i < MAP_SIZE; i++) {
-            for (int j = 0; j < MAP_SIZE; j++) colorPrint(spaces(map[i][j], mostDigits) + "[" + map[i][j] + "]");
-            colorPrintln("");
+            for (int j = 0; j < MAP_SIZE; j++) {
+                startGrass();
+                System.out.print(spaces(map[i][j], mostDigits) + "[" + map[i][j] + "]");
+            }
+            endGrass();
+            System.out.println();
         }
     }
 
 
-    private void showProductMap(int[][] map, int length){
-    }
+    private void showProductMap(int[][] map, int length){ }
 
     private void plant(int x, int y) {
         if (waterLeft > 0) {

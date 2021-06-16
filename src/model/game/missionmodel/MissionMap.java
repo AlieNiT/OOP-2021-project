@@ -8,9 +8,9 @@ import model.game.animals.guardanimals.Dog;
 import model.game.animals.predatoranimals.PredatorAnimal;
 import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
-
 import java.util.ArrayList;
 import java.util.Objects;
+import static view.menu.color.Colors.colorPrintln;
 
 public class MissionMap {
     public static final int MAP_SIZE = 6;
@@ -34,6 +34,7 @@ public class MissionMap {
     }
 
     public static void putProduct(Product product) {
+        colorPrintln("PUT PRODUCT METHOD");
         map[product.getX()][product.getY()].add(product);
         products.add(product);
     }

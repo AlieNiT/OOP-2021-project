@@ -12,4 +12,6 @@ public class Colors {
     }
     public static void colorPrint(String str) { System.out.print(Colors.nextColor(str)); }
     public static void colorPrintln(String str) { System.out.println(Colors.nextColor(str)); }
+    public static void startGrass() { System.out.print("\u001b[48;5;28m"); }
+    public static void endGrass() { System.out.print("\033[0m"); }
 }
