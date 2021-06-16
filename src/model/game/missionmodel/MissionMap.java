@@ -110,6 +110,7 @@ public class MissionMap {
                 ((FarmAnimal) animal).move(MAP_SIZE, nearestGrass(animal.getX(), animal.getY()));
             else animal.move(MAP_SIZE);
             map[animal.getX()][animal.getY()].add(animal);
+            //TODO the hungriest animal should graze!
             if (animal instanceof FarmAnimal) {
                 if (grassMap[animal.getX()][animal.getY()] > 0&&((FarmAnimal) animal).isStarving()) {
                     grassMap[animal.getX()][animal.getY()] -= 1;
@@ -128,18 +129,20 @@ public class MissionMap {
     }
 
     private static int[] nearestGrass(int x, int y) {
+        if (grassMap[x][y]>0)
+            return new int[]{0,0};
         for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++) {
             for (int i = 0; i < n; i++) {
-                if (i + x > 0 && n - i + y > 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && grassMap[i + x][n - i + y] > 0)
+                if (i + x >= 0 && n - i + y >= 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && grassMap[i + x][n - i + y] > 0)
                     return new int[]{i, n - i};
 
-                else if (n - i + x > 0 && -i + y > 0 && n - i + x < MAP_SIZE && -i + y < MAP_SIZE && grassMap[n - i + x][-i + y] > 0)
+                else if (n - i + x >= 0 && -i + y >= 0 && n - i + x < MAP_SIZE && -i + y < MAP_SIZE && grassMap[n - i + x][-i + y] > 0)
                     return new int[]{n - i, -i};
 
-                else if (-i + x > 0 && i - n + y > 0 && -i + x < MAP_SIZE && i - n + y < MAP_SIZE && grassMap[-i + x][i - n + y] > 0)
+                else if (-i + x >= 0 && i - n + y >= 0 && -i + x < MAP_SIZE && i - n + y < MAP_SIZE && grassMap[-i + x][i - n + y] > 0)
                     return new int[]{-i, i - n};
 
-                else if (i - n + x > 0 && i + y > 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && grassMap[i - n + x][i + y] > 0)
+                else if (i - n + x >= 0 && i + y >= 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && grassMap[i - n + x][i + y] > 0)
                     return new int[]{i - n, i};
             }
         }

@@ -28,15 +28,16 @@ import model.game.workshops.secondaryworkshop.IceCreamWorkshop;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
 
-import static changes.Utils.digitCount;
-import static changes.Utils.spaces;
-import static model.game.missionmodel.MissionMap.MAP_SIZE;
 import java.util.*;
 import java.util.regex.Matcher;
-import static view.menu.color.Colors.colorPrint;
-import static view.menu.color.Colors.colorPrintln;
+
+import static changes.Utils.digitCount;
+import static changes.Utils.spaces;
 import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
+import static model.game.missionmodel.MissionMap.MAP_SIZE;
+import static view.menu.color.Colors.colorPrint;
+import static view.menu.color.Colors.colorPrintln;
 
 public class MissionController {
     User user;
@@ -180,8 +181,8 @@ public class MissionController {
 
     private void plant(int x, int y) {
         if (waterLeft > 0) {
-            waterLeft -= 1;
             MissionMap.plant(x, y);
+            waterLeft -= 1;
         } else throw new GameErrorException("No water");
     }
 
