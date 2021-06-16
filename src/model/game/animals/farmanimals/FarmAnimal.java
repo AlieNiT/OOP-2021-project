@@ -18,7 +18,7 @@ public abstract class FarmAnimal extends Animal implements Actioner, Producer {
     public void move(int mapSize, int[] grassDirection){
         if (isStarving()&&grassDirection != null){
             if (grassDirection[0]!=0) x += grassDirection[0]/Math.abs(grassDirection[0]);
-            else y += grassDirection[1]/Math.abs(grassDirection[1]);
+            else if(grassDirection[1]!=0) y += grassDirection[1]/Math.abs(grassDirection[1]);
         }
         else this.move(mapSize);
     }
