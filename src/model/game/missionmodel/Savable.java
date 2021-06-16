@@ -28,10 +28,10 @@ public enum Savable {
     CAGED_BEAR("bear",15,400, CagedBear.class),
     CAGED_LION("lion",15,300, CagedLion.class),
     CAGED_TIGER("tiger",15,500, CagedTiger.class);
-    final Class type;
-    final int volume;
-    final String name;
-    final int price;
+    public final Class type;
+    public final int volume;
+    public final String name;
+    public final int price;
     Savable(String name, int volume,int price,Class type) {
         this.type = type;
         this.volume = volume;

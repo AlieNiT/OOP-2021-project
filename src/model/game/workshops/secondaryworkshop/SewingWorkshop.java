@@ -25,7 +25,7 @@ public class SewingWorkshop extends SecondaryWorkshop {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.hasSavable(Savable.CLOTH,1);
-        Warehouse.removeSavable(Savable.CLOTH,1);
+        Warehouse.removeSavable(Savable.CLOTH);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
@@ -34,8 +34,8 @@ public class SewingWorkshop extends SecondaryWorkshop {
     public void produce() {
         isWorking = false;
         Random random = new Random();
-        int x = random.nextInt()*6;
-        int y = random.nextInt()*6;
+        int x = random.nextInt(6);
+        int y = random.nextInt(6);
         MissionMap.putProduct(new Shirt(timeManager,x,y));
     }
 

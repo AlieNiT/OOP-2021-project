@@ -8,9 +8,9 @@ import model.game.animals.guardanimals.Dog;
 import model.game.animals.predatoranimals.PredatorAnimal;
 import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
+
 import java.util.ArrayList;
 import java.util.Objects;
-import static view.menu.color.Colors.colorPrintln;
 
 public class MissionMap {
     public static final int MAP_SIZE = 6;
@@ -34,7 +34,7 @@ public class MissionMap {
     }
 
     public static void putProduct(Product product) {
-        colorPrintln("PUT PRODUCT METHOD");
+
         map[product.getX()][product.getY()].add(product);
         products.add(product);
     }
@@ -105,6 +105,7 @@ public class MissionMap {
     }
 
     public static void moveAnimals() {
+        ArrayList<Animal> deadAnimals = new ArrayList();
         for (Animal animal : animals) {
             map[animal.getX()][animal.getY()].remove(animal);
             if (animal instanceof FarmAnimal)
@@ -118,11 +119,13 @@ public class MissionMap {
                     ((FarmAnimal) animal).graze();
                 }
                 else if (((FarmAnimal) animal).reduceHealth()) {
-                    animals.remove(animal);
+                    deadAnimals.add(animal);
                     map[animal.getX()][animal.getY()].remove(animal);
                 }
             }
         }
+        for (Animal deadAnimal : deadAnimals) animals.remove(deadAnimal);
+
         for (Animal animal : animals)
             if (animal instanceof PredatorAnimal)
                 ((PredatorAnimal) animal).cageBreak();

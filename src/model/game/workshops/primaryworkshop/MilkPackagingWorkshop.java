@@ -25,7 +25,7 @@ public class MilkPackagingWorkshop extends PrimaryWorkshop {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.hasSavable(Savable.MILK,1);
-        Warehouse.removeSavable(Savable.MILK,1);
+        Warehouse.removeSavable(Savable.MILK);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
@@ -34,8 +34,8 @@ public class MilkPackagingWorkshop extends PrimaryWorkshop {
     public void produce() {
         isWorking = false;
         Random random = new Random();
-        int x = random.nextInt()*6;
-        int y = random.nextInt()*6;
+        int x = random.nextInt(6);
+        int y = random.nextInt(6);
         MissionMap.putProduct(new PacketMilk(timeManager,x,y));
     }
 

@@ -113,6 +113,8 @@ public class MissionController {
     }
 
     private void truckLoad(String itemName) {
+        Warehouse.hasSavable(Savable.getSavable(itemName),1 );
+        Warehouse.removeSavable(Savable.getSavable(itemName));
         Truck.load(Savable.getSavable(itemName));
     }
 
@@ -142,6 +144,9 @@ public class MissionController {
         colorPrint(""); // to change color
         showGrassMap(map);
         colorPrint("");
+        for (Product product : MissionMap.getProducts())
+            colorPrintln(Savable.getSavable(product).name+" "+product.getX()+ " "+ product.getY());
+
         for (Animal animal : MissionMap.getAnimals())
             if (animal != null) System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() + " " +
                     ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : "") +
@@ -153,7 +158,8 @@ public class MissionController {
             System.out.println(ws.getName() + " " + ((ws.isWorking()) ? "is working" : "is not working"));
         HashMap<String,Integer> wareHouse = Warehouse.getThings();
         for (Map.Entry<String, Integer> entry: wareHouse.entrySet())
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            if (entry.getValue()>0)
+                System.out.println(entry.getKey() + ": " + entry.getValue());
         colorPrintln("time: " + timeManager.getTime());
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
@@ -221,7 +227,7 @@ public class MissionController {
 
     private void turn(int n) {
         for (int i = 0; i < n; i++) {
-            timeManager.turn();
+            coins += timeManager.turn();
             MissionMap.moveAnimals();
             turn();
         }
@@ -249,5 +255,8 @@ public class MissionController {
 
     public User getUser() {
         return user;
+    }
+    public void increaseCoin(int n){
+        coins+=n;
     }
 }

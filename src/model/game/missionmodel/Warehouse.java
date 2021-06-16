@@ -14,6 +14,7 @@ public class Warehouse {
         things = new HashMap<>();
     }
     public static void hasSavable(Savable savable, int count) {
+        things.putIfAbsent(savable.name,0);
         if (things.get(savable.name)<count)
             throw new GameErrorException("Not enough "+savable+" in the warehouse.");
     }
@@ -31,9 +32,9 @@ public class Warehouse {
         return availableCapacity>=savable.volume;
     }
 
-    public static void removeSavable(Savable savable, int count) {
-        things.put(savable.name, things.get(savable.name) - count);
-        availableCapacity += savable.volume * count;
+    public static void removeSavable(Savable savable) {
+        things.put(savable.name, things.get(savable.name) - 1);
+        availableCapacity += savable.volume;
     }
 
     public static HashMap<String, Integer> getThings() {

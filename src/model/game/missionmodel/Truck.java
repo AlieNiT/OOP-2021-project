@@ -4,6 +4,7 @@ import controller.mission.time.TimeManager;
 import view.menu.exceptions.GameErrorException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Truck {
     static final int COMEBACK_TIME = 10;
@@ -26,6 +27,7 @@ public class Truck {
         availabilityCheck();
         if (availableCapacity<savable.volume)
             throw new GameErrorException("The truck is almost full");
+        things.putIfAbsent(savable.name,0);
         things.put(savable.name,things.get(savable.name)+1);
         availableCapacity -= savable.volume;
     }
@@ -46,8 +48,8 @@ public class Truck {
 
     public static int comeBack(){
         int returnedValue = 0;
-        for (Savable savable : Savable.values())
-            returnedValue += things.get(savable.name)*savable.price;
+        for (Map.Entry<String,Integer> thing: things.entrySet())
+            returnedValue+= Savable.getSavable(thing.getKey()).price*thing.getValue();
         things.clear();
         isAble = true;
         return returnedValue;

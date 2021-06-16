@@ -22,8 +22,8 @@ public class WindmillWorkshop extends PrimaryWorkshop {
     public void produce() {
         isWorking = false;
         Random random = new Random();
-        int x = random.nextInt()*6;
-        int y = random.nextInt()*6;
+        int x = random.nextInt(6);
+        int y = random.nextInt(6);
         MissionMap.putProduct(new Flour(timeManager,x,y));
     }
 
@@ -32,7 +32,7 @@ public class WindmillWorkshop extends PrimaryWorkshop {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.hasSavable(Savable.EGG,1);
-        Warehouse.removeSavable(Savable.EGG,1);
+        Warehouse.removeSavable(Savable.EGG);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
     }
