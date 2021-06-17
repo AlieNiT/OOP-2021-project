@@ -165,7 +165,6 @@ public class MissionController {
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
 
-    // Shows Grass Map
     private static void showGrassMap(int[][] map) {
         colorPrintln("grass map:");
         endGrass();
@@ -176,28 +175,27 @@ public class MissionController {
                     mostDigits = digitCount(map[i][j]);
         for (int i = 0; i < MAP_SIZE; i++) {
             for (int j = 0; j < MAP_SIZE; j++) {
-                startGrass();
-                System.out.print(spaces(map[i][j], mostDigits) + "[" + map[i][j] + "]");
+                startGrass(0);
+                System.out.print(spaces(map[i][j], mostDigits));
+                startGrass(map[i][j]);
+                System.out.print("[" + map[i][j] + "]");
             }
             endGrass();
             System.out.println();
         }
     }
 
-
-    private void showProductMap(int[][] map, int length){ }
-
     private void plant(int x, int y) {
         if (waterLeft > 0) {
             MissionMap.plant(x, y);
             waterLeft -= 1;
-        } else throw new GameErrorException("No water");
+        } else throw new GameErrorException("Water supply empty! Water must be pumped from the well first.");
     }
 
     private void build(String workshopName) {
         for (String name : workshops.keySet())
             if (name.equals(workshopName))
-                throw new GameErrorException("This workshop is already built.");
+                throw new GameErrorException("This workshop has already been built.");
         coinCheck(Purchasable.getCost(workshopName, "workshop"));
         Workshop workshop;
         switch (workshopName) {
@@ -210,7 +208,6 @@ public class MissionController {
             default -> throw new GameErrorException("wrong workshop name");
         }
         workshops.put(workshopName, workshop);
-
     }
 
     private void work(String workshopName) {
