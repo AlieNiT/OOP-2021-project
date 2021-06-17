@@ -14,24 +14,28 @@ import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
 
 public enum Purchasable {
-    DOG("dog",Dog.class,100),
-    CAT("cat",Cat.class,150),
-    CHICKEN("chicken", Chicken.class,100),
-    BUFFALO("buffalo", Buffalo.class,400),
-    TURKEY("turkey", Turkey.class,200),
-    MILK_PACKAGING("milk packaging workshop", MilkPackagingWorkshop.class,400),
-    WEAVING("weaving workshop", WeavingWorkshop.class,250),
-    WINDMILL("windmill workshop", WindmillWorkshop.class,150),
-    BAKERY("bakery", Bakery.class,250),
-    ICE_CREAM("ice cream workshop", IceCream.class,550),
-    SEWING("sewing workshop", SewingWorkshop.class,400);
+    DOG("dog",Dog.class,100, "\u001b[38;5;222m", "\uD83D\uDC15\033[0m"),
+    CAT("cat",Cat.class,150, "\u001b[38;5;141m", "\uD83D\uDC31\033[0m"),
+    CHICKEN("chicken", Chicken.class,100, "\u001b[38;5;214m", "\uD83D\uDC24\033[0m"),
+    BUFFALO("buffalo", Buffalo.class,400, "\u001b[38;5;59m", "\uD83D\uDC2E\033[0m"),
+    TURKEY("turkey", Turkey.class,200, "\u001b[38;5;137m", "🦃\033[0m"),
+    MILK_PACKAGING("milk packaging workshop", MilkPackagingWorkshop.class,400, null, null),
+    WEAVING("weaving workshop", WeavingWorkshop.class,250, null, null),
+    WINDMILL("windmill workshop", WindmillWorkshop.class,150, null, null),
+    BAKERY("bakery", Bakery.class,250, null, null),
+    ICE_CREAM("ice cream workshop", IceCream.class,550, null, null),
+    SEWING("sewing workshop", SewingWorkshop.class,400, null, null);
     public final String name;
     public final Class type;
     public final int price;
-    Purchasable(String name, Class T, int price){
+    public final String color;
+    public final String emoji;
+    Purchasable(String name, Class T, int price, String color, String emoji){
         this.name = name;
         type = T;
         this.price = price;
+        this.color = color;
+        this.emoji = emoji;
     }
     public static int getCost(String name,String type){
         for (Purchasable purchasable : Purchasable.values()) {
@@ -43,4 +47,6 @@ public enum Purchasable {
     public final String getName(){
         return name;
     }
+    public String getColor() { return color; }
+    public String getEmoji() { return emoji; }
 }

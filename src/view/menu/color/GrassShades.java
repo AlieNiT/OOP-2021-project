@@ -9,10 +9,8 @@ public enum GrassShades {
     WATER5(28);
 
     private final int code;
-
     GrassShades(int code) {
         this.code = code;
     }
-
     public int getCode() { return code; }
 }
