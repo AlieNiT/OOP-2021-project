@@ -5,6 +5,7 @@ import model.game.animals.Animal;
 import model.game.animals.farmanimals.FarmAnimal;
 import model.game.animals.guardanimals.Cat;
 import model.game.animals.guardanimals.Dog;
+import model.game.animals.guardanimals.GuardAnimal;
 import model.game.animals.predatoranimals.PredatorAnimal;
 import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
@@ -110,6 +111,8 @@ public class MissionMap {
             map[animal.getX()][animal.getY()].remove(animal);
             if (animal instanceof FarmAnimal)
                 ((FarmAnimal) animal).move(MAP_SIZE, nearestGrass(animal.getX(), animal.getY()));
+            else if (animal instanceof GuardAnimal)
+                ((GuardAnimal) animal).move(MAP_SIZE, nearestProduct(animal.getX(), animal.getY()));
             else animal.move(MAP_SIZE);
             map[animal.getX()][animal.getY()].add(animal);
             //TODO the hungriest animal should graze!
@@ -147,6 +150,28 @@ public class MissionMap {
                     return new int[]{-i, i - n};
 
                 else if (i - n + x >= 0 && i + y >= 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && grassMap[i - n + x][i + y] > 0)
+                    return new int[]{i - n, i};
+            }
+        }
+        return null;
+    }
+
+    private static int[] nearestProduct(int x, int y) {
+        if (map[x][y].stream().anyMatch(animal -> animal instanceof Product))
+            return new int[]{0,0};
+
+        for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++) {
+            for (int i = 0; i < n; i++) {
+                if (i + x >= 0 && n - i + y >= 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && map[i + x][n - i + y].stream().anyMatch(animal -> animal instanceof Product))
+                    return new int[]{i, n - i};
+
+                else if (n - i + x >= 0 && -i + y >= 0 && n - i + x < MAP_SIZE && -i + y < MAP_SIZE && map[n - i + x][-i + y].stream().anyMatch(animal -> animal instanceof Product))
+                    return new int[]{n - i, -i};
+
+                else if (-i + x >= 0 && i - n + y >= 0 && -i + x < MAP_SIZE && i - n + y < MAP_SIZE && map[-i + x][i - n + y].stream().anyMatch(animal -> animal instanceof Product))
+                    return new int[]{-i, i - n};
+
+                else if (i - n + x >= 0 && i + y >= 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && map[i - n + x][i + y].stream().anyMatch(animal -> animal instanceof Product))
                     return new int[]{i - n, i};
             }
         }
