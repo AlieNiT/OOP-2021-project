@@ -42,6 +42,7 @@ public class MissionController {
     TimeManager timeManager;
     HashMap<Integer, ArrayList<PredatorAnimal>> actions = new HashMap<>();
     int coins, waterLeft = 0;
+    boolean waterFilling = false;
     HashMap<String, Workshop> workshops;
 
     public MissionController(User user, Mission mission) {
@@ -219,10 +220,13 @@ public class MissionController {
     }
 
     private void well() {
+        if (waterFilling)
+            throw new GameErrorException("Water is being filled.");
         actions.computeIfAbsent(timeManager.getTime()+3,k->new ArrayList<>());
         ArrayList<PredatorAnimal> tmp = actions.get(timeManager.getTime()+3);
         tmp.add(null);
         actions.put(timeManager.getTime() + 3, tmp);
+        waterFilling = true;
     }
 
     private void turn(int n) {
@@ -247,8 +251,10 @@ public class MissionController {
         ArrayList<PredatorAnimal> action = actions.get(timeManager.getTime());
         if (action == null) return;
         for (PredatorAnimal animal : action) {
-            if (animal == null)
+            if (animal == null) {
                 waterLeft = 5;
+                waterFilling = false;
+            }
             else MissionMap.putAnimal(animal);
         }
     }
