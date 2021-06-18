@@ -71,37 +71,40 @@ public class MissionMap {
     }
 
     private static void computeCollisions() {
+        ArrayList<Mappable> tmp = new ArrayList<>();
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++) {
-                if (map[i][j].stream().anyMatch(x -> x instanceof Cat))
+                if (map[i][j].stream().anyMatch(x -> x instanceof Cat)) {
                     for (Mappable mappable : map[i][j])
-                        if (mappable instanceof Product) {
+                        if (mappable instanceof Product)
                             try {
                                 Warehouse.addSavable(Objects.requireNonNull(Savable.getSavable((Product) mappable)));
-                            } catch (GameErrorException ignored) {
-                                continue;
-                            }
-                            map[i][j].remove(mappable);
-                        }
+                                tmp.add(mappable);
+                            } catch (GameErrorException ignored){ }
 
+                    map[i][j].removeIf(tmp::contains);
+                }
                 while (map[i][j].stream().anyMatch(x -> x instanceof Dog) && map[i][j].stream().anyMatch(x -> x instanceof PredatorAnimal)) {
-                    boolean dog = true;
-                    boolean predator = true;
-                    for (Mappable mappable :
-                            map[i][j]) {
-                        if (mappable instanceof Dog && dog) {
-                            map[i][j].remove(mappable);
-                            dog = false;
-                        } else if (mappable instanceof PredatorAnimal && predator) {
-                            map[i][j].remove(mappable);
-                            predator = false;
-                        }
-                        if (!dog && !predator)
+                    Animal dog = null;
+                    Animal predator = null;
+                    for (Mappable mappable : map[i][j]) {
+                        if (mappable instanceof Dog && dog == null)
+                            dog = (Animal) mappable;
+                        else if (mappable instanceof PredatorAnimal && predator == null)
+                            predator = (Animal) mappable;
+                        if (dog != null && predator != null)
                             break;
                     }
+                    animals.remove(dog);
+                    animals.remove(predator);
+                    map[i][j].remove(dog);
+                    map[i][j].remove(predator);
                 }
-                if (map[i][j].stream().anyMatch(x -> x instanceof PredatorAnimal))//if the cell contains a predator animal
+                if (map[i][j].stream().anyMatch(x -> x instanceof PredatorAnimal)) {//if the cell contains a predator animal
+                    int finalI = i,finalJ = j;
+                    animals.removeIf(x -> (!(x instanceof PredatorAnimal)&&x.getX()== finalI &&x.getY()== finalJ));
                     map[i][j].removeIf(x -> !(x instanceof PredatorAnimal));//remove all but predator animals
+                }
             }
     }
 
@@ -111,8 +114,10 @@ public class MissionMap {
             map[animal.getX()][animal.getY()].remove(animal);
             if (animal instanceof FarmAnimal)
                 ((FarmAnimal) animal).move(MAP_SIZE, nearestGrass(animal.getX(), animal.getY()));
-            else if (animal instanceof GuardAnimal)
+            else if (animal instanceof Cat)
                 ((GuardAnimal) animal).move(MAP_SIZE, nearestProduct(animal.getX(), animal.getY()));
+            else if (animal instanceof Dog)
+                ((GuardAnimal) animal).move(MAP_SIZE, nearestPredator(animal.getX(), animal.getY()));
             else animal.move(MAP_SIZE);
             map[animal.getX()][animal.getY()].add(animal);
             //TODO the hungriest animal should graze!
@@ -133,6 +138,26 @@ public class MissionMap {
             if (animal instanceof PredatorAnimal)
                 ((PredatorAnimal) animal).cageBreak();
         computeCollisions();
+    }
+
+    private static int[] nearestPredator(int x, int y) {
+        if (map[x][y].stream().anyMatch(animal -> animal instanceof PredatorAnimal))
+            return new int[]{0,0};
+        for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++)
+            for (int i = 0; i < n; i++) {
+                if (i + x >= 0 && n - i + y >= 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && map[i + x][n - i + y].stream().anyMatch(animal -> animal instanceof PredatorAnimal))
+                    return new int[]{i, n - i};
+
+                else if (n - i + x >= 0 && -i + y >= 0 && n - i + x < MAP_SIZE && -i + y < MAP_SIZE && map[n - i + x][-i + y].stream().anyMatch(animal -> animal instanceof PredatorAnimal))
+                    return new int[]{n - i, -i};
+
+                else if (-i + x >= 0 && i - n + y >= 0 && -i + x < MAP_SIZE && i - n + y < MAP_SIZE && map[-i + x][i - n + y].stream().anyMatch(animal -> animal instanceof PredatorAnimal))
+                    return new int[]{-i, i - n};
+
+                else if (i - n + x >= 0 && i + y >= 0 && i - n + x < MAP_SIZE && i + y < MAP_SIZE && map[i - n + x][i + y].stream().anyMatch(animal -> animal instanceof PredatorAnimal))
+                    return new int[]{i - n, i};
+            }
+        return null;
     }
 
     private static int[] nearestGrass(int x, int y) {
@@ -159,7 +184,6 @@ public class MissionMap {
     private static int[] nearestProduct(int x, int y) {
         if (map[x][y].stream().anyMatch(animal -> animal instanceof Product))
             return new int[]{0,0};
-
         for (int n = 0; n <= (MAP_SIZE - 1) * 2; n++) {
             for (int i = 0; i < n; i++) {
                 if (i + x >= 0 && n - i + y >= 0 && i + x < MAP_SIZE && n - i + y < MAP_SIZE && map[i + x][n - i + y].stream().anyMatch(animal -> animal instanceof Product))
