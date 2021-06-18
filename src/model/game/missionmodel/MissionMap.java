@@ -116,6 +116,21 @@ public class MissionMap {
                     animals.removeIf(x -> (!(x instanceof PredatorAnimal)&&x.getX()== finalI &&x.getY()== finalJ));
                     map[i][j].removeIf(x -> !(x instanceof PredatorAnimal));//remove all but predator animals
                 }
+                while (grassMap[i][j] > 0) {
+                    Mappable hungriest = null;
+                    int leastHealth = 100;
+                    for (Mappable mappable : map[i][j]) {
+                        if (mappable instanceof FarmAnimal&&((FarmAnimal)mappable).isStarving()&&((FarmAnimal)mappable).getHealth()<leastHealth) {
+                            hungriest = mappable;
+                            leastHealth = ((FarmAnimal)mappable).getHealth();
+                        }
+                    }
+                    if (hungriest != null) {
+                        grassMap[i][j] -= 1;
+                        ((FarmAnimal) hungriest).graze();
+                    }
+                    else break;
+                }
             }
     }
 
@@ -131,17 +146,11 @@ public class MissionMap {
                 ((GuardAnimal) animal).move(MAP_SIZE, nearestPredator(animal.getX(), animal.getY()));
             else animal.move(MAP_SIZE);
             map[animal.getX()][animal.getY()].add(animal);
-            //TODO the hungriest animal should graze!
-            if (animal instanceof FarmAnimal) {
-                if (grassMap[animal.getX()][animal.getY()] > 0&&((FarmAnimal) animal).isStarving()) {
-                    grassMap[animal.getX()][animal.getY()] -= 1;
-                    ((FarmAnimal) animal).graze();
-                }
-                else if (((FarmAnimal) animal).reduceHealth()) {
+            if (animal instanceof FarmAnimal)
+                if (((FarmAnimal) animal).reduceHealth()) {
                     deadAnimals.add(animal);
                     map[animal.getX()][animal.getY()].remove(animal);
                 }
-            }
         }
         for (Animal deadAnimal : deadAnimals) animals.remove(deadAnimal);
 
