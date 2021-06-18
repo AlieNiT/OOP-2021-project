@@ -1,8 +1,12 @@
 package model.game.missionmodel;
 
+import changes.Purchasable;
 import model.game.Mappable;
 import model.game.animals.Animal;
+import model.game.animals.farmanimals.Buffalo;
+import model.game.animals.farmanimals.Chicken;
 import model.game.animals.farmanimals.FarmAnimal;
+import model.game.animals.farmanimals.Turkey;
 import model.game.animals.guardanimals.Cat;
 import model.game.animals.guardanimals.Dog;
 import model.game.animals.guardanimals.GuardAnimal;
@@ -11,6 +15,8 @@ import model.game.products.Product;
 import view.menu.exceptions.GameErrorException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class MissionMap {
@@ -19,7 +25,7 @@ public class MissionMap {
     static ArrayList<Mappable>[][] map;
     static ArrayList<Product> products;
     static ArrayList<Animal> animals;
-
+    static HashMap<String,Integer> totalProducts;
     public static void makeMap() {
         products = new ArrayList<>();
         animals = new ArrayList<>();
@@ -28,6 +34,7 @@ public class MissionMap {
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++)
                 map[i][j] = new ArrayList<>();
+        totalProducts = new HashMap<>();
     }
 
     public static void plant(int x, int y) {
@@ -45,9 +52,13 @@ public class MissionMap {
         animals.add(animal);
     }
 
-    public static void removeProduct(Product product) {
+    public static void removeProduct(Product product,boolean isSaved) {
         map[product.getX()][product.getY()].removeIf(mappable -> mappable == product);
         products.remove(product);
+        if (isSaved) {
+            totalProducts.putIfAbsent(Objects.requireNonNull(Savable.getSavable(product)).name, 0);
+            totalProducts.put(Savable.getSavable(product).name, totalProducts.get(Savable.getSavable(product).name) + 1);
+        }
     }
 
     public static ArrayList<Product> getProducts(int x, int y) {
@@ -223,5 +234,19 @@ public class MissionMap {
 
     public static ArrayList<Product> getProducts() {
         return products;
+    }
+
+    public static boolean success(HashMap<String, Integer> objectives) {
+        for (Map.Entry<String, Integer> objective : objectives.entrySet()) {
+            if (objective.getKey().equals(Purchasable.CHICKEN.name)) {
+                if (animals.stream().filter(animal -> animal instanceof Chicken).count()<objective.getValue()) return false;}
+            else if (objective.getKey().equals(Purchasable.TURKEY.name)) {
+                if (animals.stream().filter(animal -> animal instanceof Turkey).count()<objective.getValue()) return false;}
+            else if (objective.getKey().equals(Purchasable.BUFFALO.name)) {
+                if (animals.stream().filter(animal -> animal instanceof Buffalo).count()<objective.getValue()) return false;}
+            else if (!totalProducts.containsKey(objective.getKey())) return false;
+            else if (objective.getValue()>totalProducts.get(objective.getKey())) return false;
+        }
+        return true;
     }
 }

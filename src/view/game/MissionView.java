@@ -23,7 +23,12 @@ public class MissionView extends Menu {
 
         } catch (BackException e){ return new MainMenu(controller.getUser());
         } catch (ExitException e) { return null;
-        } catch (GameErrorException e) { colorPrintln(e.getMessage());
+        } catch (GameErrorException e) {
+            if (e.getMessage().matches("You won in (\\d+) time units!")){
+                colorPrintln(e.getMessage());
+                return null;
+            }
+            colorPrintln(e.getMessage());
         } catch (Exception e){ e.printStackTrace();
         }
         return this;

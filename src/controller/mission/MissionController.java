@@ -46,7 +46,7 @@ public class MissionController {
     int coins, waterLeft = 0;
     boolean waterFilling = false;
     HashMap<String, Workshop> workshops;
-
+    HashMap<String,Integer> objectives;
     public MissionController(User user, Mission mission) {
         this.user = user;
         this.mission = mission;
@@ -76,6 +76,7 @@ public class MissionController {
         Warehouse.makeWarehouse();
         MissionMap.makeMap();
         coins = mission.getInitialCoins();
+        objectives = mission.getObjectives();
     }
 
     public void runCommand(String input) {
@@ -96,6 +97,8 @@ public class MissionController {
                 case TRUCK_UNLOAD -> truckUnload(matcher.group(1));
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
             }
+        if (success())
+            throw new GameErrorException("You won in "+timeManager.getTime()+" time units!");
         inquiry();
     }
 
@@ -105,7 +108,7 @@ public class MissionController {
         for (Product product : products) {
             if (Warehouse.canGet(Objects.requireNonNull(getSavable(product)))) {
                 Warehouse.addSavable(Objects.requireNonNull(getSavable(product)));
-                MissionMap.removeProduct(product);
+                MissionMap.removeProduct(product,true);
                 pickedUpProducts.add(product);
             }
         }
@@ -299,6 +302,9 @@ public class MissionController {
             coins += timeManager.turn();
             MissionMap.moveAnimals();
             turn();
+            if (success())
+                throw new GameErrorException("You won in "+timeManager.getTime()+" time units!");
+
         }
     }
 
@@ -327,7 +333,8 @@ public class MissionController {
     public User getUser() {
         return user;
     }
-    public void increaseCoin(int n){
-        coins+=n;
+
+    private boolean success() {
+        return coins>= mission.getSuccessCoins() && MissionMap.success(objectives);
     }
 }

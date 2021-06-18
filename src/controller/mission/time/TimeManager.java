@@ -29,7 +29,7 @@ public class TimeManager {
                 if (actioner instanceof Producer && (actioner instanceof Workshop || MissionMap.getAnimals().contains(actioner))) {
                     ((Producer) actioner).produce();
                 } else if (actioner instanceof Product)
-                    MissionMap.removeProduct((Product)actioner);
+                    MissionMap.removeProduct((Product)actioner,false);
                 else coins += Truck.comeBack();
             }
         }

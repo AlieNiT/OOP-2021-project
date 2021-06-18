@@ -10,7 +10,7 @@ import static view.menu.color.Colors.colorPrintln;
 public class Mission {
     HashMap<String, Integer> objectives = new HashMap<>();
     public static int numOfMissions;
-    private int initialCoins = 0;
+    private int initialCoins = 0,successCoins = 0,rewardTime = 0,finishEarlyReward = 0;
     private final ArrayList<Integer> lionAppearanceTimes = new ArrayList<>();
     private final ArrayList<Integer> bearAppearanceTimes = new ArrayList<>();
     private final ArrayList<Integer> tigerAppearanceTimes = new ArrayList<>();
@@ -21,6 +21,9 @@ public class Mission {
             case "lion" -> lionAppearanceTimes.add(number);
             case "bear" -> bearAppearanceTimes.add(number);
             case "tiger" -> tigerAppearanceTimes.add(number);
+            case "coins" -> successCoins = number;
+            case "time" -> rewardTime = number;
+            case "finishEarlyReward" -> finishEarlyReward = number;
             default -> objectives.put(name, number);
         }
     }
@@ -53,5 +56,13 @@ public class Mission {
 
     public ArrayList<Integer> getTigerAppearanceTimes() {
         return tigerAppearanceTimes;
+    }
+
+    public int getSuccessCoins() {
+        return successCoins;
+    }
+
+    public int getRewardTime() {
+        return rewardTime;
     }
 }
