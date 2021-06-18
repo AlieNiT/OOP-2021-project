@@ -20,7 +20,7 @@ public class Utils {
 
     // number = number of characters
     public static String spaces2(int number, int maxLength) {
-        return "  ".repeat(Math.max(0, maxLength - number));
+        return " ".repeat(Math.max(0, maxLength - number));
     }
 
 }

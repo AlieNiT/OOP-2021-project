@@ -13,6 +13,9 @@ import model.game.workshops.secondaryworkshop.Bakery;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Purchasable {
     DOG("dog",Dog.class,100, "\u001b[38;5;222m", "\uD83D\uDC15\033[0m"),
     CAT("cat",Cat.class,150, "\u001b[38;5;141m", "\uD83D\uDC31\033[0m"),
@@ -57,6 +60,12 @@ public enum Purchasable {
                 return purchasable.color + purchasable.emoji;
         return null;
     }
+
+    public static String getPurchasableName(model.game.animals.Animal purchasable) {
+        Optional<Purchasable> optional = Arrays.stream(Purchasable.values()).filter(x -> x.type == purchasable.getClass()).findFirst();
+        return optional.map(Purchasable::getName).orElse(null);
+    }
+
     public final String getName(){
         return name;
     }

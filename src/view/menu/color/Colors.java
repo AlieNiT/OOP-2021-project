@@ -26,4 +26,6 @@ public class Colors {
         };
         System.out.print("\u001b[48;5;" + code + "m");
     }
+
+
 }
