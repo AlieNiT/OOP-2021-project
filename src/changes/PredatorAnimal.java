@@ -18,4 +18,12 @@ public enum PredatorAnimal {
         this.color = color;
         this.emoji = emoji;
     }
+    public static String getColorEmoji(String name){
+        for (PredatorAnimal predatorAnimal : PredatorAnimal.values())
+            if (predatorAnimal.animalName.equals(name))
+                return predatorAnimal.color + predatorAnimal.emoji;
+        return null;
+    }
+
+    public String getAnimalName() { return animalName; }
 }

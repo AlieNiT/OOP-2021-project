@@ -29,11 +29,12 @@ import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
 import java.util.*;
 import java.util.regex.Matcher;
-import static changes.Utils.digitCount;
-import static changes.Utils.spaces;
+
+import static changes.Utils.*;
 import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
+import static model.game.missionmodel.MissionMap.getGrassMap;
 import static view.menu.color.Colors.*;
 
 public class MissionController {
@@ -135,9 +136,7 @@ public class MissionController {
         MissionMap.putAnimal(animal);
     }
 
-    private void truckGo() {
-        Truck.go(timeManager);
-    }
+    private void truckGo() { Truck.go(timeManager); }
 
     private void inquiry() {
         int[][] map = MissionMap.getGrassMap();
@@ -146,28 +145,74 @@ public class MissionController {
         showGrassMap(map);
         colorPrint("");
         for (Product product : MissionMap.getProducts())
-            colorPrintln(Savable.getSavable(product).name+" "+product.getX()+ " "+ product.getY());
-
+            colorPrintln(Savable.getSavable(product).name+ " " + product.getX() + " " + product.getY());
+        animalMap();
+        colorPrint("");
         for (Animal animal : MissionMap.getAnimals())
             if (animal != null) System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() + " " +
                     ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : "") +
                     ((animal instanceof PredatorAnimal) ? ((PredatorAnimal) animal).getCagesLeft() : ""));
-        colorPrintln("coins: "+ coins);
-        colorPrintln("water left: "+ waterLeft);
+        colorPrintln("coins: " + coins);
+        colorPrintln("water left: " + waterLeft);
         colorPrintln("workshops built:");
         for (Workshop ws : workshops.values())
             System.out.println(ws.getName() + " " + ((ws.isWorking()) ? "is working" : "is not working"));
         HashMap<String,Integer> wareHouse = Warehouse.getThings();
         for (Map.Entry<String, Integer> entry: wareHouse.entrySet())
-            if (entry.getValue()>0)
+            if (entry.getValue() > 0)
                 System.out.println(entry.getKey() + ": " + entry.getValue());
         colorPrintln("time: " + timeManager.getTime());
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
 
+    private static void animalMap() {
+        colorPrintln("animal map:");
+        resetColor();
+        int maxChars = 0;
+        int tmp = 0;
+        int[][] charNumber = new int[MAP_SIZE][MAP_SIZE];
+        for (int i = 0; i < MAP_SIZE; i++) {
+            for (int j = 0; j < MAP_SIZE; j++) {
+                for (Animal animal : MissionMap.getAnimals()) {
+                    if (animal != null && animal.getX() == i && animal.getY() == j) {
+                        tmp++;
+                    }
+                }
+                charNumber[i][j] = tmp;
+                if (tmp > maxChars) maxChars = tmp;
+                tmp = 0;
+            }
+        }
+
+        for (int i = 0; i < MAP_SIZE; i++) {
+            for (int j = 0; j < MAP_SIZE; j++) {
+                startGrass(0);
+                startGrass(getGrassMap()[i][j]);
+                System.out.print("[" + spaces2(charNumber[i][j], maxChars));
+                for (Animal animal : MissionMap.getAnimals()) {
+                    if (animal != null && animal.getX() == i && animal.getY() == j) {
+                        for (Purchasable purchasable : Purchasable.values())
+                            if (purchasable.getName().equals(animal.getName())) {
+                                System.out.print(Purchasable.getColorEmoji(animal.getName()));
+                                startGrass(getGrassMap()[i][j]);
+                            }
+                        for (changes.PredatorAnimal predatorAnimal : changes.PredatorAnimal.values())
+                            if (predatorAnimal.getAnimalName().equals(animal.getName())) {
+                                System.out.print(changes.PredatorAnimal.getColorEmoji(animal.getName()));
+                                startGrass(getGrassMap()[i][j]);
+                            }
+                    }
+                }
+                System.out.print("]");
+            }
+            resetColor();
+            System.out.println();
+        }
+    }
+
     private static void showGrassMap(int[][] map) {
         colorPrintln("grass map:");
-        endGrass();
+        resetColor();
         int mostDigits = 1;
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++)
@@ -180,7 +225,7 @@ public class MissionController {
                 startGrass(map[i][j]);
                 System.out.print("[" + map[i][j] + "]");
             }
-            endGrass();
+            resetColor();
             System.out.println();
         }
     }

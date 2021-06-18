@@ -1,7 +1,6 @@
 package view.menu.color;
 
 import java.util.Random;
-
 import static view.menu.color.GrassShades.*;
 
 public class Colors {
@@ -14,7 +13,7 @@ public class Colors {
     }
     public static void colorPrint(String str) { System.out.print(Colors.nextColor(str)); }
     public static void colorPrintln(String str) { System.out.println(Colors.nextColor(str)); }
-    public static void endGrass() { System.out.print("\033[0m"); }
+    public static void resetColor() { System.out.print("\033[0m"); }
 
     public static void startGrass(int degree) {
         int code = switch (degree) {

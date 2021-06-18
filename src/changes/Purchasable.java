@@ -18,7 +18,7 @@ public enum Purchasable {
     CAT("cat",Cat.class,150, "\u001b[38;5;141m", "\uD83D\uDC31\033[0m"),
     CHICKEN("chicken", Chicken.class,100, "\u001b[38;5;214m", "\uD83D\uDC24\033[0m"),
     BUFFALO("buffalo", Buffalo.class,400, "\u001b[38;5;59m", "\uD83D\uDC2E\033[0m"),
-    TURKEY("turkey", Turkey.class,200, "\u001b[38;5;137m", "🦃\033[0m"),
+    TURKEY("turkey", Turkey.class,200, "\u001b[38;5;52m", "🦃\033[0m"),
     MILK_PACKAGING("milk packaging workshop", MilkPackagingWorkshop.class,400),
     WEAVING("weaving workshop", WeavingWorkshop.class,250),
     WINDMILL("windmill workshop", WindmillWorkshop.class,150),
@@ -45,11 +45,17 @@ public enum Purchasable {
         emoji = null;
     }
     public static int getCost(String name,String type){
-        for (Purchasable purchasable : Purchasable.values()) {
+        for (Purchasable purchasable : Purchasable.values())
             if (purchasable.name.equals(name))
                 return purchasable.price;
-        }
-        throw new GameErrorException("Wrong name of "+type);
+        throw new GameErrorException("Wrong name of " + type);
+    }
+
+    public static String getColorEmoji(String name){
+        for (Purchasable purchasable : Purchasable.values())
+            if (purchasable.name.equals(name))
+                return purchasable.color + purchasable.emoji;
+        return null;
     }
     public final String getName(){
         return name;
