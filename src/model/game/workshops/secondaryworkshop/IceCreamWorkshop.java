@@ -23,7 +23,6 @@ public class IceCreamWorkshop extends SecondaryWorkshop {
     public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.PACKET_MILK,1);
         Warehouse.removeSavable(Savable.PACKET_MILK);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;

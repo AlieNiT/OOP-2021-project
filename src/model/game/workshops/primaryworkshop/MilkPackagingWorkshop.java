@@ -24,7 +24,6 @@ public class MilkPackagingWorkshop extends PrimaryWorkshop {
     public void consume(){
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.MILK,1);
         Warehouse.removeSavable(Savable.MILK);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;

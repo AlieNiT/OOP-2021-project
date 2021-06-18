@@ -249,4 +249,15 @@ public class MissionMap {
         }
         return true;
     }
+
+    public static void removeAnimal(String itemName) {
+        for (Animal animal : animals) {
+            if (Purchasable.getPurchasableName(animal).equals(itemName)) {
+                animals.remove(animal);
+                map[animal.getX()][animal.getY()].remove(animal);
+                return;
+            }
+        }
+        throw new GameErrorException("There are no "+itemName+ "s in the map.");
+    }
 }

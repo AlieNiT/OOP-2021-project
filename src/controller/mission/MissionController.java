@@ -118,8 +118,8 @@ public class MissionController {
     }
 
     private void truckLoad(String itemName) {
-        Warehouse.hasSavable(getSavable(itemName),1 );
-        Warehouse.removeSavable(getSavable(itemName));
+        if (itemName.equals("chicken")||itemName.equals("turkey")||itemName.equals("buffalo")) MissionMap.removeAnimal(itemName);
+        else Warehouse.removeSavable(getSavable(itemName));
         Truck.load(getSavable(itemName));
     }
 

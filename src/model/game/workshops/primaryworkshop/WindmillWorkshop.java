@@ -31,7 +31,6 @@ public class WindmillWorkshop extends PrimaryWorkshop {
     public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.EGG,1);
         Warehouse.removeSavable(Savable.EGG);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;

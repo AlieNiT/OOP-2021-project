@@ -24,7 +24,6 @@ public class SewingWorkshop extends SecondaryWorkshop {
     public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.CLOTH,1);
         Warehouse.removeSavable(Savable.CLOTH);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;

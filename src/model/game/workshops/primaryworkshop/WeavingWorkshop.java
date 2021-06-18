@@ -33,7 +33,6 @@ public class WeavingWorkshop extends PrimaryWorkshop {
     public void consume() {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.hasSavable(Savable.FEATHER,1);
         Warehouse.removeSavable(Savable.FEATHER);
         timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
         isWorking = true;
