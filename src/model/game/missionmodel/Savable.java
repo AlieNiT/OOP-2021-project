@@ -22,10 +22,10 @@ import java.util.Optional;
 public enum Savable {
     EGG("egg",1,15, Egg.class, "\u001b[38;5;15m", "\uD83E\uDD5A\033[0m"),
     MILK("milk",1,25, Milk.class, "\u001b[38;5;117m", "\uD83E\uDD5B\033[0m"),
-    FEATHER("feather",1,20, Feather.class, "\u001b[38;5;200m", "\uD83E\uDDA2\033[0m"),
+    FEATHER("feather",1,20, Feather.class, "\u001b[38;5;204m", "\uD83E\uDDA2\033[0m"),
     CLOTH("cloth",2,50, Cloth.class, "\u001b[38;5;211m", "\uD83C\uDF80\033[0m"),
     FLOUR("flour",2,40, Flour.class, "\u001b[38;5;231m", "\uD83C\uDF5A\033[0m"),
-    PACKET_MILK("pocket milk",2,60, PacketMilk.class, "\u001b[38;5;27m", "\uD83E\uDDC3\033[0m"),
+    PACKET_MILK("pocket milk",2,60, PacketMilk.class, "\u001b[38;5;156m", "\uD83E\uDDC3\033[0m"),
     BREAD("bread",4,80, Bread.class, "\u001b[38;5;180m", "\uD83C\uDF5E\033[0m"),
     ICE_CREAM("ice cream",4,120, IceCream.class, "\u001b[38;5;213m", "\uD83C\uDF66\033[0m"),
     SHIRT("shirt",4,100, Shirt.class, "\u001b[38;5;49m", "\uD83D\uDC57\033[0m"),

@@ -29,7 +29,6 @@ import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
 import java.util.*;
 import java.util.regex.Matcher;
-
 import static changes.Utils.*;
 import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
@@ -146,7 +145,6 @@ public class MissionController {
         int[][] map = MissionMap.getGrassMap();
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
         colorPrint(""); // to change color
-        showGrassMap(map);
         animalMap();
         colorPrint("");
         for (Animal animal : MissionMap.getAnimals())
@@ -171,7 +169,9 @@ public class MissionController {
     }
 
     private static void productMap() {
-        colorPrintln("product map:");
+        colorPrintln("╔" + "══════════════" + "╗");
+        System.out.println("║ PRODUCT MAP: ║");
+        System.out.println("╚" + "══════════════" + "╝");
         resetColor();
         int maxChars = 0;
         int tmp = 0;
@@ -187,10 +187,12 @@ public class MissionController {
 
         for (int i = 0; i < MAP_SIZE; i++) {
             for (int j = 0; j < MAP_SIZE; j++) {
+                productBoard(i, j);
                 System.out.print("[" + spaces2(charNumber[i][j], maxChars));
                 for (Product product : MissionMap.getProducts()) {
                     if (product != null && product.getX() == i && product.getY() == j) {
                         System.out.print(Savable.getColorEmoji(Savable.getSavableName(product)));
+                        productBoard(i, j);
                     }
                 }
                 System.out.print("]");
@@ -201,7 +203,9 @@ public class MissionController {
     }
 
     private static void animalMap() {
-        colorPrintln("animal map:");
+        colorPrintln("╔" + "═════════════" + "╗");
+        System.out.println("║ ANIMAL MAP: ║");
+        System.out.println("╚" + "═════════════" + "╝");
         resetColor();
         int maxChars = 0;
         int tmp = 0;
@@ -237,7 +241,9 @@ public class MissionController {
     }
 
     private static void showGrassMap(int[][] map) {
-        colorPrintln("grass map:");
+        colorPrintln("╔" + "════════════" + "╗");
+        System.out.println("║ GRASS MAP: ║");
+        System.out.println("╚" + "════════════" + "╝");
         resetColor();
         int mostDigits = 1;
         for (int i = 0; i < MAP_SIZE; i++)

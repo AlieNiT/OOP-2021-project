@@ -27,5 +27,8 @@ public class Colors {
         System.out.print("\u001b[48;5;" + code + "m");
     }
 
-
+    public static void productBoard(int i, int j) {
+        if (i%2 == j%2) System.out.print("\u001b[48;5;6m");
+        else System.out.print("\u001b[48;5;4m");
+    }
 }
