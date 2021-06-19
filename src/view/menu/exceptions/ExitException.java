@@ -1,7 +1,15 @@
 package view.menu.exceptions;
 
 public class ExitException extends RuntimeException {
-    public ExitException(){
-
+    String message;
+    public ExitException(String s) {
+        message = s;
+    }
+    public ExitException() {
+        message = "Invalid command";
+    }
+    @Override
+    public String getMessage() {
+        return message;
     }
 }

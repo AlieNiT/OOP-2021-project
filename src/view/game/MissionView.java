@@ -21,7 +21,6 @@ public class MissionView extends Menu {
     public Menu run() {
         try {
             controller.runCommand(getCommand("Enter your command:"));
-
         } catch (BackException e){ return new MainMenu(controller.getUser());
         } catch (ExitException e) { return null;
         } catch (GameErrorException e) {
