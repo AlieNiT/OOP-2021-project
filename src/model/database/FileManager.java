@@ -3,6 +3,7 @@ package model.database;
 import controller.mission.Mission;
 
 import java.io.*;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -67,5 +68,19 @@ public class FileManager {
         fileWriter.write(sb.toString());
         fileWriter.flush();
         fileWriter.close();
+    }
+
+    public static void log(String message) {
+        File file = new File("logger.txt");
+        try {
+            LocalTime time = LocalTime.now();
+
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.append(time.toString()+" "+message);
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+    public static void emptyLog(){
+        File file = new File("logger.txt");
+        file.delete();
     }
 }

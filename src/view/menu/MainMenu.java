@@ -2,6 +2,8 @@ package view.menu;
 
 import controller.menu.MainController;
 import model.database.User;
+import view.menu.exceptions.BackException;
+import view.menu.exceptions.ExitException;
 
 import static view.menu.color.Colors.colorPrintln;
 
@@ -27,10 +29,9 @@ public class MainMenu extends Menu {
                 case "exit" -> menu = null;
                 default -> throw new Exception("Invalid command");
             };
-        } catch (Exception e) {
-            e.printStackTrace();
-//            System.out.println(e.getMessage());
-//            shown = true;
+        } catch (BackException e) { menu = new StartMenu();
+        } catch (ExitException e) { menu = null;
+        } catch (Exception e)     { e.printStackTrace();
         }
         return menu;
     }
