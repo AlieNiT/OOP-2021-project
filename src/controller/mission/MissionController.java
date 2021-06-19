@@ -145,6 +145,7 @@ public class MissionController {
         int[][] map = MissionMap.getGrassMap();
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
         colorPrint(""); // to change color
+        showGrassMap(map);
         animalMap();
         colorPrint("");
         for (Animal animal : MissionMap.getAnimals())
@@ -156,7 +157,9 @@ public class MissionController {
         for (Product product : MissionMap.getProducts())
             colorPrintln(Objects.requireNonNull(getSavable(product)).name+ " " + product.getX() + " " + product.getY());
         colorPrintln("coins: " + coins);
-        colorPrintln("water left: " + waterLeft);
+        colorPrint("water left: ");
+        if (waterFilling) System.out.println("Water is being pumped.");
+        else wellStatus(waterLeft);
         colorPrintln("workshops built:");
         for (Workshop ws : workshops.values())
             System.out.println(ws.getName() + " " + ((ws.isWorking()) ? "is working" : "is not working"));
@@ -294,8 +297,8 @@ public class MissionController {
     }
 
     private void well() {
-        if (waterFilling)
-            throw new GameErrorException("Water is being filled.");
+        if (waterFilling) throw new GameErrorException("Water is being pumped.");
+        if (waterLeft != 0) throw new GameErrorException("Water has not been finished yet.");
         actions.computeIfAbsent(timeManager.getTime()+3,k->new ArrayList<>());
         ArrayList<PredatorAnimal> tmp = actions.get(timeManager.getTime()+3);
         tmp.add(null);

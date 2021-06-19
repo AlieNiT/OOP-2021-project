@@ -1,6 +1,8 @@
 package view.menu.color;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import static view.menu.color.GrassShades.*;
 
 public class Colors {
@@ -30,5 +32,15 @@ public class Colors {
     public static void productBoard(int i, int j) {
         if (i%2 == j%2) System.out.print("\u001b[48;5;6m");
         else System.out.print("\u001b[48;5;4m");
+    }
+
+    public static void wellStatus(int n) {
+        resetColor();
+        int WATER_CODE = 75;
+        System.out.print("\u001b[38;5;" + WATER_CODE + "m");
+        for (int i = 0; i < n; i++) System.out.print("▮");
+        for (int i = 0; i < 5 - n; i++) System.out.print("▯");
+        resetColor();
+        System.out.println();
     }
 }
