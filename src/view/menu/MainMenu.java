@@ -5,7 +5,7 @@ import model.database.User;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
 
-import static view.menu.color.Colors.colorPrintln;
+import static view.menu.color.Colors.*;
 
 public class MainMenu extends Menu {
     MainController controller;
@@ -19,7 +19,11 @@ public class MainMenu extends Menu {
     public Menu run() {
         Menu menu = this;
         if (!shown) {
-            colorPrintln("                >>FARM FRENZY<<\nSTART        SETTINGS        LOGOUT        EXIT");
+            colorPrint("           ⚜  \u001b[38;5;220m⚜️");
+            reverseColor();
+            colorPrint("FARM FRENZY  \u001b[38;5;220m⚜️");
+            reverseColor();
+            colorPrintln("⚜\nSTART        SETTINGS        LOGOUT        EXIT");
         }
         shown = false;
         try {

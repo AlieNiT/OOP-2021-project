@@ -6,6 +6,7 @@ import static view.menu.color.GrassShades.*;
 public class Colors {
     static Rainbow[] colors = Rainbow.values();
     private static int counter = new Random().nextInt(colors.length);
+
     private static String nextColor(String str) {
         counter++;
         int code = colors[counter%colors.length].getCode();
@@ -42,6 +43,6 @@ public class Colors {
         System.out.println();
     }
 
-    public static int getCounter() { return counter; }
-    public static void setCounter(int counter) { Colors.counter = counter; }
+    public static void reverseColor() { counter--; }
+    public static void reverseColor(int times) { for (int i = 0; i < times; i++) reverseColor(); }
 }

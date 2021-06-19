@@ -285,26 +285,38 @@ public class MissionController {
     private void truckStatus() {
         if (!Truck.isIsAble()) {
             colorPrintln("\uD83D\uDE8F Truck is gone! \uD83D\uDD59");
+            return;
         }
         int truckLength = 5;
-        //         System.out.println("╚" + "═════════════" + "╝");
         colorPrint(" ║");
         for (Map.Entry<String, Integer> set : Truck.getThings().entrySet()) {
             for (int i = 0; i < set.getValue(); i++) System.out.print(getColorEmoji(set.getKey()));
             truckLength += 2;
         }
         System.out.println();
-        Colors.setCounter(getCounter() - 1);
+        reverseColor();
         colorPrint("▟╚");
-        for (int i = 0; i < truckLength; i++) {
-            System.out.print("═");
-        }
+        for (int i = 0; i < truckLength; i++) System.out.print("═");
         System.out.println("╝");
         System.out.print("⦿");
-        for (int i = 0; i < truckLength; i++) {
-            System.out.print(" ");
-        }
+        for (int i = 0; i < truckLength; i++) System.out.print(" ");
         System.out.println("⦿");
+    }
+
+    private void warehouseStatus() {
+        // roof
+        for (int i=0; i < 3; i++) {
+            for (int j = 3 - i; j > 1; j--) System.out.print("    ");
+            colorPrint("◢");
+            for (int j = 1; j <= 2*i; j++) System.out.print("████");
+            System.out.println("◣");
+        }
+        int warehouseLength = 18;
+        System.out.print("║\n║");
+        for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet()) {
+            for (int i = 0; i < set.getValue(); i++) System.out.print(getColorEmoji(set.getKey()));
+            // if ( ?...? ) warehouseLength += 2;
+        }
     }
 
     private void plant(int x, int y) {
