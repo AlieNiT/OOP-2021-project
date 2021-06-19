@@ -50,6 +50,7 @@ public class MissionMap {
     public static void putAnimal(Animal animal) {
         map[animal.getX()][animal.getY()].add(animal);
         animals.add(animal);
+        computeCollisions();
     }
 
     public static void removeProduct(Product product,boolean isSaved) {

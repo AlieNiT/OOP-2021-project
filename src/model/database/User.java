@@ -5,7 +5,7 @@ import controller.mission.Mission;
 public class User {
     private String username;
     private String password;
-    private int currentMission = 0;
+    private int currentMission = 1;
     private int[] rewards = new int[Mission.numOfMissions];
 
     public User(String username, String password) {

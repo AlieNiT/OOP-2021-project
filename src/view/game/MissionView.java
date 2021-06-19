@@ -29,6 +29,7 @@ public class MissionView extends Menu {
                 colorPrintln(e.getMessage());
                 return new MainMenu(controller.getUser());
             }
+            else colorPrintln(e.getMessage());
         } catch (Exception e){ e.printStackTrace();
         }
         return this;
