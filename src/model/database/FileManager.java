@@ -56,6 +56,16 @@ public class FileManager {
                 break;
         }
         user.setRewards(rewardsData);
-
+    }
+    public static void writeUserData(User user) throws IOException {
+        File file = new File("users\\" + user.getUsername() + ".txt");
+        FileWriter fileWriter = new FileWriter(file);
+        StringBuilder sb = new StringBuilder();
+        sb.append(user.getCurrentMission());
+        for (int i = 0; i < Mission.numOfMissions; i++)
+            sb.append(" ").append(user.getRewards()[i]);
+        fileWriter.write(sb.toString());
+        fileWriter.flush();
+        fileWriter.close();
     }
 }

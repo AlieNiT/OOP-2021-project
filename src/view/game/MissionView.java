@@ -1,6 +1,7 @@
 package view.game;
 
 import controller.mission.MissionController;
+import model.database.Database;
 import view.menu.MainMenu;
 import view.menu.Menu;
 import view.menu.exceptions.BackException;
@@ -26,9 +27,8 @@ public class MissionView extends Menu {
         } catch (GameErrorException e) {
             if (e.getMessage().matches("You won in (\\d+) time units!")){
                 colorPrintln(e.getMessage());
-                return null;
+                return new MainMenu(controller.getUser());
             }
-            colorPrintln(e.getMessage());
         } catch (Exception e){ e.printStackTrace();
         }
         return this;

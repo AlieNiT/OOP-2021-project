@@ -2,6 +2,7 @@ package controller.mission;
 
 import changes.Purchasable;
 import controller.mission.time.TimeManager;
+import model.database.FileManager;
 import model.database.User;
 import model.game.animals.Animal;
 import model.game.animals.farmanimals.Buffalo;
@@ -27,6 +28,9 @@ import model.game.workshops.secondaryworkshop.Bakery;
 import model.game.workshops.secondaryworkshop.IceCreamWorkshop;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.exceptions.GameErrorException;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import static changes.Utils.*;
@@ -74,7 +78,7 @@ public class MissionController {
         }
         Warehouse.makeWarehouse();
         MissionMap.makeMap();
-        coins = mission.getInitialCoins();
+        coins = mission.getInitialCoins()+user.getRewards()[mission.getMissionNumber()-1];
         objectives = mission.getObjectives();
     }
 
@@ -96,8 +100,18 @@ public class MissionController {
                 case TRUCK_UNLOAD -> truckUnload(matcher.group(1));
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
             }
-        if (success())
-            throw new GameErrorException("You won in "+timeManager.getTime()+" time units!");
+        if (success()) {
+            if (timeManager.getTime()<mission.getRewardTime())
+                user.setReward(mission.getMissionNumber(),mission.getFinishEarlyReward());
+            if (mission.getMissionNumber()==user.getCurrentMission())
+                user.setCurrentMission(user.getCurrentMission()+1);
+            try {
+                FileManager.writeUserData(user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            throw new GameErrorException("You won in " + timeManager.getTime() + " time units!");
+        }
         inquiry();
     }
 
