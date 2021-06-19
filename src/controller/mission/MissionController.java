@@ -27,9 +27,8 @@ import model.game.workshops.primaryworkshop.WindmillWorkshop;
 import model.game.workshops.secondaryworkshop.Bakery;
 import model.game.workshops.secondaryworkshop.IceCreamWorkshop;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
+import view.menu.color.Colors;
 import view.menu.exceptions.GameErrorException;
-
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -38,6 +37,7 @@ import static controller.mission.Command.findCommand;
 import static controller.mission.Command.getMatcher;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
 import static model.game.missionmodel.MissionMap.getGrassMap;
+import static model.game.missionmodel.Savable.getColorEmoji;
 import static model.game.missionmodel.Savable.getSavable;
 import static view.menu.color.Colors.*;
 
@@ -50,6 +50,7 @@ public class MissionController {
     boolean waterFilling = false;
     HashMap<String, Workshop> workshops;
     HashMap<String,Integer> objectives;
+
     public MissionController(User user, Mission mission) {
         this.user = user;
         this.mission = mission;
@@ -103,8 +104,8 @@ public class MissionController {
         if (success()) {
             if (timeManager.getTime()<mission.getRewardTime())
                 user.setReward(mission.getMissionNumber(),mission.getFinishEarlyReward());
-            if (mission.getMissionNumber()==user.getCurrentMission())
-                user.setCurrentMission(user.getCurrentMission()+1);
+            if (mission.getMissionNumber() == user.getCurrentMission())
+                user.setCurrentMission(user.getCurrentMission() + 1);
             try {
                 FileManager.writeUserData(user);
             } catch (IOException e) {
@@ -132,7 +133,8 @@ public class MissionController {
     }
 
     private void truckLoad(String itemName) {
-        if (itemName.equals("chicken")||itemName.equals("turkey")||itemName.equals("buffalo")) MissionMap.removeAnimal(itemName);
+        if (itemName.equals("chicken") || itemName.equals("turkey") || itemName.equals("buffalo"))
+            MissionMap.removeAnimal(itemName);
         else Warehouse.removeSavable(getSavable(itemName));
         Truck.load(getSavable(itemName));
     }
@@ -182,6 +184,7 @@ public class MissionController {
             if (entry.getValue() > 0)
                 System.out.println(entry.getKey() + ": " + entry.getValue());
         colorPrintln("time: " + timeManager.getTime());
+        truckStatus();
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
 
@@ -279,6 +282,31 @@ public class MissionController {
         }
     }
 
+    private void truckStatus() {
+        if (!Truck.isIsAble()) {
+            colorPrintln("\uD83D\uDE8F Truck is gone! \uD83D\uDD59");
+        }
+        int truckLength = 5;
+        //         System.out.println("╚" + "═════════════" + "╝");
+        colorPrint(" ║");
+        for (Map.Entry<String, Integer> set : Truck.getThings().entrySet()) {
+            for (int i = 0; i < set.getValue(); i++) System.out.print(getColorEmoji(set.getKey()));
+            truckLength += 2;
+        }
+        System.out.println();
+        Colors.setCounter(getCounter() - 1);
+        colorPrint("▟╚");
+        for (int i = 0; i < truckLength; i++) {
+            System.out.print("═");
+        }
+        System.out.println("╝");
+        System.out.print("⦿");
+        for (int i = 0; i < truckLength; i++) {
+            System.out.print(" ");
+        }
+        System.out.println("⦿");
+    }
+
     private void plant(int x, int y) {
         if (waterLeft > 0) {
             MissionMap.plant(x, y);
@@ -313,8 +341,8 @@ public class MissionController {
     private void well() {
         if (waterFilling) throw new GameErrorException("Water is being pumped.");
         if (waterLeft != 0) throw new GameErrorException("Water has not been finished yet.");
-        actions.computeIfAbsent(timeManager.getTime()+3,k->new ArrayList<>());
-        ArrayList<PredatorAnimal> tmp = actions.get(timeManager.getTime()+3);
+        actions.computeIfAbsent(timeManager.getTime() + 3, k->new ArrayList<>());
+        ArrayList<PredatorAnimal> tmp = actions.get(timeManager.getTime() + 3);
         tmp.add(null);
         actions.put(timeManager.getTime() + 3, tmp);
         waterFilling = true;
@@ -327,7 +355,6 @@ public class MissionController {
             turn();
             if (success())
                 throw new GameErrorException("You won in "+timeManager.getTime()+" time units!");
-
         }
     }
 

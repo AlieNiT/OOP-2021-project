@@ -35,9 +35,9 @@ public enum Savable {
     CAGED_BEAR("bear", 15, 400, CagedBear.class, "\u001b[38;5;145m", "\uD83D\uDCE6\033[0m"),
     CAGED_LION("lion", 15, 300, CagedLion.class, "\u001b[38;5;145m", "\uD83D\uDCE6\033[0m"),
     CAGED_TIGER("tiger", 15, 500, CagedTiger.class, "\u001b[38;5;145m", "\uD83D\uDCE6\033[0m"),
-    CHICKEN("chicken", 2, 50, Chicken.class, null, null),
-    TURKEY("turkey", 4, 100, Turkey.class, null, null),
-    BUFFALO("buffalo", 8, 200, Buffalo.class, null, null);
+    CHICKEN("chicken", 2, 50, Chicken.class, "\u001b[38;5;214m", "\uD83D\uDC24\033[0m"),
+    TURKEY("turkey", 4, 100, Turkey.class, "\u001b[38;5;52m", "🦃\033[0m"),
+    BUFFALO("buffalo", 8, 200, Buffalo.class, "\u001b[38;5;59m", "\uD83D\uDC2E\033[0m");
 
     public final Class type;
     public final int volume;

@@ -9,7 +9,7 @@ public class Main {
         readUserBase();
         FileManager.readMissions();
         Menu currentMenu = new StartMenu();
-        while (currentMenu!=null){
+        while (currentMenu != null){
             currentMenu = currentMenu.run();
         }
     }

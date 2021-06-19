@@ -2,7 +2,6 @@ package model.game.missionmodel;
 
 import controller.mission.time.TimeManager;
 import view.menu.exceptions.GameErrorException;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class Truck {
     static boolean isAble = true;
     static final int capacity = 20;
     static int availableCapacity;
-    static HashMap<String,Integer> things = new HashMap<>();
+    static HashMap<String, Integer> things = new HashMap<>();
 
     public static void makeTruck(){
         things = new HashMap<>();
@@ -25,8 +24,8 @@ public class Truck {
 
     public static void load(Savable savable) {
         availabilityCheck();
-        if (availableCapacity<savable.volume)
-            throw new GameErrorException("The truck is almost full");
+        if (availableCapacity == 0) throw new GameErrorException("The truck is full!");
+        if (availableCapacity < savable.volume) throw new GameErrorException("The truck is almost full");
         things.putIfAbsent(savable.name,0);
         things.put(savable.name,things.get(savable.name)+1);
         availableCapacity -= savable.volume;
@@ -48,10 +47,14 @@ public class Truck {
 
     public static int comeBack(){
         int returnedValue = 0;
-        for (Map.Entry<String,Integer> thing: things.entrySet())
+        for (Map.Entry<String, Integer> thing: things.entrySet())
             returnedValue+= Savable.getSavable(thing.getKey()).price*thing.getValue();
         things.clear();
+        availableCapacity = capacity;
         isAble = true;
         return returnedValue;
     }
+
+    public static HashMap<String, Integer> getThings() { return things; }
+    public static boolean isIsAble() { return isAble; }
 }

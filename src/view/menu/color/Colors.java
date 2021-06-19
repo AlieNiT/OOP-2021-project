@@ -1,8 +1,6 @@
 package view.menu.color;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import static view.menu.color.GrassShades.*;
 
 public class Colors {
@@ -43,4 +41,7 @@ public class Colors {
         resetColor();
         System.out.println();
     }
+
+    public static int getCounter() { return counter; }
+    public static void setCounter(int counter) { Colors.counter = counter; }
 }

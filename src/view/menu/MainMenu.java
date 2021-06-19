@@ -18,8 +18,9 @@ public class MainMenu extends Menu {
     @Override
     public Menu run() {
         Menu menu = this;
-        if (!shown)
+        if (!shown) {
             colorPrintln("                >>FARM FRENZY<<\nSTART        SETTINGS        LOGOUT        EXIT");
+        }
         shown = false;
         try {
             return switch (getCommand(null)) {
