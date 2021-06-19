@@ -160,15 +160,19 @@ public class MissionController {
     private void inquiry() {
         int[][] map = MissionMap.getGrassMap();
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
-        colorPrint(""); // to change color
-        showGrassMap(map);
-        animalMap();
         colorPrint("");
         for (Animal animal : MissionMap.getAnimals())
             if (animal != null) System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() + " " +
                     ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : "") +
                     ((animal instanceof PredatorAnimal) ? ((PredatorAnimal) animal).getCagesLeft() : ""));
-        productMap();
+        String[] a = productMap();
+        String[] b = animalMap();
+        String[] c = showGrassMap(map);
+        for (int i = 0; i < MAP_SIZE + 3; i++) {
+            System.out.print(a[i] + "\t\t\t\t");
+            System.out.print(b[i] + "\t\t\t\t");
+            System.out.println(c[i]);
+        }
         colorPrint("");
         for (Product product : MissionMap.getProducts())
             colorPrintln(Objects.requireNonNull(getSavable(product)).name+ " " + product.getX() + " " + product.getY());
@@ -188,11 +192,11 @@ public class MissionController {
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
 
-    private static void productMap() {
-        colorPrintln("╔" + "══════════════" + "╗");
-        System.out.println("║ PRODUCT MAP: ║");
-        System.out.println("╚" + "══════════════" + "╝");
-        resetColor();
+    private static String[] productMap() {
+        String[] productMap = new String[MAP_SIZE + 3];
+        productMap[0] = Colors.nextColor("╔══════════════╗");
+        productMap[1] = "║ PRODUCT MAP: ║";
+        productMap[2] = "╚══════════════╝" + colorReset();
         int maxChars = 0;
         int tmp = 0;
         int[][] charNumber = new int[MAP_SIZE][MAP_SIZE];
@@ -206,27 +210,26 @@ public class MissionController {
             }
 
         for (int i = 0; i < MAP_SIZE; i++) {
+            productMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                productBoard(i, j);
-                System.out.print("[" + spaces2(charNumber[i][j], maxChars));
+                productMap[i + 3]  += productBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars);
                 for (Product product : MissionMap.getProducts()) {
                     if (product != null && product.getX() == i && product.getY() == j) {
-                        System.out.print(Savable.getColorEmoji(Savable.getSavableName(product)));
-                        productBoard(i, j);
+                        productMap[i+3] += Savable.getColorEmoji(Savable.getSavableName(product)) + productBoard(i, j);
                     }
                 }
-                System.out.print("]");
+                productMap[i +3] += "]";
             }
-            resetColor();
-            System.out.println();
+            productMap[i + 3] += colorReset();
         }
+        return productMap;
     }
 
-    private static void animalMap() {
-        colorPrintln("╔" + "═════════════" + "╗");
-        System.out.println("║ ANIMAL MAP: ║");
-        System.out.println("╚" + "═════════════" + "╝");
-        resetColor();
+    private static String[] animalMap() {
+        String[] animalMap = new String[MAP_SIZE + 3];
+        animalMap[0] = Colors.nextColor("╔═════════════╗");
+        animalMap[1] = "║ ANIMAL MAP: ║";
+        animalMap[2] = "╚═════════════╝" + colorReset();
         int maxChars = 0;
         int tmp = 0;
         int[][] charNumber = new int[MAP_SIZE][MAP_SIZE];
@@ -240,46 +243,44 @@ public class MissionController {
             }
 
         for (int i = 0; i < MAP_SIZE; i++) {
+            animalMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                startGrass(getGrassMap()[i][j]);
-                System.out.print("[" + spaces2(charNumber[i][j], maxChars));
+                animalMap[i + 3] += startGrass(getGrassMap()[i][j]) + "[" + spaces2(charNumber[i][j], maxChars);
                 for (Animal animal : MissionMap.getAnimals()) {
                     if (animal != null && animal.getX() == i && animal.getY() == j) {
                         String temp;
                         if (animal instanceof PredatorAnimal)
-                            temp =changes.PredatorAnimal.getColorEmoji(changes.PredatorAnimal.getAnimalName((PredatorAnimal) animal));
+                            temp = changes.PredatorAnimal.getColorEmoji(changes.PredatorAnimal.getAnimalName((PredatorAnimal) animal));
                         else temp = changes.Purchasable.getColorEmoji(changes.Purchasable.getPurchasableName(animal));
-                        System.out.print(temp);
-                        startGrass(getGrassMap()[i][j]);
+                        animalMap[i + 3] += temp + startGrass(getGrassMap()[i][j]);
                     }
                 }
-                System.out.print(spaces2(charNumber[i][j], maxChars) + "]");
+                animalMap[i + 3] += spaces2(charNumber[i][j], maxChars) + "]";
             }
-            resetColor();
-            System.out.println();
+            animalMap[i + 3] += colorReset();
         }
+        return animalMap;
     }
 
-    private static void showGrassMap(int[][] map) {
-        colorPrintln("╔" + "════════════" + "╗");
-        System.out.println("║ GRASS MAP: ║");
-        System.out.println("╚" + "════════════" + "╝");
-        resetColor();
+    private static String[] showGrassMap(int[][] map) {
+        String[] grassMap = new String[MAP_SIZE + 3];
+        grassMap[0] = Colors.nextColor("╔════════════╗");
+        grassMap[1] = "║ GRASS MAP: ║";
+        grassMap[2] = "╚════════════╝" + colorReset();
         int mostDigits = 1;
         for (int i = 0; i < MAP_SIZE; i++)
             for (int j = 0; j < MAP_SIZE; j++)
                 if (digitCount(map[i][j]) > mostDigits)
                     mostDigits = digitCount(map[i][j]);
         for (int i = 0; i < MAP_SIZE; i++) {
+            grassMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                startGrass(0);
-                System.out.print(spaces(map[i][j], mostDigits));
-                startGrass(map[i][j]);
-                System.out.print("[" + map[i][j] + "]");
+                grassMap[i + 3] += startGrass(0) + spaces(map[i][j], mostDigits) + startGrass(map[i][j]) +
+                "[" + map[i][j] + "]";
             }
-            resetColor();
-            System.out.println();
+            grassMap[i + 3] += colorReset();
         }
+        return grassMap;
     }
 
     private void truckStatus() {

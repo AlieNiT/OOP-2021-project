@@ -27,7 +27,7 @@ public class Bakery extends SecondaryWorkshop {
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
         Warehouse.removeSavable(Savable.FLOUR);
-        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
+        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME, this);
         isWorking = true;
     }
 
@@ -37,8 +37,7 @@ public class Bakery extends SecondaryWorkshop {
         Random random = new Random();
         int x = random.nextInt(6);
         int y = random.nextInt(6);
-        System.out.println(x+" "+y);
-        MissionMap.putProduct(new Bread(timeManager,x,y));
+        MissionMap.putProduct(new Bread(timeManager, x, y));
     }
 
 
