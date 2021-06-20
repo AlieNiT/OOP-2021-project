@@ -30,7 +30,7 @@ public class TimeManager {
                     ((Producer) actioner).produce();
                 } else if (actioner instanceof Product)
                     MissionMap.removeProduct((Product)actioner,false);
-                else coins += Truck.comeBack();
+                else if (actioner == null) coins += Truck.comeBack();
             }
         }
         return coins;

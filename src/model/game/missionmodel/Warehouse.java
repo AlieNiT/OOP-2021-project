@@ -3,6 +3,7 @@ package model.game.missionmodel;
 import view.menu.exceptions.GameErrorException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Warehouse {
     static final int capacity = 30;
@@ -37,5 +38,21 @@ public class Warehouse {
 
     public static HashMap<String, Integer> getThings() {
         return things;
+    }
+
+    public static void hasSavable(Savable savable, int count) {
+        if (things.get(savable.name)<count)
+            throw new GameErrorException("not enough "+savable.name+" in the warehouse.");
+    }
+
+    public static void removeSavableList(HashMap<String, Integer> list) {
+
+        for (Map.Entry<String, Integer> entry : list.entrySet()) {
+            if (things.containsKey(entry.getKey())) {
+                if (things.get(entry.getKey()) < entry.getValue())
+                    throw new GameErrorException("this should not happen!!");//TODO
+                things.put(entry.getKey(), entry.getValue());
+            }
+        }
     }
 }

@@ -260,14 +260,37 @@ public class MissionMap {
         return true;
     }
 
-    public static void removeAnimal(String itemName) {
+    public static void removeAnimal(String itemName, Integer count) {
+        ArrayList<Animal> goneAnimals = new ArrayList<>();
         for (Animal animal : animals) {
             if (Purchasable.getPurchasableName(animal).equals(itemName)) {
-                animals.remove(animal);
+                goneAnimals.add(animal);
+                count-=1;
                 map[animal.getX()][animal.getY()].remove(animal);
-                return;
+                if (count == 0) {
+                    animals.removeAll(goneAnimals);
+                    return;
+                }
             }
         }
-        throw new GameErrorException("There are no "+itemName+ "s in the map.");
+
+        throw new GameErrorException("There are not enough "+itemName+ " s in the map.");
+    }
+
+    public static void hasAnimal(String itemName,int count) {
+        int n = 0;
+        for (Animal animal : animals) {
+            if (Purchasable.getPurchasableName(animal)!=null&&Purchasable.getPurchasableName(animal).equals(itemName))
+                n++;
+        }
+        if (n<count) throw new GameErrorException("Not enough "+itemName+ " s in the map.");
+    }
+
+    public static void removeAnimalList(HashMap<String, Integer> things) {
+        for (Map.Entry<String, Integer> entry :
+                things.entrySet()) {
+            if (entry.getKey().equals("chicken")||entry.getKey().equals("turkey")||entry.getKey().equals("buffalo"))
+                removeAnimal(entry.getKey(),entry.getValue());
+        }
     }
 }

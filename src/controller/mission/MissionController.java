@@ -33,8 +33,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import static changes.Utils.*;
-import static controller.mission.Command.findCommand;
-import static controller.mission.Command.getMatcher;
+import static controller.mission.Command.*;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
 import static model.game.missionmodel.MissionMap.getGrassMap;
 import static model.game.missionmodel.Savable.getColorEmoji;
@@ -101,6 +100,8 @@ public class MissionController {
                 case TRUCK_UNLOAD -> truckUnload(matcher.group(1));
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
             }
+        if (!(command == TRUCK_LOAD||command == TRUCK_UNLOAD))
+            Truck.unload();
         if (success()) {
             if (timeManager.getTime()<mission.getRewardTime())
                 user.setReward(mission.getMissionNumber(),mission.getFinishEarlyReward());
@@ -134,8 +135,8 @@ public class MissionController {
 
     private void truckLoad(String itemName) {
         if (itemName.equals("chicken") || itemName.equals("turkey") || itemName.equals("buffalo"))
-            MissionMap.removeAnimal(itemName);
-        else Warehouse.removeSavable(getSavable(itemName));
+            MissionMap.hasAnimal(itemName,Truck.thingCount(itemName)+1);
+        else Warehouse.hasSavable(getSavable(itemName),Truck.thingCount(itemName)+1);
         Truck.load(getSavable(itemName));
     }
 

@@ -28,6 +28,7 @@ public class Truck {
         if (availableCapacity < savable.volume) throw new GameErrorException("The truck is almost full");
         things.putIfAbsent(savable.name,0);
         things.put(savable.name,things.get(savable.name)+1);
+        System.out.println(thingCount(savable.name));
         availableCapacity -= savable.volume;
     }
 
@@ -37,11 +38,19 @@ public class Truck {
         things.put(savable.name,0);
     }
 
+    public static void unload(){
+        if (!isAble) return;
+        availableCapacity = capacity;
+        things.clear();
+    }
+
     public static void go(TimeManager timeManager) {
         availabilityCheck();
         if (availableCapacity == capacity)
             throw new GameErrorException("There is nothing on the truck!");
         timeManager.putAction(timeManager.getTime()+COMEBACK_TIME,null);
+        Warehouse.removeSavableList(things);
+        MissionMap.removeAnimalList(things);
         isAble = false;
     }
 
@@ -57,4 +66,9 @@ public class Truck {
 
     public static HashMap<String, Integer> getThings() { return things; }
     public static boolean isIsAble() { return isAble; }
+
+    public static int thingCount(String itemName) {
+        things.putIfAbsent(itemName,0);
+        return things.get(itemName);
+    }
 }
