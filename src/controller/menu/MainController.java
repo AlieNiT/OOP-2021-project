@@ -6,9 +6,7 @@ import model.database.User;
 import view.game.MissionView;
 import view.menu.Menu;
 import view.menu.exceptions.GameErrorException;
-
 import java.io.FileNotFoundException;
-
 import static model.database.FileManager.readUserData;
 
 public class MainController {
@@ -22,10 +20,14 @@ public class MainController {
     }
 
     public Menu chooseMission(String command) {
-        if (Integer.parseInt(command) > user.getCurrentMission())
-            throw new GameErrorException("You have not unlocked this level.");
-        if (Integer.parseInt(command)<1)
-            throw new GameErrorException("Invalid command");
-        return new MissionView(new MissionController(user, Database.getMissions().get(Integer.parseInt(command)-1)));
+        try {
+            Integer.parseInt(command);
+            if (Integer.parseInt(command) > user.getCurrentMission())
+                throw new GameErrorException("You have not unlocked this level.");
+            if (Integer.parseInt(command) < 1)
+                throw new GameErrorException("Invalid command");
+            return new MissionView(new MissionController(user, Database.getMissions().get(Integer.parseInt(command) - 1)));
+        } catch (NumberFormatException e) { System.out.println("Level number must be an integer."); }
+        return new MissionView(new MissionController(user, Database.getMissions().get(Integer.parseInt(command) - 1)));
     }
 }

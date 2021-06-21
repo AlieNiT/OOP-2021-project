@@ -12,7 +12,7 @@ public abstract class Menu {
     protected static Scanner INPUT = new Scanner(System.in);
     public abstract Menu run();
     protected String getCommand(String string){
-        if (string!=null)
+        if (string != null)
             colorPrintln(string);
         colorPrint(">");
         String response = INPUT.nextLine().toLowerCase().replaceAll("( )+", " ").trim();
