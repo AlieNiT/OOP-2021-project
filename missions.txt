@@ -1,3 +1,6 @@
-missions 2
-missionNumber 1 initialCoins 2000 chicken 3 egg 3 coins 500 time 50 tiger 2 bear 10 bear 15 finishEarlyReward 100 # #
-missionNumber 2 initialCoins 500 chicken 4 flour 4 tiger 5 tiger 2 bear 10 bear 15 time 100 finishEarlyReward 150 # #
+missions 5
+missionNumber 1 initialCoins 1000 chicken 3 egg 3 coins 500 time 50 tiger 2 bear 10 bear 15 time 20 finishEarlyReward 100 # #
+missionNumber 2 initialCoins 2000 chicken 4 flour 4 tiger 5 tiger 2 bear 10 bear 15 time 40 finishEarlyReward 150 # #
+missionNumber 3 initialCoins 1000 buffalo 3 chicken 3 turkey 3 tiger 5 bear 8 time 30 finishEarlyReward 100 # #
+missionNumber 4 initialCoins 1500 chicken 5 bread 10 tiger 5 bear 10 time 50 finishEarlyReward 200 # #
+missionNumber 5 initialCoins 3000 chicken 5 buffalo 5 turkey 5 bread 5 ice cream 5 shirt 5 bear 5 bear 20 tiger 13 # #

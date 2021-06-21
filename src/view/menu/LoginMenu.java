@@ -5,6 +5,7 @@ import controller.mission.Log;
 import model.database.User;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
+import view.menu.exceptions.GameErrorException;
 
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -49,9 +50,9 @@ public class LoginMenu extends Menu {
             }
             throw new Exception("WRONG USERNAME");
         } catch (BackException e){ return new StartMenu();
-        } catch (ExitException e){ return null;
-        } catch (Exception e) { colorPrintln(e.getMessage());
-        }
+        } catch (ExitException e) { return null;
+        } catch (GameErrorException e) { colorPrintln(e.getMessage());
+        } catch (Exception ignored) { }
         return menu;
     }
 }

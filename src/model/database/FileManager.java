@@ -37,8 +37,13 @@ public class FileManager {
         while (scanner.hasNext()) {
             Mission mission = new Mission();
             try {
-                while (true)
-                    mission.set(scanner.next(), Integer.parseInt(scanner.next()));
+                while (true) {
+                    String first = scanner.next();
+                    if (first.equals("ice"))
+                        first += " " + scanner.next();
+                    String second = scanner.next();
+                    mission.set(first, Integer.parseInt(second));
+                }
             } catch (Exception ignored) {
             }
             missionsData.add(mission);

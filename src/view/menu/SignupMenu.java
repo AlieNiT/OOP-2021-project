@@ -3,6 +3,8 @@ package view.menu;
 import controller.menu.SignupController;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
+import view.menu.exceptions.GameErrorException;
+
 import static view.menu.color.Colors.colorPrintln;
 
 public class SignupMenu extends Menu {
@@ -21,8 +23,9 @@ public class SignupMenu extends Menu {
             else
                 throw new Exception("This username already exists.");
         } catch (BackException e){ return new StartMenu();
-        } catch (ExitException e){ return null;
-        } catch (Exception e){ colorPrintln(e.getMessage());
+        } catch (ExitException e) { return null;
+        } catch (GameErrorException e) { colorPrintln(e.getMessage());
+        } catch (Exception e){ e.printStackTrace();
         }
         return menu;
     }

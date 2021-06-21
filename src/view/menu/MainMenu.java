@@ -4,6 +4,7 @@ import controller.menu.MainController;
 import model.database.User;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
+import view.menu.exceptions.GameErrorException;
 
 import static view.menu.color.Colors.*;
 
@@ -32,11 +33,12 @@ public class MainMenu extends Menu {
                 case "settings" -> menu = new SettingsMenu();
                 case "logout" -> menu = new StartMenu();
                 case "exit" -> menu = null;
-                default -> throw new Exception("Invalid command");
+                default -> throw new GameErrorException("Invalid command");
             };
         } catch (BackException e) { menu = new StartMenu();
         } catch (ExitException e) { menu = null;
-        } catch (Exception e)     { e.printStackTrace();
+        } catch (GameErrorException e) { colorPrintln(e.getMessage());
+        } catch (Exception e) { e.printStackTrace();
         }
         return menu;
     }
