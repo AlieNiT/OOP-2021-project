@@ -1,5 +1,6 @@
 package model.game.missionmodel;
 
+import controller.mission.Log;
 import controller.mission.time.TimeManager;
 import view.menu.exceptions.GameErrorException;
 import java.util.HashMap;
@@ -26,19 +27,21 @@ public class Truck {
         availabilityCheck();
         if (availableCapacity == 0) throw new GameErrorException("The truck is full!");
         if (availableCapacity < savable.volume) throw new GameErrorException("The truck is almost full");
-        things.putIfAbsent(savable.name,0);
-        things.put(savable.name,things.get(savable.name)+1);
+        things.putIfAbsent(savable.name, 0);
+        things.put(savable.name, things.get(savable.name) + 1);
         System.out.println(thingCount(savable.name));
         availableCapacity -= savable.volume;
+        Log.logger.info(savable.name + " was loaded to the truck.");
     }
 
     public static void unload(Savable savable) {
         availabilityCheck();
-        availableCapacity += things.get(savable.name)*savable.volume;
-        things.put(savable.name,0);
+        availableCapacity += things.get(savable.name) * savable.volume;
+        things.put(savable.name, 0);
+        Log.logger.info(savable.name + " unloaded from truck.");
     }
 
-    public static void unload(){
+    public static void unload() {
         if (!isAble) return;
         availableCapacity = capacity;
         things.clear();
@@ -48,10 +51,11 @@ public class Truck {
         availabilityCheck();
         if (availableCapacity == capacity)
             throw new GameErrorException("There is nothing on the truck!");
-        timeManager.putAction(timeManager.getTime()+COMEBACK_TIME,null);
+        timeManager.putAction(timeManager.getTime() + COMEBACK_TIME, null);
         Warehouse.removeSavableList(things);
         MissionMap.removeAnimalList(things);
         isAble = false;
+        Log.logger.info("Truck sent.");
     }
 
     public static int comeBack(){

@@ -1,5 +1,6 @@
 package model.game.workshops;
 
+import controller.mission.Log;
 import controller.mission.time.TimeManager;
 import model.game.Actioner;
 import model.game.Consumer;
@@ -24,10 +25,11 @@ public abstract class Workshop implements Consumer,Producer, Actioner {
         if (isWorking)
             throw new GameErrorException("Workshops can't be upgraded while working.");
         if (upgraded)
-            throw new GameErrorException("This workshop is already upgraded.");
-        if (coins<upgradeCost)
-            throw new GameErrorException("You don't have enough coins.(upgrade cost: "+upgradeCost+" )");
+            throw new GameErrorException("This workshop has already been upgraded.");
+        if (coins < upgradeCost)
+            throw new GameErrorException("You don't have enough coins. (Upgrade cost: " + upgradeCost + ")");
         upgraded = true;
+        Log.logger.info(name + " was upgraded.");
         return upgradeCost;
     }
 

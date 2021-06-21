@@ -38,9 +38,7 @@ public class MissionMap {
         totalProducts = new HashMap<>();
     }
 
-    public static void plant(int x, int y) {
-        grassMap[x][y] += 1;
-    }
+    public static void plant(int x, int y) { grassMap[x][y] += 1; }
 
     public static void putProduct(Product product) {
 

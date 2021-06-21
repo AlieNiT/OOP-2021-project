@@ -186,3 +186,11 @@ Jun 21, 2021 1:11:51 PM controller.mission.MissionController turn
 INFO: Time turned.
 Jun 21, 2021 1:11:54 PM view.menu.exceptions.GameErrorException <init>
 INFO: GameErrorException with message "Water has not been finished yet." was thrown.
+Jun 21, 2021 2:15:57 PM view.menu.LoginMenu run
+INFO: User aliali logged in.
+Jun 21, 2021 2:16:06 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 21, 2021 2:16:06 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 21, 2021 2:16:22 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.

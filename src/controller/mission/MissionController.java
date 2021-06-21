@@ -99,8 +99,10 @@ public class MissionController {
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
                 case UPGRADE_WORKSHOP -> upgradeWorkshop(matcher.group(1));
         }
-        if (!(command == TRUCK_LOAD||command == TRUCK_UNLOAD))
+        if (!(command == TRUCK_LOAD || command == TRUCK_UNLOAD)) {
             Truck.unload();
+            Log.logger.info("Truck unloaded.");
+        }
         if (success()) {
             if (timeManager.getTime() < mission.getRewardTime())
                 user.setReward(mission.getMissionNumber(), mission.getFinishEarlyReward());
@@ -121,6 +123,7 @@ public class MissionController {
     private void upgradeWorkshop(String workshopName) {
         int cost = workshops.get(workshopName).upgrade(coins);
         coins -= cost;
+        Log.logger.info(cost + " coins spent to upgrade " + workshopName + ".");
     }
 
     private void pickUpProduct(int x, int y) {
@@ -131,18 +134,17 @@ public class MissionController {
                 Warehouse.addSavable(Objects.requireNonNull(getSavable(product)));
                 MissionMap.removeProduct(product,true);
                 pickedUpProducts.add(product);
+                Log.logger.info(Savable.getSavableName(product) + " moved to warehouse.");
             }
         }
     }
 
-    private void truckUnload(String itemName) {
-        Truck.unload(getSavable(itemName));
-    }
+    private void truckUnload(String itemName) { Truck.unload(getSavable(itemName)); }
 
     private void truckLoad(String itemName) {
         if (itemName.equals("chicken") || itemName.equals("turkey") || itemName.equals("buffalo"))
-            MissionMap.hasAnimal(itemName,Truck.thingCount(itemName)+1);
-        else Warehouse.hasSavable(getSavable(itemName),Truck.thingCount(itemName)+1);
+            MissionMap.hasAnimal(itemName, Truck.thingCount(itemName) + 1);
+        else Warehouse.hasSavable(getSavable(itemName), Truck.thingCount(itemName) + 1);
         Truck.load(getSavable(itemName));
     }
 
@@ -160,11 +162,13 @@ public class MissionController {
             default -> throw new GameErrorException("wrong name!");
         }
         MissionMap.putAnimal(animal);
+        Log.logger.info(animalName + " purchased.");
     }
 
     private void truckGo() { Truck.go(timeManager); }
 
     private void inquiry() {
+        Log.logger.info("Inquiry printed.");
         int[][] map = MissionMap.getGrassMap();
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
         String[] c = productMap();
@@ -323,6 +327,7 @@ public class MissionController {
         if (waterLeft > 0) {
             MissionMap.plant(x, y);
             waterLeft -= 1;
+            Log.logger.info("Grass planted in (" + x + ", " + y + ").");
         } else throw new GameErrorException("Water supply empty! Water must be pumped from the well first.");
     }
 
@@ -342,12 +347,15 @@ public class MissionController {
             default -> throw new GameErrorException("wrong workshop name");
         }
         workshops.put(workshopName, workshop);
+        Log.logger.info(workshopName + " built.");
     }
 
     private void work(String workshopName) {
         Workshop workshop = workshops.get(workshopName);
-        if (workshop != null)
+        if (workshop != null) {
             workshop.consume();
+            Log.logger.info(workshopName + " started working.");
+        }
     }
 
     private void well() {
@@ -381,6 +389,7 @@ public class MissionController {
         if (coins < coinNeeded)
             throw new GameErrorException("You do not have enough coins. " + coinNeeded + " coins needed.");
         coins -= coinNeeded;
+        Log.logger.info(coinNeeded + " coins spent.");
     }
 
     private void turn() {
