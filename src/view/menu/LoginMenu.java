@@ -23,6 +23,7 @@ public class LoginMenu extends Menu {
         try {
             User user = controller.getUser(controller.checkPassUserFormat(getExactCommand("USERNAME:"),"username"));
             int tries = 3;
+            if (user == null) colorPrintln("WRONG USERNAME");
             while (user != null) {
                 if (user.getPassword().equals(getExactCommand("PASSWORD:"))) {
                     Log.logger.info("User " + user.getUsername() + " logged in.");
