@@ -10,7 +10,6 @@ public class SignupController {
     }
 
     public String checkPassUserFormat(String userData,String type) {
-        //TODO
         if (!userData.equals(userData.replaceAll("( )+", "")))
             throw new RuntimeException("Wrong format of "+type);
         return userData;
