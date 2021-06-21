@@ -1,0 +1,8 @@
+Jun 21, 2021 12:23:09 PM Main main
+INFO: hey buddy
+Jun 21, 2021 12:23:09 PM Main main
+WARNING: waaaaaarning
+Jun 21, 2021 1:51:58 PM Main main
+INFO: hey buddy
+Jun 21, 2021 1:51:58 PM Main main
+WARNING: waaaaaarning
