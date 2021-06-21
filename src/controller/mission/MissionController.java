@@ -7,7 +7,6 @@ import model.database.User;
 import model.game.animals.Animal;
 import model.game.animals.farmanimals.Buffalo;
 import model.game.animals.farmanimals.Chicken;
-import model.game.animals.farmanimals.FarmAnimal;
 import model.game.animals.farmanimals.Turkey;
 import model.game.animals.guardanimals.Cat;
 import model.game.animals.guardanimals.Dog;
@@ -35,11 +34,9 @@ import java.util.regex.Matcher;
 import static changes.Utils.*;
 import static controller.mission.Command.*;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
-import static model.game.missionmodel.MissionMap.getGrassMap;
 import static model.game.missionmodel.Savable.getColorEmoji;
 import static model.game.missionmodel.Savable.getSavable;
 import static view.menu.color.Colors.*;
-import static view.menu.color.ColorsRGB.ONE_CAGE_LEFT;
 
 public class MissionController {
     User user;
@@ -162,22 +159,15 @@ public class MissionController {
     private void inquiry() {
         int[][] map = MissionMap.getGrassMap();
         colorPrintln("▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽");
-        colorPrint("");
-        for (Animal animal : MissionMap.getAnimals())
-            if (animal != null) System.out.println(animal.getName() + "  " + animal.getX() + " " + animal.getY() + " " +
-                    ((animal instanceof FarmAnimal) ? ((FarmAnimal) animal).getHealth() + "%" : "") +
-                    ((animal instanceof PredatorAnimal) ? ((PredatorAnimal) animal).getCagesLeft() : ""));
-        String[] a = productMap();
+        String[] c = productMap();
         String[] b = animalMap();
-        String[] c = showGrassMap(map);
-        for (int i = 0; i < MAP_SIZE + 3; i++) {
-            System.out.print(a[i] + "\t\t\t\t");
-            System.out.print(b[i] + "\t\t\t\t");
-            System.out.println(c[i]);
-        }
-        colorPrint("");
-        for (Product product : MissionMap.getProducts())
-            colorPrintln(Objects.requireNonNull(getSavable(product)).name+ " " + product.getX() + " " + product.getY());
+        String[] a = showGrassMap(map);
+        for (int i = 0; i < MAP_SIZE + 3; i++) System.out.println(a[i]);
+        System.out.println();
+        for (int i = 0; i < MAP_SIZE + 3; i++) System.out.println(b[i]);
+        System.out.println();
+        for (int i = 0; i < MAP_SIZE + 3; i++) System.out.println(c[i]);
+        System.out.println();
         colorPrintln("coins: " + coins);
         colorPrint("water left: ");
         if (waterFilling) System.out.println("Water is being pumped.");
@@ -243,11 +233,9 @@ public class MissionController {
                 if (tmp > maxChars) maxChars = tmp;
                 tmp = 0;
             }
-
         for (int i = 0; i < MAP_SIZE; i++) {
             animalMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                boolean b = false;
                 animalMap[i + 3] += animalBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars);
                 for (Animal animal : MissionMap.getAnimals()) {
                     if (animal != null && animal.getX() == i && animal.getY() == j) {
@@ -258,7 +246,7 @@ public class MissionController {
                         animalMap[i + 3] += spaces2(charNumber[i][j], maxChars) + startAnimalHealth(animal) + temp;
                     }
                 }
-                animalMap[i+3] += animalBoard(i, j) + spaces2(charNumber[i][j], maxChars) + "]";
+                animalMap[i + 3] += animalBoard(i, j) + spaces2(charNumber[i][j], maxChars) + "]";
             }
             animalMap[i + 3] += colorReset();
         }

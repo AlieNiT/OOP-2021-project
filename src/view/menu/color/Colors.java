@@ -4,7 +4,6 @@ import model.game.animals.Animal;
 import model.game.animals.farmanimals.FarmAnimal;
 import model.game.animals.predatoranimals.PredatorAnimal;
 import java.util.Random;
-
 import static view.menu.color.ColorsRGB.*;
 import static view.menu.color.MapColors.*;
 
@@ -78,5 +77,4 @@ public class Colors {
     }
 
     public static void reverseColor() { counter--; }
-    public static void reverseColor(int times) { for (int i = 0; i < times; i++) reverseColor(); }
 }
