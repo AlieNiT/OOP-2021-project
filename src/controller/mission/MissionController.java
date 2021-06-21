@@ -193,6 +193,8 @@ public class MissionController {
                 System.out.println(entry.getKey() + ": " + entry.getValue());
         colorPrintln("time: " + timeManager.getTime());
         truckStatus();
+        warehouseStatus();
+        System.out.println();
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
     }
 
@@ -308,19 +310,19 @@ public class MissionController {
     }
 
     private void warehouseStatus() {
-        // roof
-        for (int i=0; i < 3; i++) {
-            for (int j = 3 - i; j > 1; j--) System.out.print("    ");
+        int numOfItems = 0;
+        int roofBlocks = 3;
+        for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet())
+            numOfItems += set.getValue();
+        if (numOfItems > 11) roofBlocks = 5;
+        for (int i=0; i < roofBlocks; i++) {
+            for (int j = roofBlocks - i; j > 1; j--) System.out.print("    ");
             colorPrint("◢");
-            for (int j = 1; j <= 2*i; j++) System.out.print("████");
+            for (int j = 1; j <= 2 * i; j++) System.out.print("████");
             System.out.println("◣");
         }
-        int warehouseLength = 18;
-        System.out.print("║\n║");
-        for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet()) {
+        for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet())
             for (int i = 0; i < set.getValue(); i++) System.out.print(getColorEmoji(set.getKey()));
-            // if ( ?...? ) warehouseLength += 2;
-        }
     }
 
     private void plant(int x, int y) {
