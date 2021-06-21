@@ -18,7 +18,8 @@ public enum Command {
     TRUCK_UNLOAD("truck unload ([a-zA-Z0-9_ ]+)"),
     TRUCK_GO("truck go"),
     INQUIRY("inquiry"),
-    BUILD("build ([a-zA-Z0-9_ ]+)");
+    BUILD("build ([a-zA-Z0-9_ ]+)"),
+    UPGRADE_WORKSHOP("upgrade ([a-zA-Z0-9_ ]+)");
     private final Pattern pattern;
     private final String regex;
 

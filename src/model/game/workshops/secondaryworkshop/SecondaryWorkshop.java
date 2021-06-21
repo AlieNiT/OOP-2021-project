@@ -5,7 +5,7 @@ import model.game.workshops.Workshop;
 
 public abstract class SecondaryWorkshop extends Workshop {
     public SecondaryWorkshop(String name,int production_time, TimeManager timeManager) {
-        super(name, production_time,timeManager);
+        super(name, 300, production_time,timeManager);
     }
     public abstract void produce();
 }

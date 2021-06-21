@@ -24,8 +24,22 @@ public class MilkPackagingWorkshop extends PrimaryWorkshop {
     public void consume(){
         if (isWorking)
             throw new GameErrorException("The workshop is working.");
-        Warehouse.removeSavable(Savable.MILK);
-        timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
+        if (upgraded){
+            try {
+                Warehouse.hasSavable(Savable.MILK,2);
+                for (int i = 0; i < 2;i++){
+                    Warehouse.removeSavable(Savable.MILK);
+                    timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
+                }
+            } catch (GameErrorException e) {
+                Warehouse.removeSavable(Savable.MILK);
+                timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME/2,this);
+            };
+        }
+        else {
+            Warehouse.removeSavable(Savable.MILK);
+            timeManager.putAction(timeManager.getTime()+PRODUCTION_TIME,this);
+        }
         isWorking = true;
     }
 

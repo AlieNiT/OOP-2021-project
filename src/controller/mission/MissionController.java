@@ -97,7 +97,8 @@ public class MissionController {
                 case TRUCK_LOAD -> truckLoad(matcher.group(1));
                 case TRUCK_UNLOAD -> truckUnload(matcher.group(1));
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
-            }
+                case UPGRADE_WORKSHOP -> upgradeWorkshop(matcher.group(1));
+        }
         if (!(command == TRUCK_LOAD||command == TRUCK_UNLOAD))
             Truck.unload();
         if (success()) {
@@ -113,6 +114,11 @@ public class MissionController {
             throw new GameErrorException("You won in " + timeManager.getTime() + " time units!");
         }
         inquiry();
+    }
+
+    private void upgradeWorkshop(String workshopName) {
+        int cost = workshops.get(workshopName).upgrade(coins);
+        coins -= cost;
     }
 
     private void pickUpProduct(int x, int y) {
@@ -174,7 +180,7 @@ public class MissionController {
         else wellStatus(waterLeft);
         colorPrintln("workshops built:");
         for (Workshop ws : workshops.values())
-            System.out.println(ws.getName() + " " + ((ws.isWorking()) ? "is working" : "is not working"));
+            System.out.println(ws.getName() + "("+"level "+((ws.isUpgraded())?"2":"1")+")" + ((ws.isWorking()) ? "is working" : "is not working"));
         HashMap<String,Integer> wareHouse = Warehouse.getThings();
         for (Map.Entry<String, Integer> entry: wareHouse.entrySet())
             if (entry.getValue() > 0)
