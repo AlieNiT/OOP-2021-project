@@ -10,8 +10,9 @@ import static model.database.FileManager.readUserBase;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Log.setLogger("log.txt");
         FileManager.readMissions();
+        FileManager.readUserBase();
+        Log.setLogger("log.txt");
         Menu currentMenu = new StartMenu();
         while (currentMenu != null){
             currentMenu = currentMenu.run();
