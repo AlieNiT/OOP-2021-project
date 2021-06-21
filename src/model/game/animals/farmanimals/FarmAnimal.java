@@ -39,7 +39,5 @@ public abstract class FarmAnimal extends Animal implements Actioner, Producer {
         return health<=50;
     }
 
-    public int getHealth() {
-        return health;
-    }
+    public int getHealth() { return health; }
 }

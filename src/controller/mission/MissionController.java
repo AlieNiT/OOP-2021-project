@@ -39,6 +39,7 @@ import static model.game.missionmodel.MissionMap.getGrassMap;
 import static model.game.missionmodel.Savable.getColorEmoji;
 import static model.game.missionmodel.Savable.getSavable;
 import static view.menu.color.Colors.*;
+import static view.menu.color.ColorsRGB.ONE_CAGE_LEFT;
 
 public class MissionController {
     User user;
@@ -246,17 +247,20 @@ public class MissionController {
         for (int i = 0; i < MAP_SIZE; i++) {
             animalMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                animalMap[i + 3] += startGrass(getGrassMap()[i][j]) + "[" + spaces2(charNumber[i][j], maxChars);
+                boolean b = false;
                 for (Animal animal : MissionMap.getAnimals()) {
                     if (animal != null && animal.getX() == i && animal.getY() == j) {
+                        animalMap[i + 3] += startAnimalHealth(animal) + "[" + spaces2(charNumber[i][j], maxChars);
+                        b = true;
                         String temp;
                         if (animal instanceof PredatorAnimal)
                             temp = changes.PredatorAnimal.getColorEmoji(changes.PredatorAnimal.getAnimalName((PredatorAnimal) animal));
                         else temp = changes.Purchasable.getColorEmoji(changes.Purchasable.getPurchasableName(animal));
-                        animalMap[i + 3] += temp + startGrass(getGrassMap()[i][j]);
+                        animalMap[i + 3] += temp + startAnimalHealth(animal) + "]";
                     }
                 }
-                animalMap[i + 3] += spaces2(charNumber[i][j], maxChars) + "]";
+                if (!b) animalMap[i + 3] += animalBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars) +
+                        spaces2(charNumber[i][j], maxChars) + "]";
             }
             animalMap[i + 3] += colorReset();
         }

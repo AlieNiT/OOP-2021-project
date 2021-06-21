@@ -1,6 +1,6 @@
 package view.menu.color;
 
-public enum GrassShades {
+public enum MapColors {
     DRY(137),
     WATER1(107),
     WATER2(65),
@@ -9,7 +9,7 @@ public enum GrassShades {
     WATER5(28);
 
     private final int code;
-    GrassShades(int code) {
+    MapColors(int code) {
         this.code = code;
     }
     public int getCode() { return code; }
