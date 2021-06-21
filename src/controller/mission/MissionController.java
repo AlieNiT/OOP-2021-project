@@ -248,19 +248,17 @@ public class MissionController {
             animalMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
                 boolean b = false;
+                animalMap[i + 3] += animalBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars);
                 for (Animal animal : MissionMap.getAnimals()) {
                     if (animal != null && animal.getX() == i && animal.getY() == j) {
-                        animalMap[i + 3] += startAnimalHealth(animal) + "[" + spaces2(charNumber[i][j], maxChars);
-                        b = true;
                         String temp;
                         if (animal instanceof PredatorAnimal)
                             temp = changes.PredatorAnimal.getColorEmoji(changes.PredatorAnimal.getAnimalName((PredatorAnimal) animal));
                         else temp = changes.Purchasable.getColorEmoji(changes.Purchasable.getPurchasableName(animal));
-                        animalMap[i + 3] += temp + startAnimalHealth(animal) + "]";
+                        animalMap[i + 3] += spaces2(charNumber[i][j], maxChars) + startAnimalHealth(animal) + temp;
                     }
                 }
-                if (!b) animalMap[i + 3] += animalBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars) +
-                        spaces2(charNumber[i][j], maxChars) + "]";
+                animalMap[i+3] += animalBoard(i, j) + spaces2(charNumber[i][j], maxChars) + "]";
             }
             animalMap[i + 3] += colorReset();
         }
