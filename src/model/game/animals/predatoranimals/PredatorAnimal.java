@@ -1,5 +1,6 @@
 package model.game.animals.predatoranimals;
 
+import controller.mission.Log;
 import controller.mission.time.TimeManager;
 import model.game.animals.Animal;
 import model.game.missionmodel.MissionMap;
@@ -15,19 +16,24 @@ public abstract class PredatorAnimal extends Animal {
         cagesNeeded = predatorAnimal.cageCommands;
         this.cagesLeft = cagesNeeded;
     }
+
     public boolean cageTry() {
         cagesLeft -= 1;
-        if (cagesLeft == 0){
-            if (this instanceof Lion) MissionMap.putProduct(new CagedLion(timeManager,x,y));
-            if (this instanceof Bear) MissionMap.putProduct(new CagedBear(timeManager,x,y));
-            if (this instanceof Tiger) MissionMap.putProduct(new CagedTiger(timeManager,x,y));
+        Log.logger.info("Cage command executed on " + this.getName() + ".");
+        if (cagesLeft == 0) {
+            if (this instanceof Lion) MissionMap.putProduct(new CagedLion(timeManager, x, y));
+            if (this instanceof Bear) MissionMap.putProduct(new CagedBear(timeManager, x, y));
+            if (this instanceof Tiger) MissionMap.putProduct(new CagedTiger(timeManager, x, y));
             return true;
         }
         return false;
     }
+
     public void cageBreak() {
-        if (cagesLeft<cagesNeeded)
+        if (cagesLeft < cagesNeeded) {
+            Log.logger.info(this.getName() + " broke cage.");
             cagesLeft += 1;
+        }
     }
 
     public int getCagesLeft() {

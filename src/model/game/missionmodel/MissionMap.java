@@ -1,6 +1,7 @@
 package model.game.missionmodel;
 
 import changes.Purchasable;
+import controller.mission.Log;
 import model.game.Mappable;
 import model.game.animals.Animal;
 import model.game.animals.farmanimals.Buffalo;
@@ -226,14 +227,15 @@ public class MissionMap {
     public static void cage(int x,int y) {
         for (Mappable mappable : map[x][y]) {
             if (mappable instanceof PredatorAnimal) {
-                if(((PredatorAnimal) mappable).cageTry()){
+                if(((PredatorAnimal) mappable).cageTry()) {
+                    Log.logger.info(((PredatorAnimal) mappable).getName() + " caged.");
                     map[x][y].remove(mappable);
                     animals.remove(mappable);
                 }
                 return;
             }
         }
-        throw new GameErrorException("No predator animals in here.");
+        throw new GameErrorException("No predator animals here.");
     }
 
     public static int[][] getGrassMap() { return grassMap; }

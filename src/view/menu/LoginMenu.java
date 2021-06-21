@@ -1,9 +1,12 @@
 package view.menu;
 
 import controller.menu.LoginController;
+import controller.mission.Log;
 import model.database.User;
 import view.menu.exceptions.BackException;
 import view.menu.exceptions.ExitException;
+
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import static view.menu.color.Colors.colorPrint;
@@ -20,9 +23,10 @@ public class LoginMenu extends Menu {
             User user = controller.getUser(controller.checkPassUserFormat(getExactCommand("USERNAME:"),"username"));
             int tries = 3;
             while (user != null) {
-                if (user.getPassword().equals(getExactCommand("PASSWORD:")))
+                if (user.getPassword().equals(getExactCommand("PASSWORD:"))) {
+                    Log.logger.info("User " + user.getUsername() + " logged in.");
                     return new MainMenu(user);
-
+                }
                 tries--;
                 if (tries != 0) {
                     colorPrintln("WRONG PASSWORD. TRY AGAIN:");
@@ -30,8 +34,9 @@ public class LoginMenu extends Menu {
                 if (tries == 0) {
                     colorPrintln("WRONG PASSWORD.");
                     tries = 3;
+                    Log.logger.warning("⚠ Suspicious unsuccessful login attempt to account " + user.getUsername());
                     for (int i = 10; i > 0; i--) {
-                        colorPrint("Out of attempts. Try again in " + String.valueOf(i));
+                        colorPrint("Out of attempts. Try again in " + i);
                         for (int j = 0; j < 3; j++) {
                             colorPrint(".");
                             TimeUnit.MILLISECONDS.sleep(333);

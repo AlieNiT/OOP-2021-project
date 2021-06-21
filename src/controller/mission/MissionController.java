@@ -102,8 +102,8 @@ public class MissionController {
         if (!(command == TRUCK_LOAD||command == TRUCK_UNLOAD))
             Truck.unload();
         if (success()) {
-            if (timeManager.getTime()<mission.getRewardTime())
-                user.setReward(mission.getMissionNumber(),mission.getFinishEarlyReward());
+            if (timeManager.getTime() < mission.getRewardTime())
+                user.setReward(mission.getMissionNumber(), mission.getFinishEarlyReward());
             if (mission.getMissionNumber() == user.getCurrentMission())
                 user.setCurrentMission(user.getCurrentMission() + 1);
             try {
@@ -111,6 +111,8 @@ public class MissionController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            Log.logger.info(user.getUsername() + " won mission " + mission.getMissionNumber() + " in " +
+                    timeManager.getTime() + " time units.");
             throw new GameErrorException("You won in " + timeManager.getTime() + " time units!");
         }
         inquiry();
@@ -351,10 +353,11 @@ public class MissionController {
     private void well() {
         if (waterFilling) throw new GameErrorException("Water is being pumped.");
         if (waterLeft != 0) throw new GameErrorException("Water has not been finished yet.");
-        actions.computeIfAbsent(timeManager.getTime() + 3, k->new ArrayList<>());
+        actions.computeIfAbsent(timeManager.getTime() + 3, k -> new ArrayList<>());
         ArrayList<PredatorAnimal> tmp = actions.get(timeManager.getTime() + 3);
         tmp.add(null);
         actions.put(timeManager.getTime() + 3, tmp);
+        Log.logger.info("Pumped water from well.");
         waterFilling = true;
     }
 
@@ -362,19 +365,21 @@ public class MissionController {
         for (int i = 0; i < n; i++) {
             coins += timeManager.turn();
             MissionMap.moveAnimals();
+            Log.logger.info("Time turned.");
             turn();
-            if (success())
-                throw new GameErrorException("You won in "+timeManager.getTime()+" time units!");
+            if (success()) {
+                Log.logger.info(user.getUsername() + " won mission " + mission.getMissionNumber() + " in " +
+                        timeManager.getTime() + " time units.");
+                throw new GameErrorException("You won in " + timeManager.getTime() + " time units!");
+            }
         }
     }
 
-    private void cage(int x, int y) {
-        MissionMap.cage(x, y);
-    }
+    private void cage(int x, int y) { MissionMap.cage(x, y); }
 
     private void coinCheck(int coinNeeded) {
         if (coins < coinNeeded)
-            throw new GameErrorException("You don't have enough coins(" + coins + ")");
+            throw new GameErrorException("You do not have enough coins. " + coinNeeded + " coins needed.");
         coins -= coinNeeded;
     }
 
@@ -390,11 +395,7 @@ public class MissionController {
         }
     }
 
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user; }
 
-    private boolean success() {
-        return coins>= mission.getSuccessCoins() && MissionMap.success(objectives);
-    }
+    private boolean success() { return coins >= mission.getSuccessCoins() && MissionMap.success(objectives); }
 }
