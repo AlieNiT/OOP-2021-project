@@ -28,9 +28,11 @@ import model.game.workshops.secondaryworkshop.IceCreamWorkshop;
 import model.game.workshops.secondaryworkshop.SewingWorkshop;
 import view.menu.color.Colors;
 import view.menu.exceptions.GameErrorException;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
+
 import static changes.Utils.*;
 import static controller.mission.Command.*;
 import static model.game.missionmodel.MissionMap.MAP_SIZE;
@@ -46,7 +48,7 @@ public class MissionController {
     int coins, waterLeft = 0;
     boolean waterFilling = false;
     HashMap<String, Workshop> workshops;
-    HashMap<String,Integer> objectives;
+    HashMap<String, Integer> objectives;
 
     public MissionController(User user, Mission mission) {
         this.user = user;
@@ -59,24 +61,24 @@ public class MissionController {
         for (int n : mission.getBearAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Bear(timeManager,random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
+            tmp.add(new Bear(timeManager, random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         for (int n : mission.getLionAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Lion(timeManager,random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
+            tmp.add(new Lion(timeManager, random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         for (int n : mission.getTigerAppearanceTimes()) {
             actions.computeIfAbsent(n, k -> new ArrayList<>());
             tmp = actions.get(n);
-            tmp.add(new Tiger(timeManager,random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
+            tmp.add(new Tiger(timeManager, random.nextInt(MAP_SIZE), random.nextInt(MAP_SIZE)));
             actions.put(n, tmp);
         }
         Warehouse.makeWarehouse();
         MissionMap.makeMap();
-        coins = mission.getInitialCoins()+user.getRewards()[mission.getMissionNumber()-1];
+        coins = mission.getInitialCoins() + user.getRewards()[mission.getMissionNumber() - 1];
         objectives = mission.getObjectives();
     }
 
@@ -91,14 +93,13 @@ public class MissionController {
                 case BUILD -> build(matcher.group(1));
                 case WORK -> work(matcher.group(1));
                 case PLANT -> plant(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
-                case INQUIRY -> inquiry();
                 case TRUCK_GO -> truckGo();
                 case BUY_ANIMAL -> buyAnimal(matcher.group(1));
                 case TRUCK_LOAD -> truckLoad(matcher.group(1));
                 case TRUCK_UNLOAD -> truckUnload(matcher.group(1));
                 case PICK_UP_PRODUCT -> pickUpProduct(Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)));
                 case UPGRADE_WORKSHOP -> upgradeWorkshop(matcher.group(1));
-        }
+            }
         if (!(command == TRUCK_LOAD || command == TRUCK_UNLOAD)) {
             Truck.unload();
             Log.logger.info("Truck unloaded.");
@@ -132,14 +133,16 @@ public class MissionController {
         for (Product product : products) {
             if (Warehouse.canGet(Objects.requireNonNull(getSavable(product)))) {
                 Warehouse.addSavable(Objects.requireNonNull(getSavable(product)));
-                MissionMap.removeProduct(product,true);
+                MissionMap.removeProduct(product, true);
                 pickedUpProducts.add(product);
                 Log.logger.info(Savable.getSavableName(product) + " moved to warehouse.");
             }
         }
     }
 
-    private void truckUnload(String itemName) { Truck.unload(getSavable(itemName)); }
+    private void truckUnload(String itemName) {
+        Truck.unload(getSavable(itemName));
+    }
 
     private void truckLoad(String itemName) {
         if (itemName.equals("chicken") || itemName.equals("turkey") || itemName.equals("buffalo"))
@@ -165,7 +168,9 @@ public class MissionController {
         Log.logger.info(animalName + " purchased.");
     }
 
-    private void truckGo() { Truck.go(timeManager); }
+    private void truckGo() {
+        Truck.go(timeManager);
+    }
 
     private void inquiry() {
         Log.logger.info("Inquiry printed.");
@@ -180,19 +185,23 @@ public class MissionController {
         System.out.println();
         for (int i = 0; i < MAP_SIZE + 3; i++) System.out.println(c[i]);
         System.out.println();
-        colorPrintln("coins: " + coins);
+        colorPrint("time: " + timeManager.getTime());
+        System.out.println("      coins: " + coins);
         colorPrint("water left: ");
         if (waterFilling) System.out.println("Water is being pumped.");
         else wellStatus(waterLeft);
-        colorPrintln("workshops built:");
+        colorPrintln("Workshops:");
         for (Workshop ws : workshops.values())
-            System.out.println(ws.getName() + "("+"level "+((ws.isUpgraded())?"2":"1")+")" + ((ws.isWorking()) ? "is working" : "is not working"));
-        HashMap<String,Integer> wareHouse = Warehouse.getThings();
-        for (Map.Entry<String, Integer> entry: wareHouse.entrySet())
+            System.out.println(ws.getName() + "(" + "level " + ((ws.isUpgraded()) ? "2" : "1") + ")" + ((ws.isWorking()) ? "is working" : "is not working"));
+        System.out.println();
+        colorPrintln("Warehouse:");
+        HashMap<String, Integer> wareHouse = Warehouse.getThings();
+        for (Map.Entry<String, Integer> entry : wareHouse.entrySet())
             if (entry.getValue() > 0)
-                System.out.println(entry.getKey() + ": " + entry.getValue());
-        colorPrintln("time: " + timeManager.getTime());
+                System.out.print(entry.getKey() + ": " + entry.getValue()+"  ");
+        System.out.println();
         truckStatus();
+        System.out.println();
         warehouseStatus();
         System.out.println();
         colorPrintln("△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△");
@@ -218,13 +227,13 @@ public class MissionController {
         for (int i = 0; i < MAP_SIZE; i++) {
             productMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
-                productMap[i + 3]  += productBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars);
+                productMap[i + 3] += productBoard(i, j) + "[" + spaces2(charNumber[i][j], maxChars);
                 for (Product product : MissionMap.getProducts()) {
                     if (product != null && product.getX() == i && product.getY() == j) {
-                        productMap[i+3] += Savable.getColorEmoji(Savable.getSavableName(product)) + productBoard(i, j);
+                        productMap[i + 3] += Savable.getColorEmoji(Savable.getSavableName(product)) + productBoard(i, j);
                     }
                 }
-                productMap[i +3] += "]";
+                productMap[i + 3] += "]";
             }
             productMap[i + 3] += colorReset();
         }
@@ -281,7 +290,7 @@ public class MissionController {
             grassMap[i + 3] = "";
             for (int j = 0; j < MAP_SIZE; j++) {
                 grassMap[i + 3] += startGrass(0) + spaces(map[i][j], mostDigits) + startGrass(map[i][j]) +
-                "[" + map[i][j] + "]";
+                        "[" + map[i][j] + "]";
             }
             grassMap[i + 3] += colorReset();
         }
@@ -385,7 +394,9 @@ public class MissionController {
         }
     }
 
-    private void cage(int x, int y) { MissionMap.cage(x, y); }
+    private void cage(int x, int y) {
+        MissionMap.cage(x, y);
+    }
 
     private void coinCheck(int coinNeeded) {
         if (coins < coinNeeded)
@@ -401,12 +412,28 @@ public class MissionController {
             if (animal == null) {
                 waterLeft = 5;
                 waterFilling = false;
-            }
-            else MissionMap.putAnimal(animal);
+            } else MissionMap.putAnimal(animal);
         }
     }
 
-    public User getUser() { return user; }
+    public User getUser() {
+        return user;
+    }
 
-    private boolean success() { return coins >= mission.getSuccessCoins() && MissionMap.success(objectives); }
+    private boolean success() {
+        return coins >= mission.getSuccessCoins() && MissionMap.success(objectives);
+    }
+
+    private ArrayList<String> showObjectives(){
+        ArrayList<String> objectivesDone = new ArrayList<>();
+        if (mission.getSuccessCoins()!=0)
+            objectivesDone.add(mission.getSuccessCoins() + " Coins("+coins+"),");
+        for (Map.Entry<String,Integer> entry: mission.objectives.entrySet())
+            objectivesDone.add(+entry.getValue()+ " "+ entry.getKey()+"s("+MissionMap.getCount(entry.getKey())+"),");
+        String tmp = objectivesDone.get(objectivesDone.size()-1);
+        objectivesDone.remove(tmp);
+        tmp = tmp.substring(0,tmp.length()-1);
+        objectivesDone.add(tmp);
+        return objectivesDone;
+    }
 }

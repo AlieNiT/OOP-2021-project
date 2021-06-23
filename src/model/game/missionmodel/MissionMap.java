@@ -260,6 +260,16 @@ public class MissionMap {
         return true;
     }
 
+    public static int getCount(String itemName){
+        if (itemName.equals(Purchasable.CHICKEN.name))
+            return (int)animals.stream().filter(animal -> animal instanceof Chicken).count();
+        if (itemName.equals(Purchasable.TURKEY.name))
+            return (int)animals.stream().filter(animal -> animal instanceof Turkey).count();
+        if (itemName.equals(Purchasable.BUFFALO.name))
+            return (int)animals.stream().filter(animal -> animal instanceof Buffalo).count();
+        return totalProducts.getOrDefault(itemName, 0);
+    }
+
     public static void removeAnimal(String itemName, Integer count) {
         ArrayList<Animal> goneAnimals = new ArrayList<>();
         for (Animal animal : animals) {
