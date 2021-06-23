@@ -608,3 +608,963 @@ Jun 22, 2021 8:39:27 PM controller.mission.MissionController runCommand
 INFO: Truck unloaded.
 Jun 22, 2021 8:39:27 PM controller.mission.MissionController inquiry
 INFO: Inquiry printed.
+Jun 23, 2021 1:55:43 PM view.menu.LoginMenu run
+INFO: User aliali logged in.
+Jun 23, 2021 1:55:48 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 1:55:51 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "You have not unlocked this level." was thrown.
+Jun 23, 2021 1:55:52 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:02 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:03 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:03 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:03 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:03 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:16 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:16 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:16 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:16 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:17 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:56:17 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:56:17 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:17 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:23 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:56:23 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:23 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:31 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:56:31 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:31 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:36 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:56:36 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:36 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:40 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:56:40 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:40 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:43 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:43 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:43 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:43 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:44 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:44 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:44 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:44 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:45 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:46 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:46 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:46 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:46 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:48 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:51 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:56:51 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:56:51 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:51 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:54 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:56:54 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:54 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:56:58 PM controller.mission.MissionController well
+INFO: Pumped water from well.
+Jun 23, 2021 1:56:58 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:56:58 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:15 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:57:15 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:15 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:22 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:22 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:22 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:24 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:24 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:24 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:27 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:27 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:27 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:27 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:32 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:32 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:32 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:32 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:39 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:39 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:39 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:45 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:45 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:45 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:57:54 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:54 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:57:54 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:57:54 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:41 PM view.menu.LoginMenu run
+INFO: User aliali logged in.
+Jun 23, 2021 1:58:47 PM controller.mission.MissionController coinCheck
+INFO: 200 coins spent.
+Jun 23, 2021 1:58:47 PM controller.mission.MissionController buyAnimal
+INFO: turkey purchased.
+Jun 23, 2021 1:58:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:49 PM controller.mission.MissionController coinCheck
+INFO: 200 coins spent.
+Jun 23, 2021 1:58:49 PM controller.mission.MissionController buyAnimal
+INFO: turkey purchased.
+Jun 23, 2021 1:58:49 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:49 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:50 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:58:50 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:58:50 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:50 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:51 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:58:51 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:58:51 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:51 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:53 PM controller.mission.MissionController coinCheck
+INFO: 400 coins spent.
+Jun 23, 2021 1:58:53 PM controller.mission.MissionController buyAnimal
+INFO: buffalo purchased.
+Jun 23, 2021 1:58:53 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:53 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:58:58 PM controller.mission.MissionController coinCheck
+INFO: 400 coins spent.
+Jun 23, 2021 1:58:58 PM controller.mission.MissionController buyAnimal
+INFO: buffalo purchased.
+Jun 23, 2021 1:58:58 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:58:58 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:01 PM controller.mission.MissionController coinCheck
+INFO: 400 coins spent.
+Jun 23, 2021 1:59:01 PM controller.mission.MissionController buyAnimal
+INFO: buffalo purchased.
+Jun 23, 2021 1:59:01 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:01 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:02 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 1:59:02 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 1:59:02 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:02 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:04 PM controller.mission.MissionController well
+INFO: Pumped water from well.
+Jun 23, 2021 1:59:04 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:04 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:06 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:59:06 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:59:06 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 1:59:06 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:06 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:08 PM controller.mission.MissionController plant
+INFO: Grass planted in (0, 0).
+Jun 23, 2021 1:59:08 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:08 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:09 PM controller.mission.MissionController plant
+INFO: Grass planted in (0, 1).
+Jun 23, 2021 1:59:09 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:09 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:12 PM controller.mission.MissionController plant
+INFO: Grass planted in (2, 2).
+Jun 23, 2021 1:59:12 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:12 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:15 PM controller.mission.MissionController plant
+INFO: Grass planted in (3, 4).
+Jun 23, 2021 1:59:15 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:15 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:16 PM controller.mission.MissionController plant
+INFO: Grass planted in (5, 1).
+Jun 23, 2021 1:59:16 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:16 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:25 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:59:25 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:25 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:28 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Water supply empty! Water must be pumped from the well first." was thrown.
+Jun 23, 2021 1:59:31 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:59:31 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:31 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:48 PM controller.mission.MissionController pickUpProduct
+INFO: feather moved to warehouse.
+Jun 23, 2021 1:59:48 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:48 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:52 PM controller.mission.MissionController pickUpProduct
+INFO: feather moved to warehouse.
+Jun 23, 2021 1:59:52 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:52 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 1:59:57 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 1:59:57 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 1:59:57 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:05 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:00:05 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:05 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:08 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:00:08 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:08 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:10 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:00:12 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:00:12 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:12 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:14 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:00:14 PM model.game.missionmodel.MissionMap cage
+INFO: tiger caged.
+Jun 23, 2021 2:00:14 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:14 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:19 PM controller.mission.MissionController pickUpProduct
+INFO: tiger moved to warehouse.
+Jun 23, 2021 2:00:19 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:19 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:24 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:00:24 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:00:24 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:24 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:31 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:00:31 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:00:31 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:31 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:35 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 2:00:35 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:35 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:41 PM controller.mission.MissionController pickUpProduct
+INFO: milk moved to warehouse.
+Jun 23, 2021 2:00:41 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 2:00:41 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:41 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:47 PM controller.mission.MissionController pickUpProduct
+INFO: milk moved to warehouse.
+Jun 23, 2021 2:00:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:51 PM controller.mission.MissionController pickUpProduct
+INFO: milk moved to warehouse.
+Jun 23, 2021 2:00:51 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:51 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:55 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 2:00:55 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:55 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:00:58 PM controller.mission.MissionController pickUpProduct
+INFO: egg moved to warehouse.
+Jun 23, 2021 2:00:58 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:00:58 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:41 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:02:41 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:41 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:43 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:02:43 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:43 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:44 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:02:44 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:44 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:45 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:02:47 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:02:47 PM model.game.missionmodel.MissionMap cage
+INFO: tiger caged.
+Jun 23, 2021 2:02:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:50 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:50 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:55 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:02:55 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:02:58 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:03:01 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:03:01 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:03:07 PM model.game.missionmodel.Truck load
+INFO: egg was loaded to the truck.
+Jun 23, 2021 2:03:07 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:03:11 PM model.game.missionmodel.Truck load
+INFO: egg was loaded to the truck.
+Jun 23, 2021 2:03:11 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:03:16 PM model.game.missionmodel.Truck load
+INFO: egg was loaded to the truck.
+Jun 23, 2021 2:03:16 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:04:32 PM model.game.missionmodel.Truck go
+INFO: Truck sent.
+Jun 23, 2021 2:04:32 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:04:32 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:05:30 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:05:30 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:05:35 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Wrong item name" was thrown.
+Jun 23, 2021 2:05:39 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "The truck is not available." was thrown.
+Jun 23, 2021 2:05:44 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:05:44 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:05:44 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:05:44 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:05:44 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:12:55 PM view.menu.LoginMenu run
+INFO: User aliali logged in.
+Jun 23, 2021 2:13:04 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:04 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:04 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:04 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:06 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:07 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:13:08 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:13:08 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:08 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:08 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:08 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:09 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:09 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:09 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:09 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:10 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:11 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:12 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:13 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:13 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:13 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:13 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:15 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:16 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:16 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:16 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:16 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:17 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:18 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:13:20 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:13:20 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:13:20 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:13:20 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:26 PM view.menu.LoginMenu run
+INFO: User aliali logged in.
+Jun 23, 2021 2:15:27 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:31 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:32 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:33 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:33 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:33 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:33 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:34 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:35 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:35 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:35 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:35 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:36 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:36 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:36 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:36 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:37 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:38 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:38 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:38 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:38 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:39 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:39 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:39 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:39 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:40 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:40 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:40 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:40 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:41 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:41 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:41 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:41 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:43 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:43 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:43 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:43 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:45 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:45 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:45 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:45 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:46 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController coinCheck
+INFO: 100 coins spent.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController buyAnimal
+INFO: chicken purchased.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:15:48 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:01 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:16:01 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:16:01 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:01 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:35 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:16:35 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:35 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:44 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:16:44 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:44 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:45 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:16:45 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:45 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:46 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:16:46 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:46 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:47 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:16:47 PM model.game.missionmodel.MissionMap cage
+INFO: tiger caged.
+Jun 23, 2021 2:16:47 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:47 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:52 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:16:52 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:52 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:16:56 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:16:56 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:16:56 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:17:01 PM controller.mission.MissionController turn
+INFO: Time turned.
+Jun 23, 2021 2:17:01 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:17:01 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:17:11 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:17:11 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:17:11 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:17:13 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:17:13 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:17:13 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:17:17 PM view.menu.exceptions.GameErrorException <init>
+INFO: GameErrorException with message "Invalid command" was thrown.
+Jun 23, 2021 2:17:19 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:17:19 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:17:19 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.
+Jun 23, 2021 2:17:21 PM model.game.animals.predatoranimals.PredatorAnimal cageTry
+INFO: Cage command executed on tiger.
+Jun 23, 2021 2:17:21 PM model.game.missionmodel.MissionMap cage
+INFO: tiger caged.
+Jun 23, 2021 2:17:21 PM controller.mission.MissionController runCommand
+INFO: Truck unloaded.
+Jun 23, 2021 2:17:21 PM controller.mission.MissionController inquiry
+INFO: Inquiry printed.

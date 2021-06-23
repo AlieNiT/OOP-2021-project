@@ -266,7 +266,7 @@ public class MissionController {
                         if (animal instanceof PredatorAnimal)
                             temp = changes.PredatorAnimal.getColorEmoji(changes.PredatorAnimal.getAnimalName((PredatorAnimal) animal));
                         else temp = changes.Purchasable.getColorEmoji(changes.Purchasable.getPurchasableName(animal));
-                        animalMap[i + 3] += spaces2(charNumber[i][j], maxChars) + startAnimalHealth(animal) + temp;
+                        animalMap[i + 3] += startAnimalHealth(animal) + temp;
                     }
                 }
                 animalMap[i + 3] += animalBoard(i, j) + spaces2(charNumber[i][j], maxChars) + "]";
@@ -319,19 +319,20 @@ public class MissionController {
     }
 
     private void warehouseStatus() {
-        int numOfItems = 0;
         int roofBlocks = 3;
-        for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet())
-            numOfItems += set.getValue();
-        if (numOfItems > 11) roofBlocks = 5;
         for (int i=0; i < roofBlocks; i++) {
             for (int j = roofBlocks - i; j > 1; j--) System.out.print("    ");
             colorPrint("◢");
             for (int j = 1; j <= 2 * i; j++) System.out.print("████");
             System.out.println("◣");
         }
+        int counter = 0;
         for (Map.Entry<String, Integer> set : Warehouse.getThings().entrySet())
-            for (int i = 0; i < set.getValue(); i++) System.out.print(getColorEmoji(set.getKey()));
+            for (int i = 0; i < set.getValue(); i++) {
+                System.out.print(getColorEmoji(set.getKey()));
+                counter++;
+                if (counter % 11 == 0) System.out.println();
+            }
     }
 
     private void plant(int x, int y) {
