@@ -194,12 +194,6 @@ public class MissionController {
         for (Workshop ws : workshops.values())
             System.out.println(ws.getName() + "(" + "level " + ((ws.isUpgraded()) ? "2" : "1") + ")" + ((ws.isWorking()) ? "is working" : "is not working"));
         System.out.println();
-        colorPrintln("Warehouse:");
-        HashMap<String, Integer> wareHouse = Warehouse.getThings();
-        for (Map.Entry<String, Integer> entry : wareHouse.entrySet())
-            if (entry.getValue() > 0)
-                System.out.print(entry.getKey() + ": " + entry.getValue()+"  ");
-        System.out.println();
         truckStatus();
         System.out.println();
         warehouseStatus();
