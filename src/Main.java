@@ -10,8 +10,6 @@ public class Main {
         FileManager.readUserBase();
         Log.setLogger("log.txt");
         Menu currentMenu = new StartMenu();
-        while (currentMenu != null){
-            currentMenu = currentMenu.run();
-        }
+        while (currentMenu != null) currentMenu = currentMenu.run();
     }
 }
