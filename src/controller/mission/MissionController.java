@@ -187,6 +187,8 @@ public class MissionController {
         System.out.println();
         colorPrint("time: " + timeManager.getTime());
         System.out.println("      coins: " + coins);
+        colorPrintln("Tasks:");
+        for (String objective : objectives()) System.out.println(objective);
         colorPrint("water left: ");
         if (waterFilling) System.out.println("Water is being pumped.");
         else wellStatus(waterLeft);
@@ -419,15 +421,14 @@ public class MissionController {
         return coins >= mission.getSuccessCoins() && MissionMap.success(objectives);
     }
 
-    private ArrayList<String> showObjectives(){
+    private ArrayList<String> objectives() {
         ArrayList<String> objectivesDone = new ArrayList<>();
-        if (mission.getSuccessCoins()!=0)
-            objectivesDone.add(mission.getSuccessCoins() + " Coins("+coins+"),");
+        if (mission.getSuccessCoins() != 0) objectivesDone.add(mission.getSuccessCoins() + " Coins(" + coins + "),");
         for (Map.Entry<String,Integer> entry: mission.objectives.entrySet())
-            objectivesDone.add(+entry.getValue()+ " "+ entry.getKey()+"s("+MissionMap.getCount(entry.getKey())+"),");
-        String tmp = objectivesDone.get(objectivesDone.size()-1);
+            objectivesDone.add(+entry.getValue()+ " " + entry.getKey() + "s(" + MissionMap.getCount(entry.getKey()) + "),");
+        String tmp = objectivesDone.get(objectivesDone.size() - 1);
         objectivesDone.remove(tmp);
-        tmp = tmp.substring(0,tmp.length()-1);
+        tmp = tmp.substring(0, tmp.length() - 1);
         objectivesDone.add(tmp);
         return objectivesDone;
     }

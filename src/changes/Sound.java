@@ -20,5 +20,17 @@ public class Sound {
         catch (LineUnavailableException e) { colorPrintln("Something went wrong."); }
         catch (IOException e) { colorPrintln("Something went wrong"); }
         Objects.requireNonNull(clip).start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
+    public static void playSound(String filename) {
+        AudioInputStream audioInputStream = null;
+        try { audioInputStream = AudioSystem.getAudioInputStream(new File(filename)); }
+        catch (UnsupportedAudioFileException | IOException ignored) { }
+        Clip clip = null;
+        try { clip = AudioSystem.getClip(); } catch (LineUnavailableException ignored) { }
+        try { Objects.requireNonNull(clip).open(audioInputStream); }
+        catch (LineUnavailableException | IOException ignored) { }
+        Objects.requireNonNull(clip).start();
     }
 }

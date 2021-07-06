@@ -3,8 +3,8 @@ package model.database;
 import controller.mission.Mission;
 
 import java.io.*;
-import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static model.database.Database.*;
@@ -75,17 +75,10 @@ public class FileManager {
         fileWriter.close();
     }
 
-    public static void log(String message) {
-        File file = new File("logger.txt");
-        try {
-            LocalTime time = LocalTime.now();
-
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.append(time.toString()+" "+message);
-        } catch (IOException e) { e.printStackTrace(); }
-    }
-    public static void emptyLog(){
-        File file = new File("logger.txt");
-        file.delete();
+    public static void emptyLog() {
+        PrintWriter writer = null;
+        try { writer = new PrintWriter("log.txt"); } catch (FileNotFoundException ignored) { }
+        Objects.requireNonNull(writer).print("");
+        writer.close();
     }
 }
