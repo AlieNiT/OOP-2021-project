@@ -47,9 +47,8 @@ public class Warehouse {
 
     public static void removeSavableList(HashMap<String, Integer> list) {
 
-        for (Map.Entry<String, Integer> entry : list.entrySet()) {
+        for (Map.Entry<String, Integer> entry : list.entrySet())
             if (things.containsKey(entry.getKey()))
-                things.put(entry.getKey(), entry.getValue());
-        }
+                things.put(entry.getKey(), things.get(entry.getKey()) - entry.getValue());
     }
 }
